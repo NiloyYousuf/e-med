@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Text?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+      <ImageView fitHeight="89.0" fitWidth="134.0" layoutX="22.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@327149370_5698897363521099_2340745017535052775_n__1_-removebg-preview.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="178.0" layoutY="381.0" prefHeight="58.0" prefWidth="470.0" text="Label" />
+      <ImageView fitHeight="58.0" fitWidth="142.0" layoutX="33.0" layoutY="381.0" pickOnBounds="true">
+         <image>
+            <Image url="@327149370_5698897363521099_2340745017535052775_n__1_-removebg-preview.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="178.0" layoutY="323.0" prefHeight="58.0" prefWidth="470.0" text="Label" />
+      <ImageView fitHeight="58.0" fitWidth="142.0" layoutX="33.0" layoutY="323.0" pickOnBounds="true">
+         <image>
+            <Image url="@327149370_5698897363521099_2340745017535052775_n__1_-removebg-preview.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="178.0" layoutY="265.0" prefHeight="58.0" prefWidth="470.0" text="Label" />
+      <ImageView fitHeight="58.0" fitWidth="142.0" layoutX="33.0" layoutY="265.0" pickOnBounds="true">
+         <image>
+            <Image url="@327149370_5698897363521099_2340745017535052775_n__1_-removebg-preview.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="178.0" layoutY="207.0" prefHeight="58.0" prefWidth="470.0" text="Label" />
+      <ImageView fitHeight="58.0" fitWidth="142.0" layoutX="33.0" layoutY="207.0" pickOnBounds="true">
+         <image>
+            <Image url="@327149370_5698897363521099_2340745017535052775_n__1_-removebg-preview.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="178.0" layoutY="149.0" prefHeight="58.0" prefWidth="470.0" text="Label" />
+      <ImageView fitHeight="58.0" fitWidth="142.0" layoutX="33.0" layoutY="149.0" pickOnBounds="true">
+         <image>
+            <Image url="@327149370_5698897363521099_2340745017535052775_n__1_-removebg-preview.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="178.0" layoutY="91.0" prefHeight="58.0" prefWidth="470.0" text="Label" />
+      <ImageView fitHeight="58.0" fitWidth="142.0" layoutX="33.0" layoutY="91.0" pickOnBounds="true">
+         <image>
+            <Image url="@327149370_5698897363521099_2340745017535052775_n__1_-removebg-preview.png" />
+         </image>
+      </ImageView>
+      <TextField layoutX="260.0" layoutY="47.0" prefHeight="25.0" prefWidth="331.0" promptText="search" />
+      <TextArea blendMode="SCREEN" editable="false" layoutX="260.0" layoutY="101.0" prefHeight="44.0" prefWidth="331.0" promptText="Description text" />
+      <TextArea blendMode="ADD" editable="false" layoutX="260.0" layoutY="156.0" prefHeight="44.0" prefWidth="331.0" promptText="Description text" />
+      <TextArea editable="false" layoutX="260.0" layoutY="214.0" prefHeight="44.0" prefWidth="331.0" promptText="Description text" />
+      <TextArea editable="false" layoutX="260.0" layoutY="388.0" prefHeight="44.0" prefWidth="331.0" promptText="Description text" />
+      <TextArea editable="false" layoutX="260.0" layoutY="330.0" prefHeight="44.0" prefWidth="331.0" promptText="Description text" />
+      <TextArea editable="false" layoutX="260.0" layoutY="272.0" prefHeight="44.0" prefWidth="331.0" promptText="Description text" />
+   </children>
+</Pane>
