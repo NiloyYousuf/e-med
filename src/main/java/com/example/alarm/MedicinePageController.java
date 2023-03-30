@@ -11,13 +11,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
@@ -27,12 +23,10 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
-import javafx.scene.media.MediaView;
 import javafx.util.Pair;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URISyntaxException;
 import java.net.URL;
 import java.text.ParseException;
 import java.util.HashMap;
@@ -41,7 +35,7 @@ import java.util.Map;
 import java.util.ResourceBundle;
 
 
-public class HelloController implements Initializable {
+public class MedicinePageController implements Initializable {
 
     //Time time = new Time(new CurrentTime().currentTime());
     //Time time = new Time("12:13:34");
@@ -618,7 +612,7 @@ public class HelloController implements Initializable {
         alarmtimes.put(alarmTime.getText(), true);
         Node root = (Node) event . getSource () ;
         Stage myStage = ( Stage ) root . getScene () . getWindow () ;
-        FXMLLoader fxmlLoader = new FXMLLoader ( HelloController.class.getResource ("remview2.fxml") ) ;
+        FXMLLoader fxmlLoader = new FXMLLoader ( MedicinePageController.class.getResource ("remview2.fxml") ) ;
         Scene as = new Scene ( fxmlLoader.load() ) ;
         myStage . setScene ( as ) ;
         myStage . show () ;
@@ -629,7 +623,7 @@ public class HelloController implements Initializable {
     {
         Node root = (Node) event . getSource () ;
         Stage myStage = ( Stage ) root . getScene () . getWindow () ;
-        FXMLLoader fxmlLoader = new FXMLLoader ( HelloController.class.getResource ("remview2.fxml") ) ;
+        FXMLLoader fxmlLoader = new FXMLLoader ( MedicinePageController.class.getResource ("remview2.fxml") ) ;
         Scene as = new Scene ( fxmlLoader.load() ) ;
         myStage . setScene ( as ) ;
         myStage . show () ;

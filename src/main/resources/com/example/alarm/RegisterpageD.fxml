@@ -22,7 +22,7 @@
       </Text>
       <ImageView fitHeight="66.0" fitWidth="114.0" layoutX="108.0" layoutY="76.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@327149370_5698897363521099_2340745017535052775_n__1_-removebg-preview.png" />
+            <Image url="@e-MED_logo.png" />
          </image>
       </ImageView>
       <ImageView fx:id="Register_Button" fitHeight="46.0" fitWidth="175.0" layoutX="98.0" layoutY="371.0" pickOnBounds="true" preserveRatio="true">

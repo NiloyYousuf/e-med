@@ -18,7 +18,7 @@
       </Text>
       <ImageView fitHeight="89.0" fitWidth="134.0" layoutX="22.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@327149370_5698897363521099_2340745017535052775_n__1_-removebg-preview.png" />
+            <Image url="@e-MED_logo.png" />
          </image>
       </ImageView>
       <Button fx:id="Logout" layoutX="638.0" layoutY="34.0" mnemonicParsing="false" onAction="#logoutbuttonclicked" text="Logout" />

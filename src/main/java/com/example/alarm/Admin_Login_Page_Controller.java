@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class AdminLoginpage {
+public class Admin_Login_Page_Controller {
     @FXML
     private Button loginbutton;
     @FXML
@@ -24,7 +24,7 @@ public class AdminLoginpage {
     private Label failed;
 
     public void switchToScene3(ActionEvent event) throws IOException {
-        String s1="AdminAddProduct.fxml";
+        String s1="adminmenu.fxml";
         FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource(s1));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(fxmlLoader.load(), 720, 480);
@@ -39,7 +39,6 @@ public class AdminLoginpage {
     public  void loginbuttonclicked(ActionEvent event) throws IOException {
        if(name.getText().equals("Niloy") && passwordField.getText().equals("123"))
        {
-
            switchToScene3(event);
        }
 

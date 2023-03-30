@@ -1,4 +1,5 @@
 package com.example.alarm;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -11,14 +12,18 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 
-public class OrdersController implements Initializable {
+public class Admin_Order_page_Controller implements Initializable {
 
     // Database connection details
     private final String DB_URL = "jdbc:mysql://localhost:3306/project";
@@ -103,6 +108,16 @@ public class OrdersController implements Initializable {
         ordersTable.setItems(orders);
     }
 
+    @FXML public  void Switch_To_admin_Menu(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("AdminMenu.fxml"));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(fxmlLoader.load(), 720, 480);
+        stage.setTitle("e-MED");
+        stage.setScene(scene);
+        stage.show();
+
+    }
+
     @FXML
     private void handleUpdateButton(ActionEvent event) {
         // Get the selected order from the TableView
@@ -110,7 +125,8 @@ public class OrdersController implements Initializable {
         if (selectedOrder != null) {
             // Update the order status in the database
             try {
-                Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+                Database_connection dbcon = new Database_connection();
+                Connection conn=dbcon.conn;
                 PreparedStatement stmt = conn.prepareStatement("UPDATE orders SET Order_Status = ? WHERE Order_ID = ?");
                 stmt.setString(1, statusDropdown.getValue());
                 stmt.setString(2, selectedOrder.getOrderId());
@@ -123,6 +139,8 @@ public class OrdersController implements Initializable {
                 conn.close();
             } catch (SQLException e) {
                 e.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                throw new RuntimeException(e);
             }
         }
     }

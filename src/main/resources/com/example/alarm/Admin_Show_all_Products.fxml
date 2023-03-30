@@ -7,11 +7,11 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.alarm.OrdersController">
+<AnchorPane prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.alarm.Admin_Order_page_Controller">
     <children>
-        <Label layoutX="14.0" layoutY="14.0" text="Order Status:" />
-        <ComboBox fx:id="statusDropdown" layoutX="14.0" layoutY="38.0" prefWidth="150.0" />
-        <Button fx:id="updateButton" layoutX="174.0" layoutY="38.0" mnemonicParsing="false" onAction="#handleUpdateButton" text="Update Status" />
+        <Label layoutX="242.0" layoutY="14.0" text="Order Status:" />
+        <ComboBox fx:id="statusDropdown" layoutX="242.0" layoutY="38.0" prefWidth="150.0" />
+        <Button fx:id="updateButton" layoutX="402.0" layoutY="38.0" mnemonicParsing="false" onAction="#handleUpdateButton" text="Update Status" />
         <TableView fx:id="ordersTable" layoutX="14.0" layoutY="73.0" prefHeight="638.0" prefWidth="1042.0">
             <columns>
                 <TableColumn fx:id="orderIdColumn" prefWidth="150.39999103546143" text="Order ID" />
@@ -24,5 +24,6 @@
                 <TableColumn fx:id="orderStatusColumn" prefWidth="139.2000732421875" text="Order Status" />
             </columns>
         </TableView>
+      <Button layoutX="14.0" layoutY="25.0" mnemonicParsing="false" onAction="#Switch_To_admin_Menu" text="Back" />
     </children>
 </AnchorPane>

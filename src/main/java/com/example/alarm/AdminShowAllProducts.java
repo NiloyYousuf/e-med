@@ -1,7 +1,11 @@
 package com.example.alarm;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
@@ -12,6 +16,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -33,6 +38,16 @@ public class AdminShowAllProducts implements Initializable {
     private Label cartlabel;
     private List<Item> itemList = new ArrayList<>();
 
+
+    @FXML public  void Switch_To_admin_Menu(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("AdminMenu.fxml"));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(fxmlLoader.load(), 720, 480);
+        stage.setTitle("e-MED");
+        stage.setScene(scene);
+        stage.show();
+
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -159,4 +174,7 @@ VBox vbox=new VBox(deleetebutton,editbutton);
         }
 
     }
+
+
+
 }

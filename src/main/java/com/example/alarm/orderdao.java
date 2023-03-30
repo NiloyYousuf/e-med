@@ -1,30 +1,27 @@
 package com.example.alarm;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 public class orderdao {
-    private static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
-    private static final String DB_URL = "jdbc:mysql://localhost:3306/project";
-    private static final String DB_USER = "root";
-    private static final String DB_PASSWORD = "200041123";
+
 
     public void addOrder(String userName, String userPhoneNo, String totalAmount, String deliveryAddress, String orderMemo, String orderStatus) throws SQLException {
-        Connection conn = null;
+
+        Connection conn=null;
         PreparedStatement stmt = null;
 
         try {
             // Register JDBC driver
-            Class.forName(JDBC_DRIVER);
+
 
             // Open a connection
-            conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+            Database_connection dbcon = new Database_connection();
+           conn=dbcon.conn;
 
             // Set auto-commit to false
             conn.setAutoCommit(false);

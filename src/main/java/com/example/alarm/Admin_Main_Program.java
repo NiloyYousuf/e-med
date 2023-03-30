@@ -6,10 +6,10 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class testrunner extends Application {
+public class Admin_Main_Program extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("adminaddproduct.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("adminloginpage.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 720, 480);
         stage.setTitle("e-MED");
         stage.setScene(scene);

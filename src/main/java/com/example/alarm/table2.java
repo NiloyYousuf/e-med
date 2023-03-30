@@ -8,7 +8,8 @@ public class table2 {
         try {
             // 1) Register the driver class
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/project", "root", "200041123");
+            Database_connection dbcon = new Database_connection();
+            Connection conn=dbcon.conn;
 
             Statement stmt = ((java.sql.Connection) conn).createStatement();
 
@@ -41,8 +42,8 @@ public class table2 {
         try {
             // 1) Register the driver class
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/project", "root", "200041123");
-
+            Database_connection dbcon = new Database_connection();
+            Connection conn=dbcon.conn;
             Statement stmt = ((java.sql.Connection) conn).createStatement();
             ResultSet rset;
             rset=stmt.executeQuery("SELECT  * FROM Product_Table");

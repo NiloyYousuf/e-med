@@ -20,9 +20,9 @@ import java.sql.SQLException;
 public class OrderViewer extends Application {
 
     // Define database connection details
-    private static final String DB_URL = "jdbc:mysql://localhost:3306/mydatabase";
+    private static final String DB_URL = "jdbc:mysql://localhost:3306/project";
     private static final String DB_USER = "root";
-    private static final String DB_PASSWORD = "password";
+    private static final String DB_PASSWORD = "200041123";
 
     // Define ObservableList to hold orders
     private ObservableList<Order> orders = FXCollections.observableArrayList();
@@ -103,7 +103,8 @@ public class OrderViewer extends Application {
     private void retrieveOrders() {
         try {
             // Get database connection
-            Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+            Database_connection dbcon = new Database_connection();
+            Connection conn=dbcon.conn;
 
             // Create PreparedStatement to retrieve all orders
             String sql = "SELECT * FROM orders";
@@ -127,6 +128,8 @@ public class OrderViewer extends Application {
             conn.close();
         } catch (SQLException e) {
             e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
         }
     }
 
@@ -139,6 +142,7 @@ public class OrderViewer extends Application {
     private void updateOrderStatus(String orderId, String newStatus) {
         try {
             // Get database connection
+
             Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
 
             // Create PreparedStatement to update order status

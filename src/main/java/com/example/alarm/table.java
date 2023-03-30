@@ -7,8 +7,8 @@ public class table {
         try {
             // 1) Register the driver class
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/project", "root", "200041123");
-
+            Database_connection dbcon = new Database_connection();
+            Connection conn=dbcon.conn;
             Statement stmt = ((java.sql.Connection) conn).createStatement();
 
             key=passwordhasher.hash(key);
@@ -39,7 +39,8 @@ return false;
 
     public boolean isUser(String user) throws SQLException, ClassNotFoundException {
         Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/project", "root", "200041123");
+        Database_connection dbcon = new Database_connection();
+        Connection conn=dbcon.conn;
 
         PreparedStatement ptstmt = conn.prepareStatement("SELECT username,password from user_info where username = ?");
         // PreparedStatement pt = (PreparedStatement) ((java.sql.Connection) conn).prepareStatement("SELECT username,password from users where username = ?");
@@ -54,8 +55,8 @@ return false;
     }
 
     public boolean login(String user, String pass) throws SQLException, ClassNotFoundException {
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/project", "root", "200041123");
+        Database_connection dbcon = new Database_connection();
+        Connection conn=dbcon.conn;
         boolean flag=false;
         PreparedStatement ptstmt = conn.prepareStatement("SELECT username,password from user_info where username = ?");
         // PreparedStatement pt = (PreparedStatement) ((java.sql.Connection) conn).prepareStatement("SELECT username,password from users where username = ?");

@@ -174,13 +174,13 @@ public class LoginStaringPagecontroller {
 
             System.out.println("clicked");
             String u_name,key,mob_no,mail_id;
-u_name=regname.getText();
-key=regpassword.getText();
-mob_no=regphone.getText();
-mail_id=regmail.getText();
+            u_name=regname.getText();
+            key=regpassword.getText();
+            mob_no=regphone.getText();
+            mail_id=regmail.getText();
             table obj=new table();
-        boolean inserted=false;
-        boolean allnotfilled=false;
+            boolean inserted=false;
+            boolean allnotfilled=false;
             if(u_name.equals("") || key.equals("")||mob_no.equals("")||mail_id.equals(""))
             {
                 regunmatchedMessage.setText("Fillup All the Fields");

@@ -27,7 +27,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 
-public class addtocart implements Initializable {
+public class User_ADD_TO_CART implements Initializable {
 
     @FXML
     private VBox itemContainer;
@@ -55,7 +55,7 @@ public class addtocart implements Initializable {
 
 
         for (int i=0;i<products.products.size();i++)
-            itemList.add(new addtocart.Item(products.products.get(i).Product_ID,products.products.get(i).Product_Name,products.products.get(i).Product_Price,products.products.get(i).Product_Total_Available,products.products.get(i).Product_Description,products.products.get(i).Product_Image_URL));
+            itemList.add(new User_ADD_TO_CART.Item(products.products.get(i).Product_ID,products.products.get(i).Product_Name,products.products.get(i).Product_Price,products.products.get(i).Product_Total_Available,products.products.get(i).Product_Description,products.products.get(i).Product_Image_URL));
 
 
         //   itemList.add(new Item("Item 5", "This is item 5", "C://Users//yousu//IdeaProjects//scrollingfxml//src//main//resources//com//example//img.png"));
@@ -250,16 +250,17 @@ cartlabel.setText(String.valueOf(products_added_to_cart.total_items_selected));
 
 
     public void Hboxclicked() throws IOException {
-       System.out.println("hbox clixked");
-
-        String s1="ProductInDepthPage.fxml";
+     System.out.println("Hobox Clicked");
+        String s1="ProductdepthPage.fxml";
         FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource(s1));
-        Stage stage =new Stage();
+        Stage stage = new Stage();
         Scene scene = new Scene(fxmlLoader.load(), 720, 480);
         stage.setTitle("e-MED");
         stage.setScene(scene);
         stage.show();
     }
+
+
 
     public void switchtoOrderPage(ActionEvent e) throws IOException {
         String s1="orderpage.fxml";
@@ -280,7 +281,8 @@ cartlabel.setText(String.valueOf(products_added_to_cart.total_items_selected));
     public ArrayList<Product> getAllProducts() {
         ArrayList<Product> products = new ArrayList<>();
         try {
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/project", "root","200041123");
+            Database_connection dbcon = new Database_connection();
+            Connection conn=dbcon.conn;
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM product_table");
 
@@ -300,6 +302,8 @@ cartlabel.setText(String.valueOf(products_added_to_cart.total_items_selected));
             conn.close();
         } catch (SQLException e) {
             e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
         }
 
         return products;
@@ -309,7 +313,8 @@ cartlabel.setText(String.valueOf(products_added_to_cart.total_items_selected));
     public ArrayList<Product> searchProducts(String searchStr) {
         ArrayList<Product> results = new ArrayList<>();
         try {
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/project", "root","200041123");
+            Database_connection dbcon = new Database_connection();
+            Connection conn=dbcon.conn;
             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM product_table WHERE Product_Name LIKE ?");
             stmt.setString(1, "%" + searchStr + "%");
             ResultSet rs = stmt.executeQuery();
@@ -337,6 +342,8 @@ cartlabel.setText(String.valueOf(products_added_to_cart.total_items_selected));
             conn.close();
         } catch (SQLException e) {
             e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
         }
 
         return results;

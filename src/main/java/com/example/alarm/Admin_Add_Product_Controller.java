@@ -3,6 +3,7 @@ package com.example.alarm;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
@@ -14,7 +15,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Optional;
 
-public class Hellocontroller3 {
+public class Admin_Add_Product_Controller {
 
     @FXML
     private Button submit_button;
@@ -46,14 +47,16 @@ public class Hellocontroller3 {
     }
 
 
-    @FXML
-    public void switchToScene2(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("allproducts.fxml"));
-        Stage stage = new Stage();
-        Scene scene = new Scene(fxmlLoader.load());
-        stage.setTitle("Hello!");
+
+
+    @FXML public  void Switch_To_admin_Menu(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("AdminMenu.fxml"));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(fxmlLoader.load(), 720, 480);
+        stage.setTitle("e-MED");
         stage.setScene(scene);
         stage.show();
+
     }
 
 
@@ -76,6 +79,8 @@ public class Hellocontroller3 {
             product_image_url = productimageURL.getText();
             table2 obj = new table2();
             obj.insert_val2(product_id, product_price, product_name, total_available, product_description, product_image_url);
+            ButtonNotificationExample btn=new ButtonNotificationExample();
+            btn.showNotificationProductAddedSuccessfully(new Stage());
         }
 
     }
@@ -99,10 +104,4 @@ public class Hellocontroller3 {
 
     }
 
-    @FXML
-    private void  showallproducts()
-    {
-
-
-    }
 }

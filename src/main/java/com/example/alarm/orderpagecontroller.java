@@ -55,8 +55,8 @@ public class orderpagecontroller implements Initializable {
         Insertorder.addOrder(currentUser.user_name, phonenoarea.getText() ,String.valueOf(cart.Total_Amount),addressarea.getText(),cart.generateSummary(cart.Products),"Order Received");
         System.out.println(selectedValue);
 
-     /*   ButtonNotificationExample b=new ButtonNotificationExample();
-        b.showNotification(new Stage()); */
+       ButtonNotificationExample b=new ButtonNotificationExample();
+        b.showNotificationorderPlaced(new Stage());
     }
 
 

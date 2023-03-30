@@ -1,10 +1,8 @@
 package com.example.alarm;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -56,7 +54,13 @@ public class ProductEditor{
 
         Button btn = new Button("Update Product");
         btn.setOnAction(event -> {
-            updateProduct(productId);
+            try {
+                updateProduct(productId);
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            } catch (ClassNotFoundException e) {
+                throw new RuntimeException(e);
+            }
             primaryStage.close();
         });
         grid.add(btn, 1, 5);
@@ -66,8 +70,10 @@ public class ProductEditor{
         primaryStage.show();
     }
 
-    private void updateProduct(String productId) {
-        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/project", "root", "200041123");
+    private void updateProduct(String productId) throws SQLException, ClassNotFoundException {
+        Database_connection dbcon = new Database_connection();
+
+        try (Connection conn =dbcon.conn;
              PreparedStatement stmt = conn.prepareStatement("UPDATE product_table SET Product_Name = ?, Product_Price = ?, Total_Avaiable = ?, Product_Description = ? WHERE Product_ID ='"+productId+"' ")) {
             stmt.setString(1, nameField.getText());
             stmt.setString(2, priceField.getText());
