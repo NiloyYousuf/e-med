@@ -11,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
@@ -40,7 +41,7 @@ public class MedicinePageController implements Initializable {
     //Time time = new Time(new CurrentTime().currentTime());
     //Time time = new Time("12:13:34");
     Time time = new Time(new CurrentTime().currentTime());
-    HashMap<String, Boolean> alarmtimes = new HashMap<String, Boolean>();
+    HashMap<String, Boolean> alarmtimes = new HashMap<>();
     HashMap<Pair<String, String>, Boolean> timeandweek = new HashMap<>();
 
 
@@ -50,11 +51,7 @@ public class MedicinePageController implements Initializable {
     @FXML
     private TextField alarmTime;
     @FXML
-    private Button b1;
-
-    @FXML
     private Button hourup;
-
     @FXML
     private Button hourdown;
     @FXML
@@ -76,6 +73,8 @@ public class MedicinePageController implements Initializable {
     private Button Submit;
     @FXML
     private Button Done;
+
+    private static notifobject nob = new notifobject();
 
 
     private String convertto12(String t) {
@@ -134,18 +133,17 @@ public class MedicinePageController implements Initializable {
                         //setalarmtime();
                         if (alarmtimes.get(now) == Boolean.TRUE && timeandweek.get(temp) == Boolean.TRUE) {
                             System.out.println("ALARM!");
-                            //System.out.println(now + " " + tm.currentweekday());
-                            //try {
-                                //handleChanges(now, tm.currentweekday());
-                            //} catch (ParseException ex) {
-                               // throw new RuntimeException(ex);
-                            //}
-                            showNotifications();
+                            try {
+                                showNotifications(now);
+                                nob.setWeekde(tm.currentweekday());
+                            } catch (IOException ex) {
+                                throw new RuntimeException(ex);
+                            }
+
+                            DBConn db = new DBConn();
+                            alarmtimes.put(db.updatenextTimes(medicinename.getText(), now, tm.currentweekday()), Boolean.TRUE);
                         }
 
-                        //if(time.getCurrentTime().equals(alarmTime.getText())){
-                        //System.out.println("ALARM!");
-                        //setalarmtime();
                         time.oneSecondPassed();
                         String t = new String(time.getCurrentTime());
                         String ans = new String(convertto12(t));
@@ -162,7 +160,6 @@ public class MedicinePageController implements Initializable {
     private Text txt;
     @FXML
     private Button okbutton;
-    private ObservableList<demoinfo> list = FXCollections.observableArrayList();
 
     // Create a combo box
     @FXML
@@ -221,9 +218,6 @@ public class MedicinePageController implements Initializable {
 
         mednum.setVisible(true);
 
-        if (setWeekly.isSelected() == false) enddate.setDisable(false);
-        else enddate.setDisable(true);
-
         System.out.println(setWeekly.isSelected());
 
 
@@ -256,13 +250,7 @@ public class MedicinePageController implements Initializable {
         //db.updatenextTimes(medicinename.getText(), crtime, tm.currentweekday());
     }*/
 
-    @FXML
-    private void onOKpressed()
-    {
-        list.add(new demoinfo(medicinename.getText(), alarmTime.getText(), Integer.parseInt(dosage.getText())));
-        medicinename.setText("");
-        dosage.setText("");
-    }
+
 
     @FXML
     private void onSchedulePressed()
@@ -324,11 +312,29 @@ public class MedicinePageController implements Initializable {
     @FXML
     private DatePicker enddate;
 
+    public notifobject getNob()
+    {
+        return nob;
+    }
 
     @FXML
-    protected void showNotifications()
+    protected void showNotifications(String now) throws IOException
     {
-        Stage stage = new Stage();
+        nob.setDos(Integer.parseInt(dosage.getText()));
+        nob.setDosunit(myComboBox.getSelectionModel().getSelectedItem().toString());
+        nob.setMednem(medicinename.getText());
+        nob.setTimez(alarmTime.getText());
+        nob.setType(medtype.getText());
+
+
+        Stage myStage = new Stage();
+        FXMLLoader fxmlLoader = new FXMLLoader(Notifcontrol.class.getResource("notifi.fxml"));
+        //fxmlLoader.setLocation(Notifcontrol.class.getResource("/alarm/notif.fxml"));
+        Scene as = new Scene (fxmlLoader.load()) ;
+        myStage . setScene ( as ) ;
+        myStage . show () ;
+
+        /*Stage stage = new Stage();
         stage.setTitle("Creating popup");
 
         // create a button
@@ -383,11 +389,11 @@ public class MedicinePageController implements Initializable {
         mp.play();
 
         stage.show();
-        stage.setOnCloseRequest( eevent -> {mp.stop();} );
+        stage.setOnCloseRequest( eevent -> {mp.stop();} );*/
 
     }
 
-   private String meridien;
+    private String meridien;
 
     public  void setHourup() {
         if (!hourfield.getText().equals("12")) {
@@ -501,7 +507,7 @@ public class MedicinePageController implements Initializable {
                 else alarmTime.setText(hourfield.getText() + ":" + minfield.getText() + ":00");
             } else {
                 if (hourfield.getText().equals("12")) alarmTime.setText("12:" + minfield.getText() + ":00");
-                else alarmTime.setText(Integer.parseInt(hourfield.getText()) + 12 + ":" + minfield.getText() + ":00");
+                else alarmTime.setText(String.valueOf(Integer.parseInt(hourfield.getText())+ 12) + ":" + minfield.getText() + ":00");
             }
         }
 
@@ -563,6 +569,14 @@ public class MedicinePageController implements Initializable {
         {
             yesweekly = 1;
             endans = "";
+        }
+        else
+        {
+            yesweekly = 0;
+            stuff = enddate.getValue().toString().split("-");
+            endans = stuff[2] + "-" + stuff[1] + "-" + stuff[0];
+            CurrentTime tm = new CurrentTime(endans);
+            endans = tm.findNextDay();
         }
         DBConn db = new DBConn();
         //System.out.println(alarmTime.getText());

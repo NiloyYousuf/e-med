@@ -82,7 +82,15 @@ public class AdminShowAllProducts implements Initializable {
           deleetebutton.setStyle("-fx-background-color: #E74C3C; -fx-text-fill: white;");
           deleetebutton.setOnMouseEntered(e -> deleetebutton.setStyle("-fx-background-color: #E74C3C; -fx-text-fill: white;"));
           deleetebutton.setOnMouseExited(e -> deleetebutton.setStyle("-fx-background-color: #F74C3C; -fx-text-fill: white;"));
-          deleetebutton.setOnAction(event -> deleteProduct(item.getProduct_ID()));
+          deleetebutton.setOnAction(event -> {
+              try {
+                  deleteProduct(item.getProduct_ID());
+              } catch (SQLException e) {
+                  throw new RuntimeException(e);
+              } catch (ClassNotFoundException e) {
+                  throw new RuntimeException(e);
+              }
+          });
 
 
           Button editbutton=new Button("Edit");
@@ -112,14 +120,15 @@ VBox vbox=new VBox(deleetebutton,editbutton);
     }
 
 
-    public void deleteProduct(String productId) {
+    public void deleteProduct(String productId) throws SQLException, ClassNotFoundException {
+        Database_connection dbconn = new Database_connection();
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to delete this product?", ButtonType.YES, ButtonType.NO);
         alert.setHeaderText(null);
         alert.showAndWait();
 
         if (alert.getResult() == ButtonType.YES) {
             System.out.println(productId);
-            try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/project", "root", "200041123");
+            try (Connection conn = dbconn.conn;
                  PreparedStatement stmt = conn.prepareStatement("DELETE FROM product_table WHERE Product_ID = ?")) {
                 stmt.setString(1, productId);
                 stmt.executeUpdate();

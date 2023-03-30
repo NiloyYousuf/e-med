@@ -47,8 +47,6 @@ public class Admin_Add_Product_Controller {
     }
 
 
-
-
     @FXML public  void Switch_To_admin_Menu(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("AdminMenu.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -78,7 +76,7 @@ public class Admin_Add_Product_Controller {
             product_description = productdescription.getText();
             product_image_url = productimageURL.getText();
             table2 obj = new table2();
-            obj.insert_val2(product_id, product_price, product_name, total_available, product_description, product_image_url);
+            obj.insert_val2(product_id, product_name, product_price, total_available, product_description, product_image_url);
             ButtonNotificationExample btn=new ButtonNotificationExample();
             btn.showNotificationProductAddedSuccessfully(new Stage());
         }

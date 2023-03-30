@@ -83,7 +83,9 @@ public class Admin_Order_page_Controller implements Initializable {
 
         // Populate the orders ObservableList from the database
         try {
-            Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+            Database_connection dbcon = new Database_connection();
+            Connection conn = dbcon.conn;
+            //Database_connection dbconn =new Database_connection();
             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM orders");
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
@@ -102,6 +104,8 @@ public class Admin_Order_page_Controller implements Initializable {
             conn.close();
         } catch (SQLException e) {
             e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
         }
 
         // Populate the orders TableView with the orders ObservableList

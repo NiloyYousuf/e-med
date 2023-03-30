@@ -3,6 +3,24 @@ package com.example.alarm;
 import java.sql.*;
 
 public class table {
+
+    Connection con;
+    public table()
+    {
+        try {
+            // 1) Register the driver class
+            //Class.forName("com.mysql.cj.jdbc.Driver");
+            Database_connection dbcon = new Database_connection();
+            con = dbcon.conn;
+            //con = (Connection) DriverManager.getConnection("jdbc:mysql:///project", "root", "200041123");
+
+        } catch (SQLException e) {
+            System.out.println(" Error while connecting to database. Exception code : " + e);
+        } catch (ClassNotFoundException e) {
+            System.out.println(" Failed to register driver. Exception code : " + e);
+        }
+    }
+
     public boolean insert_val(String u_name, String key, String mob_no, String mail_id) {
         try {
             // 1) Register the driver class

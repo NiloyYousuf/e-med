@@ -17,8 +17,7 @@ public class DBConn {
         try {
             // 1) Register the driver class
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Database_connection dbcon = new Database_connection();
-            conn=dbcon.conn;
+            conn = (Connection) DriverManager.getConnection("jdbc:mysql:///firsttime", "root", "admin");
 
         } catch (SQLException e) {
             System.out.println(" Error while connecting to database. Exception code : " + e);
@@ -68,8 +67,8 @@ public class DBConn {
         try {
 
             Statement stmt = ((java.sql.Connection) conn).createStatement();
-
-            String query = "Insert into demo values('"+mname+"','"+doses+"','"+uneet+"', '"+type+"', '"+reps+"','"+rmtime+"', '"+instance[3]+"', '"+stardet+"', '"+endet+"', '"+weekde+"', '"+repeet+"')";
+            int taken = 0;
+            String query = "Insert into demo values('"+mname+"','"+doses+"','"+uneet+"', '"+type+"', '"+reps+"','"+rmtime+"', '"+instance[3]+"', '"+stardet+"', '"+endet+"', '"+weekde+"', '"+repeet+"','"+taken+"')";
             int a = stmt.executeUpdate(query);
             if (a > 0) {
                 System.out.println("Data is inserted");
@@ -110,12 +109,36 @@ public class DBConn {
 
     }
 
+    public ObservableList<demoinfo> getuniqqTable()
+    {
+        //ObservableList<demoinfo> list = FXCollections.observableArrayList();
+        try
+        {
+            PreparedStatement ps = conn.prepareStatement("select distinct med_name, remtime, doses from demo");
+            ResultSet rs = ps.executeQuery();
+
+            while(rs.next())
+            {
+                list.add(new demoinfo(rs.getString("med_name"), rs.getString("remtime"), rs.getInt("doses")));
+            }
+
+
+        }
+        catch (SQLException e) {
+            System.out.println(" Error while connecting to database. Exception code : " + e);
+        }
+
+        return list;
+
+    }
+
+
     public demoinfo[] forDisplay()
     {
         demoinfo[] llst = new demoinfo[list.size()];
         try
         {
-            PreparedStatement ps = conn.prepareStatement("select * from demo");
+            PreparedStatement ps = conn.prepareStatement("select distinct med_name, remtime, doses from demo");
             ResultSet rs = ps.executeQuery();
             int i = 0;
 
@@ -209,9 +232,129 @@ public class DBConn {
         return cnt;
     }
 
-    public void updatenextTimes(String mname, String almtime, String weekde)
+    public String updatenextTimes(String mname, String almtime, String weekde)
     {
+        String[] ans = new String[5];
 
+        try
+        {
+            PreparedStatement ps = conn.prepareStatement("select repeatation, nextTime  from demo where med_name = ? AND remtime = ? AND weekday = ?");
+            ps.setString(1, mname);
+            ps.setString(2, almtime);
+            ps.setString(3, weekde);
+            ResultSet rs = ps.executeQuery();
+
+            CurrentTime tm = new CurrentTime();
+            String temp = new String();
+
+            while(rs.next()) {
+                System.out.println(rs.getInt("repeatation") + " " + rs.getString("nextTime"));
+                temp = rs.getString("nextTime");
+                ans = tm.getNextTime((int) 24 / rs.getInt("repeatation"), rs.getString("nextTime"));
+                System.out.println("My answer is" + ans[3]);
+            }
+
+            ps = conn.prepareStatement("update demo set remtime = ?, nextTime = ? where med_name = ? AND weekday = ?");
+            ps.setString(1, temp);
+            ps.setString(2, ans[3]);
+            ps.setString(3, mname);
+            ps.setString(4, weekde);
+
+            ps.executeUpdate();
+
+            //System.out.println(ans[3]);
+
+        }
+        catch (SQLException e) {
+            System.out.println(" Error while connecting to database. Exception code : " + e);
+        }
+        return ans[3];
+    }
+
+    public void removeExpDates(String str)
+    {
+        try
+        {
+            Statement stmt = ((java.sql.Connection) conn).createStatement();
+            String quer = "delete from demo where endDate = '"+str+"'";
+
+            int a = stmt.executeUpdate(quer);
+            if (a > 0) {
+                System.out.println("Data is deleted");
+            } else {
+                System.out.println("Deletion failed");
+            }
+            stmt.close();
+
+        }
+        catch (SQLException e) {
+            System.out.println(" Error while connecting to database. Exception code : " + e);
+        }
+    }
+
+    public String[] getWeeks(String mname, String almtime, int ds)
+    {
+        String[] arr = new String[7];
+        try {
+            PreparedStatement ps = conn.prepareStatement("select weekday from demo where med_name = ? AND remtime = ? AND doses = ?");
+
+            ps.setString(1, mname);
+            ps.setString(2, almtime);
+            ps.setString(3, String.valueOf(ds));
+            ResultSet rs = ps.executeQuery();
+
+            int i = 0;
+            while(rs.next())
+            {
+                arr[i] = rs.getString("weekday");
+                i++;
+            }
+
+        } catch (SQLException e) {
+            System.out.println(" Error while connecting to database. Exception code : " + e);
+        }
+
+        return arr;
+    }
+
+    public void deleteItem(String mname, String dos, String rmtime)
+    {
+        try
+        {
+            Statement stmt = ((java.sql.Connection) conn).createStatement();
+            int i = Integer.parseInt(dos);
+            String quer = "delete from demo where med_name = '"+mname+"' AND doses = "+dos+" AND remtime = '"+rmtime+"'";
+
+            int a = stmt.executeUpdate(quer);
+            if (a > 0) {
+                System.out.println("Data is deleted");
+            } else {
+                System.out.println("Deletion failed");
+            }
+            stmt.close();
+
+        }
+        catch (SQLException e) {
+            System.out.println(" Error while connecting to database. Exception code : " + e);
+        }
+    }
+
+    public void setTaken(String mname, String rmtime, String dos, String weekde)
+    {
+        try {
+            PreparedStatement ps = conn.prepareStatement("update demo set taken = ? where med_name = ? AND remtime = ? AND doses = ? AND weekday = ?");
+
+            int tkn = 1;
+            ps.setInt(1, tkn);
+            ps.setString(2, mname);
+            ps.setString(3, rmtime);
+            ps.setString(4, dos);
+            ps.setString(5, weekde);
+
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(" Error while connecting to database. Exception code : " + e);
+        }
     }
 
 

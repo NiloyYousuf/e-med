@@ -32,43 +32,43 @@
                         <Insets bottom="20.0" />
                     </VBox.margin>
                 </Label>
-            <Button fx:id="btnOverview" mnemonicParsing="false" prefHeight="63.0" prefWidth="183.0" style="-fx-background-color: rgba(185,7,185,0.82);" text="Overview" textFill="WHITE">
-               <graphic>
-                  <ImageView fitHeight="34.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@reminder-icon.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <stylesheets>
-                  <URL value="@style.css" />
-                  <URL value="@style.css" />
-               </stylesheets>
-            </Button>
-            <Button fx:id="btnAdd" mnemonicParsing="false" onAction="#onAddNewPressed" prefHeight="66.0" prefWidth="184.0" style="-fx-background-color: rgba(185,7,185,0.82);" text="Add New" textFill="WHITE">
-               <graphic>
-                  <ImageView fitHeight="34.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@Imageaddbtn.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <stylesheets>
-                  <URL value="@style.css" />
-                  <URL value="@style.css" />
-               </stylesheets>
-            </Button>
-            <ImageView fitHeight="154.0" fitWidth="155.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@prt-removebg-preview.png" />
-               </image>
-            </ImageView>
+                <Button fx:id="btnOverview" mnemonicParsing="false" prefHeight="63.0" prefWidth="183.0" style="-fx-background-color: rgba(185,7,185,0.82);" text="Overview" textFill="WHITE">
+                    <graphic>
+                        <ImageView fitHeight="34.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@reminder-icon.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <stylesheets>
+                        <URL value="@style.css" />
+                        <URL value="@style.css" />
+                    </stylesheets>
+                </Button>
+                <Button fx:id="btnAdd" mnemonicParsing="false" onAction="#onAddNewPressed" prefHeight="66.0" prefWidth="184.0" style="-fx-background-color: rgba(185,7,185,0.82);" text="Add New" textFill="WHITE">
+                    <graphic>
+                        <ImageView fitHeight="34.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@addbtn.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <stylesheets>
+                        <URL value="@style.css" />
+                        <URL value="@style.css" />
+                    </stylesheets>
+                </Button>
+                <ImageView fitHeight="154.0" fitWidth="155.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@prt-removebg-preview.png" />
+                    </image>
+                </ImageView>
             </children>
         </VBox>
         <StackPane layoutX="176.0" layoutY="-1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="488.0" prefWidth="541.0" style="-fx-background-color: white;" stylesheets="@style.css">
             <children>
                 <Pane fx:id="pnlOverview" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="478.0" prefWidth="533.0" style="-fx-background-color: white;">
-               <children>
+                    <children>
                         <TextField layoutX="317.0" layoutY="20.0" prefHeight="27.0" prefWidth="183.0" promptText="search" style="-fx-background-color: white; -fx-border-color: #B7C3D7; -fx-border-radius: 2em;" />
                         <Label layoutX="31.0" layoutY="24.0" prefHeight="35.0" prefWidth="222.0" text="Medicine Reminders" textFill="#460344">
                             <font>
@@ -99,40 +99,21 @@
                                 </VBox>
                             </children>
                         </HBox>
-                        <HBox alignment="CENTER_LEFT" layoutX="5.0" layoutY="185.0" prefHeight="27.0" prefWidth="515.0" spacing="90.0" style="-fx-background-color: #e3e3e3;">
-                            <children>
-                                <Label alignment="CENTER" prefHeight="18.0" prefWidth="79.0" text="Time" textFill="#4e4949">
-                                    <HBox.margin>
-                                        <Insets left="50.0" />
-                                    </HBox.margin>
-                                </Label>
-                                <Label alignment="CENTER" prefHeight="18.0" prefWidth="127.0" text="Medicine" textFill="#4e4949">
-                                    <HBox.margin>
-                                        <Insets />
-                                    </HBox.margin>
-                                </Label>
-                                <Label alignment="CENTER" prefHeight="18.0" prefWidth="92.0" text="Doses" textFill="#4e4949">
-                                    <HBox.margin>
-                                        <Insets />
-                                    </HBox.margin>
-                                </Label>
-                            </children>
-                        </HBox>
                         <ImageView fitHeight="17.0" fitWidth="16.0" layoutX="470.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@pictures/search.png" />
+                                <Image url="@search.png" />
                             </image>
                         </ImageView>
-                        <ScrollPane layoutX="5.0" layoutY="219.0" prefHeight="218.0" prefWidth="524.0" stylesheets="@style.css">
-                     <content>
-                                <VBox fx:id="pnItems" prefHeight="254.0" prefWidth="538.0" spacing="5.0" style="-fx-background-color: #e3e3e3;">
+                        <ScrollPane layoutX="5.0" layoutY="145.0" prefHeight="328.0" prefWidth="524.0" stylesheets="@style.css">
+                            <content>
+                                <VBox fx:id="pnItems" prefHeight="314.0" prefWidth="538.0" spacing="5.0" style="-fx-background-color: #e3e3e3;">
                                     <padding>
                                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                     </padding>
                                 </VBox>
-                     </content>
+                            </content>
                         </ScrollPane>
-               </children></Pane>
+                    </children></Pane>
             </children>
         </StackPane>
     </children>

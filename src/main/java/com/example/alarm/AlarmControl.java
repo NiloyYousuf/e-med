@@ -20,6 +20,8 @@ import javafx.stage.Stage;
 import javax.xml.namespace.QName;
 import java.io.IOException;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 public class AlarmControl implements Initializable {
@@ -44,15 +46,16 @@ public class AlarmControl implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        ObservableList<demoinfo> list = db.getTable();
+        removeExpired();
+        ObservableList<demoinfo> list = db.getuniqqTable();
         demoinfo[] llst = new demoinfo[list.size()];
         mednum.setText(String.valueOf(list.size()));
         dosnum.setText(String.valueOf(db.doss()));
         llst = db.forDisplay();
         Node[] nodes = new Node[list.size()];
-        //if(list.size() == 0) noDatatext.setText("No reminders");
-        //else
-        //{
+        if(list.size() == 0) noDatatext.setText("No reminders");
+        else
+        {
             System.out.println("ekhane?");
             for (int i = 0; i < list.size(); i++) {
 
@@ -61,12 +64,12 @@ public class AlarmControl implements Initializable {
                     final int j = i;
                     num = i;
 
-                    nodes[i] = FXMLLoader.load(getClass().getResource("Item.fxml"));
+                    nodes[i] = FXMLLoader.load(getClass().getResource("Item2.fxml"));
 
                     //give the items some effect
 
                     nodes[i].setOnMouseEntered(event -> {
-                        nodes[j].setStyle("-fx-background-color : #694969");
+                        nodes[j].setStyle("-fx-background-color : rgba(162,132,162,0.76)");
                     });
                     nodes[i].setOnMouseExited(event -> {
                         nodes[j].setStyle("-fx-background-color : #fdfdff");
@@ -76,10 +79,18 @@ public class AlarmControl implements Initializable {
                     e.printStackTrace();
                 }
             }
-        //}
+        }
 
         handleButtons();
 
+    }
+
+    private void removeExpired()
+    {
+        Date date = new Date();
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+        String str = formatter.format(date);
+        db.removeExpDates(str);
     }
 
     @FXML
@@ -119,7 +130,7 @@ public class AlarmControl implements Initializable {
     protected void onAddNewPressed(ActionEvent event) throws IOException
     {
         Node root = (Node) event . getSource () ;
-        Stage myStage = new Stage();
+        Stage myStage = ( Stage ) root . getScene () . getWindow () ;
         FXMLLoader fxmlLoader = new FXMLLoader ( AlarmControl.class.getResource ("hello-view.fxml") ) ;
         Scene as = new Scene ( fxmlLoader.load() ) ;
         myStage . setScene ( as ) ;

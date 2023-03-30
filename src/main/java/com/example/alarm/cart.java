@@ -64,6 +64,6 @@ public void removeduplicatearraylist() {
 
 
 
-public  static int total_items_selected=0;
+public static int total_items_selected=0;
 public static Double Total_Amount=0.00;
 }
