@@ -25,12 +25,6 @@ import javafx.stage.Stage;
 
 public class User_previous_orders_controller implements Initializable {
 
-    // Database connection details
-    private final String DB_URL = "jdbc:mysql://localhost:3306/project";
-    private final String DB_USER = "root";
-    private final String DB_PASSWORD = "200041123";
-
-
     public  static  String username=currentUser.user_name;
     // ObservableList of orders for TableView
     private ObservableList<Order> orders = FXCollections.observableArrayList();
