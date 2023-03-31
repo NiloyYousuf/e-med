@@ -66,7 +66,7 @@ public class User_ADD_TO_CART implements Initializable {
 
             itemBox.setOnMouseClicked(event-> {
                 try {
-                    Hboxclicked();
+                    Hboxclicked(item.getProduct_image_url());
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
@@ -249,9 +249,10 @@ cartlabel.setText(String.valueOf(products_added_to_cart.total_items_selected));
     }
 
 
-    public void Hboxclicked() throws IOException {
+    public void Hboxclicked(String product_image_url) throws IOException {
      System.out.println("Hobox Clicked");
         String s1="ProductdepthPage.fxml";
+        new productIndepthPagecontroller(product_image_url,"a ", " d", " d", " d"," 1");
         FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource(s1));
         Stage stage = new Stage();
         Scene scene = new Scene(fxmlLoader.load(), 720, 480);

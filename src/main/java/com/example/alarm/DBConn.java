@@ -15,9 +15,12 @@ public class DBConn {
     public DBConn()
     {
         try {
+
             // 1) Register the driver class
             Class.forName("com.mysql.cj.jdbc.Driver");
-            conn = (Connection) DriverManager.getConnection("jdbc:mysql:///firsttime", "root", "admin");
+            Database_connection dbcon = new Database_connection();
+            conn=dbcon.conn;
+
 
         } catch (SQLException e) {
             System.out.println(" Error while connecting to database. Exception code : " + e);
@@ -275,7 +278,7 @@ public class DBConn {
     {
         try
         {
-            Statement stmt = ((java.sql.Connection) conn).createStatement();
+            Statement stmt = conn.createStatement();
             String quer = "delete from demo where endDate = '"+str+"'";
 
             int a = stmt.executeUpdate(quer);
