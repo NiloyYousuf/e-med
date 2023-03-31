@@ -20,6 +20,15 @@
     <children>
         <VBox alignment="TOP_CENTER" minWidth="-Infinity" prefHeight="480.0" prefWidth="177.0" style="-fx-background-color: rgba(185,7,185,0.82);">
             <children>
+            <Button mnemonicParsing="false" onAction="#onBackPressed" prefHeight="26.0" prefWidth="182.0" style="-fx-background-color: rgba(185,7,185,0.82);" text="dfvdfvfdvfdvfdjrnvknervnernverf" textFill="#b108b1">
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@backfromrem.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
                 <ImageView fitHeight="73.0" fitWidth="67.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@userlogo.png" />

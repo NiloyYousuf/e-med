@@ -1,0 +1,14 @@
+.button
+{
+    -fx-background-color : rgba(235, 221, 250, 0.45);
+    -fx-text-fill : white;
+    -fx-background-image: url("Screenshot_20230125_120507-removebg-preview.png");
+}
+.button:hover{
+    -fx-background-color : rgb(255, 255, 255);
+}
+.button:pressed
+{
+    -fx-background-color : rgb(91, 11, 87);
+}
+

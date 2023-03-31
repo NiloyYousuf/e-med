@@ -136,6 +136,17 @@ public class AlarmControl implements Initializable {
         myStage . setScene ( as ) ;
         myStage . show () ;
     }
+    @FXML
+    protected void onBackPressed(ActionEvent event) throws  IOException
+    {
+        Node root = (Node) event . getSource () ;
+        Stage myStage = ( Stage ) root . getScene () . getWindow () ;
+        FXMLLoader fxmlLoader = new FXMLLoader ( AlarmControl.class.getResource ("UserLoggedIn.fxml") ) ;
+        Scene as = new Scene ( fxmlLoader.load() ) ;
+        myStage . setScene ( as ) ;
+        myStage . show () ;
+
+    }
 
 
 
