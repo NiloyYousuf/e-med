@@ -83,6 +83,8 @@ public class ProductEditor{
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        ButtonNotificationExample btn=new ButtonNotificationExample();
+        btn.showNotificationEditedSuccessfully(new Stage());
     }
 
 
