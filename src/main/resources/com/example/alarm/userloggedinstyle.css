@@ -1,14 +1,14 @@
 .button
 {
-    -fx-background-color : rgba(235, 221, 250, 0.45);
+    -fx-background-color : rgba(208, 92, 17, 0.71);
     -fx-text-fill : white;
-    -fx-background-image: url("Screenshot_20230125_120507-removebg-preview.png");
+    -fx-background-radius: 30;
 }
 .button:hover{
-    -fx-background-color : rgb(255, 255, 255);
+    -fx-background-color : rgba(250, 108, 29, 0.78);
 }
 .button:pressed
 {
-    -fx-background-color : rgb(91, 11, 87);
+    -fx-background-color : rgba(140, 57, 10, 0.87);
 }
 
