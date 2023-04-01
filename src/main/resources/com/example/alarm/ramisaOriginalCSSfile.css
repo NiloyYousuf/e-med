@@ -4,11 +4,11 @@
 }
 
 .table-view .column-header-background {
-    -fx-background-color: #282828;
+    -fx-background-color: #A020F0;
 }
 
 .table-view .column-header {
-    -fx-background-color: #282828;
+    -fx-background-color: #A020F0;
     -fx-text-fill: white;
     -fx-font-weight: bold;
     -fx-alignment: center-left;
