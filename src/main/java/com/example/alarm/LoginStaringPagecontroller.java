@@ -77,6 +77,7 @@ public class LoginStaringPagecontroller {
         stage.setTitle("e-MED");
         stage.setScene(scene);
         stage.show();
+
     }
 
 

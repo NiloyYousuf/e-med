@@ -6,14 +6,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import org.w3c.dom.Text;
+
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -40,11 +39,14 @@ public class orderpagecontroller implements Initializable {
     @FXML
     private  Button place_order;
 
-    @FXML
-    private TextArea addressarea;
+    //@FXML
+    //private TextArea addressarea;
 
     @FXML
-    private  TextArea phonenoarea;
+    private TextField addressarea;
+
+    @FXML
+    private TextField phonenoarea;
     @FXML
     private ChoiceBox<String> myChoiceBox;
     @FXML

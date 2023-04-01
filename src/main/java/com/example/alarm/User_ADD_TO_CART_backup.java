@@ -1,5 +1,7 @@
 package com.example.alarm;
-import java.util.Arrays;
+
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,24 +21,29 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
-import  java.sql.*;
+import javafx.util.Duration;
+import javafx.util.Pair;
+
 import java.io.IOException;
 import java.net.URL;
+import java.sql.*;
+import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
 
 
-public class User_ADD_TO_CART implements Initializable {
+public class User_ADD_TO_CART_backup implements Initializable {
 
     @FXML
-    private VBox itemContainer;
+    private VBox itemContainer = null;
 
     @FXML
     private  Button Cart;
 
     @FXML
-    private  Label cartlabel;
+    public Label cartlabel;
 
     private List<Item> itemList = new ArrayList<>();
 
@@ -46,134 +53,117 @@ public class User_ADD_TO_CART implements Initializable {
     cart products_added_to_cart;
     ArrayList<Product> itemsadded;
 
+    public static Item obj = new Item();
+    public static int num = 0;
 
+    public List<Item> getArr()
+    {
+        return itemList;
+    }
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         // Initialize the item list
 
-
+        //cartlabel.setText("0");
         for (int i=0;i<products.products.size();i++)
-            itemList.add(new User_ADD_TO_CART.Item(products.products.get(i).Product_ID,products.products.get(i).Product_Name,products.products.get(i).Product_Price,products.products.get(i).Product_Total_Available,products.products.get(i).Product_Description,products.products.get(i).Product_Image_URL));
+            itemList.add(new Item(products.products.get(i).Product_ID,products.products.get(i).Product_Name,products.products.get(i).Product_Price,products.products.get(i).Product_Total_Available,products.products.get(i).Product_Description,products.products.get(i).Product_Image_URL));
 
 
         //   itemList.add(new Item("Item 5", "This is item 5", "C://Users//yousu//IdeaProjects//scrollingfxml//src//main//resources//com//example//img.png"));
+        Node[] nodes = new Node[itemList.size()];
+        int i = 0;
+        ProductViewController.total = 0;
+        System.out.println("ekhane" + ProductViewController.total);
 
-        // Add the items to the item container
-        for (Item item : itemList) {
-            HBox itemBox = new HBox(30);
+        for(Item item : itemList)
+        {
+            try {
 
-            itemBox.setOnMouseClicked(event-> {
-                try {
-                    Hboxclicked(item.getProduct_image_url());
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
+                final int j = i;
+                num = i;
+
+                obj.setProduct_image_url(item.getProduct_image_url());
+                obj.setProduct_description(item.getProduct_description());
+                obj.setProduct_ID(item.getProduct_ID());
+                obj.setProduct_name(item.getProduct_name());
+                obj.setProduct_price(item.getProduct_price());
+                obj.setSelected(item.getSelected());
+
+
+                nodes[i] = FXMLLoader.load(getClass().getResource("productview.fxml"));
+
+                //give the items some effect
+
+                nodes[i].setOnMouseEntered(event -> {
+                    nodes[j].setStyle("-fx-background-color : rgba(162,132,162,0.76)");
+                });
+                nodes[i].setOnMouseExited(event -> {
+                    nodes[j].setStyle("-fx-background-color : #fdfdff");
+                });
+                itemContainer.getChildren().add(nodes[i]);
+                i++;
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            System.out.println("ekhane" + ProductViewController.total);
+        }
+
+        timeline.setCycleCount(Timeline.INDEFINITE);
+        timeline.play();
+
+
+        System.out.println("ekhane" + ProductViewController.total);
+
+        //cartlabel.setText(str);
+        //cartlabel.setText(Integer.toString(num));
+    }
+
+    Timeline timeline = new Timeline(
+            new KeyFrame(Duration.seconds(1),
+                    e -> {
+                updateCart();
+                cartlabel.setText(Integer.toString(ProductViewController.total));
+                for(Item item : itemList)
+                {
+                    System.out.println(item.getSelected() + " " + item.getProduct_name());
                 }
-            });
+                    }));
 
-
-            ImageView imageView = new ImageView(item.getProduct_image_url());
-            imageView.setFitWidth(160);
-            imageView.setFitHeight(120);
-            Label descriptionLabel = new Label(item.getProduct_description());
-            Label pricelabel=new Label("Price: "+item.getProduct_price());
-            descriptionLabel.setMinSize(100,50);
-
-            descriptionLabel.setWrapText(true);
-            Label nameLabel = new Label(item.getProduct_name());
-            VBox NameAndDesc=new VBox(nameLabel,pricelabel,descriptionLabel);
-            NameAndDesc.setStyle("-fx-background-color:#CBC3E3;");
-            Button plusBtn =new Button("+");
-
-            // button.setStyle("-fx-background-image: url('file:///C:/Users/yousu/IdeaProjects/PRACTICE/src/main/resources/com/example/practice/plus.png');");
-
-            plusBtn.setStyle("-fx-background-radius:10; -fx-font-size: 10pt; -fx-padding: 8px 15px;");
-
-            plusBtn.setStyle("-fx-background-color: #58D88D; -fx-text-fill: white;");
-            plusBtn.setFont(Font.font("Arial", FontWeight.BOLD, 18));
-            plusBtn.setEffect(new DropShadow(10, Color.BLACK));
-
-            plusBtn.setOnMouseEntered(e -> plusBtn.setStyle("-fx-background-color: #58D88D; -fx-text-fill: white;"));
-            plusBtn.setOnMouseExited(e -> plusBtn.setStyle("-fx-background-color: #58DF9D; -fx-text-fill: white;"));
-
-
-            Button minusBtn = new Button("-");
-
-            minusBtn.setStyle("-fx-background-color: #E74C3C; -fx-text-fill: white;");
-            minusBtn.setFont(Font.font("Arial", FontWeight.BOLD, 18));
-            minusBtn.setEffect(new DropShadow(10, Color.BLACK));
-
-            minusBtn.setOnMouseEntered(e -> minusBtn.setStyle("-fx-background-color: #E74C3C; -fx-text-fill: white;"));
-            minusBtn.setOnMouseExited(e -> minusBtn.setStyle("-fx-background-color: #F74C3C; -fx-text-fill: white;"));
-
-
-            HBox hbox = new HBox();
-            hbox.setSpacing(10);
-            hbox.setAlignment(Pos.CENTER);
-            hbox.setPadding(new Insets(2));
-            Label Quantity=new Label();
-            Quantity.setText("0");;
-            hbox.getChildren().addAll(plusBtn,Quantity ,minusBtn);
-
-
-
-            //  button.setOnAction(event -> Quantity.setText(Integer.toString(Integer.parseInt(Quantity.getText())+1)));
-            // button1.setOnAction(event -> Quantity.setText(Integer.toString(Integer.parseInt(Quantity.getText())-1)));
-            minusBtn.setOnAction(event ->decrease(minusBtn,Quantity,item));
-            plusBtn.setOnAction(event ->increase(plusBtn,Quantity,item));
-            NameAndDesc.setMinWidth(350);
-            plusBtn.setMinSize(50,30);
-            minusBtn.setMinSize(50,30);
-            plusBtn.onMouseClickedProperty();
-            itemBox.getChildren().addAll(new HBox(imageView,NameAndDesc,hbox));
-            itemContainer.getChildren().add(itemBox);
+    public void updateCart()
+    {
+        for(Item item : itemList)
+        {
+            System.out.println(ProductViewController.prodid);
+            if(ProductViewController.prodid == item.getProduct_ID())
+            {
+                item.setSelected(ProductViewController.current);
+            }
         }
 
-        cartlabel.setText(String.valueOf(products_added_to_cart.total_items_selected));
+        //cartlabel.setText(Integer.toString(ProductViewController.total));
 
-
+        System.out.println("inside update: " + ProductViewController.total);
     }
-
-
-
-
-    public void decrease(Button button1, Label Quantity,Item item)
-    {
-        if(!Quantity.getText().equals("0")) {
-            Quantity.setText(Integer.toString(Integer.parseInt(Quantity.getText()) - 1));
-            cartlabel.setText(Integer.toString(Integer.parseInt(cartlabel.getText()) - 1));
-            item.selected--;
-        }
-
-    }
-
-    public  void increase(Button button1, Label Quantity,Item item)
-    {
-
-        Quantity.setText(Integer.toString(Integer.parseInt(Quantity.getText())+1));
-        cartlabel.setText(Integer.toString(Integer.parseInt(cartlabel.getText())+1));
-        item.selected++;
-    }
-
-
-
-
 
 
     public void cartpressed(ActionEvent e) throws IOException {
+        System.out.println(itemList.size());
         for(int i=0;i<itemList.size();i++)
         {
             int k=0;
 
-            if(itemList.get(i).selected!=0)
+            if(itemList.get(i).getSelected()!=0)
             {
                 //System.out.println(itemList.get(i).product_name+"   "+itemList.get(i).selected + " " +itemList.get(i).product_price);
-                products_added_to_cart.Total_Amount+=itemList.get(i).selected*Double.parseDouble(itemList.get(i).product_price);
+                products_added_to_cart.Total_Amount+= itemList.get(i).getSelected() *Double.parseDouble(itemList.get(i).getProduct_price());
               //  products_added_to_cart.products.add(new Product(itemList.get(i).product_ID,itemList.get(i).product_name,itemList.get(i).product_price,itemList.get(i).product_total_available,itemList.get(i).getProduct_description(), itemList.get(i).getProduct_image_url() ));
-                Product tempproduct=new Product(itemList.get(i).product_ID,itemList.get(i).product_name,itemList.get(i).product_price,itemList.get(i).product_total_available,itemList.get(i).getProduct_description(), itemList.get(i).getProduct_image_url(), itemList.get(i).selected);
+                Product tempproduct=new Product(itemList.get(i).getProduct_ID(), itemList.get(i).getProduct_name(), itemList.get(i).getProduct_price(), itemList.get(i).getProduct_total_available(),itemList.get(i).getProduct_description(), itemList.get(i).getProduct_image_url(), itemList.get(i).getSelected());
                 products_added_to_cart.Products.add(tempproduct);
-                products_added_to_cart.total_items_selected+= itemList.get(i).selected;
+                products_added_to_cart.total_items_selected+= itemList.get(i).getSelected();
             }
         }
 
@@ -184,7 +174,6 @@ public class User_ADD_TO_CART implements Initializable {
         }
 
         switchtoOrderPage(e);
-
 
     }
 
@@ -200,13 +189,13 @@ public class User_ADD_TO_CART implements Initializable {
     }
 
 
-    private class Item {
-        private final String product_name;
-        private final String product_description;
-        private final String product_ID;
-        private final String product_total_available;
-        private final String product_price;
-        private final String product_image_url;
+    /*private class Item {
+        private String product_name;
+        private String product_description;
+        private String product_ID;
+        private String product_total_available;
+        private String product_price;
+        private String product_image_url;
         private  Integer selected;
         private Item(  String Product_ID,String Product_Name ,String Product_Price,String Product_Total_Available,String Product_Description,String Product_Image_URL) {
 
@@ -217,6 +206,11 @@ public class User_ADD_TO_CART implements Initializable {
             this.product_price =Product_Price;
             this.product_image_url =Product_Image_URL;
             this.selected=0;
+        }
+
+        private Item()
+        {
+
         }
 
 
@@ -245,7 +239,7 @@ public class User_ADD_TO_CART implements Initializable {
             return product_total_available;
         }
 
-    }
+    }*/
 
 
     public void Hboxclicked(String product_image_url) throws IOException {

@@ -28,7 +28,7 @@
             </ImageView>
          </graphic></Button>
       <Label fx:id="WelcomeLabel" layoutX="385.0" layoutY="38.0" prefHeight="17.0" prefWidth="162.0" />
-      <Button id="btn2" layoutX="17.0" layoutY="99.0" mnemonicParsing="false" prefHeight="353.0" prefWidth="206.0" stylesheets="@userloggedinstyleadd.css">
+      <Button id="btn2" layoutX="11.0" layoutY="99.0" mnemonicParsing="false" prefHeight="353.0" prefWidth="206.0" stylesheets="@userloggedinstyleadd.css">
          <graphic>
             <AnchorPane id="apane" prefHeight="345.0" prefWidth="206.0" style="-fx-background-color: #ececec;" stylesheets="@userloggedinstyle.css">
                <children>
@@ -48,7 +48,7 @@
             </AnchorPane>
          </graphic>
       </Button>
-      <Button layoutX="248.0" layoutY="99.0" mnemonicParsing="false" stylesheets="@userloggedinstyleadd.css">
+      <Button layoutX="244.0" layoutY="99.0" mnemonicParsing="false" stylesheets="@userloggedinstyleadd.css">
          <graphic>
             <AnchorPane prefHeight="345.0" prefWidth="206.0" style="-fx-background-color: #ececec;">
                <children>

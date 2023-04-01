@@ -7,7 +7,7 @@
 
 <AnchorPane prefHeight="537.0" prefWidth="725.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.alarm.User_previous_orders_controller">
     <children>
-        <TableView fx:id="ordersTable" layoutX="14.0" layoutY="73.0" prefHeight="480.0" prefWidth="802.0">
+        <TableView fx:id="ordersTable" layoutX="14.0" layoutY="73.0" prefHeight="480.0" prefWidth="802.0" stylesheets="@c8gpt.css">
             <columns>
                 <TableColumn fx:id="orderDateColumn" prefWidth="100.0" text="Order Date" />
                 <TableColumn fx:id="deliveryAddressColumn" prefWidth="174.39998626708984" text="Delivery Address" />
