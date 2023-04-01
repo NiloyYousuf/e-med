@@ -1,5 +1,6 @@
 package com.example.alarm;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
@@ -8,14 +9,19 @@ import java.util.ResourceBundle;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.event.EventType;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 
 public class MonthlySubscriptionAdminController implements Initializable {
 
@@ -106,6 +112,17 @@ public class MonthlySubscriptionAdminController implements Initializable {
             dao.updateMonthlySubscription(selectedSubscription);
             monthlySubscriptionTable.refresh();
         }
+    }
+
+    @FXML
+    private  void back_button_pressed(ActionEvent event) throws IOException {
+        String s1="Adminmenu.fxml";
+        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource(s1));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(fxmlLoader.load(), 720, 480);
+        stage.setTitle("e-MED");
+        stage.setScene(scene);
+        stage.show();
     }
 
 }

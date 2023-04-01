@@ -50,4 +50,14 @@ public class Admin_Menu_Controller {
         stage.show();
     }
 
+    public void switch_to_show_monthly_subscriptions(ActionEvent event) throws IOException {
+        String s1="Admin_monthly_Subscription.fxml";
+        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource(s1));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(fxmlLoader.load(), 720, 480);
+        stage.setTitle("e-MED");
+        stage.setScene(scene);
+        stage.show();
+    }
+
 }

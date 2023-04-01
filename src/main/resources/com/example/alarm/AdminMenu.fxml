@@ -72,7 +72,7 @@
             <Image url="@Screenshot_20230125_125512-removebg-preview.png" />
          </image>
       </ImageView>
-      <Button layoutX="377.0" layoutY="256.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="178.0" stylesheets="@userloggedinstyleadd.css">
+      <Button layoutX="377.0" layoutY="256.0" mnemonicParsing="false" onAction="#switch_to_show_monthly_subscriptions" prefHeight="150.0" prefWidth="178.0" stylesheets="@userloggedinstyleadd.css">
          <graphic>
             <AnchorPane prefHeight="165.0" prefWidth="170.0">
                <children>
