@@ -18,19 +18,19 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.alarm.orderpagecontroller">
+<AnchorPane prefHeight="480.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.alarm.orderpagecontroller">
    <children>
       <VBox />
-       <ScrollPane fitToHeight="true" fitToWidth="true" layoutX="370.0" layoutY="121.0" prefHeight="291.0" prefWidth="292.0" stylesheets="@style.css">
+       <ScrollPane fitToHeight="true" fitToWidth="true" layoutX="370.0" layoutY="121.0" prefHeight="291.0" prefWidth="347.0" stylesheets="@style.css">
            <content>
-               <VBox fx:id="itemContainer" prefHeight="304.0" prefWidth="290.0" spacing="5" />
+               <VBox fx:id="itemContainer" prefHeight="290.0" prefWidth="323.0" spacing="5" />
            </content>
        </ScrollPane>
-      <Button layoutX="374.0" layoutY="478.0" mnemonicParsing="false" onAction="#placeorderButtonPressed" opacity="0.63" prefHeight="36.0" prefWidth="286.0" style="-fx-background-color: green;" text="Place Order" textFill="WHITE">
+      <Button layoutX="376.0" layoutY="478.0" mnemonicParsing="false" onAction="#placeorderButtonPressed" opacity="0.63" prefHeight="42.0" prefWidth="340.0" style="-fx-background-color: green;" text="Place Order" textFill="WHITE">
          <font>
             <Font size="19.0" />
          </font></Button>
-      <TextArea fx:id="total_order_value" layoutX="551.0" layoutY="417.0" prefHeight="43.0" prefWidth="106.0" style="-fx-border-color: white;">
+      <TextArea fx:id="total_order_value" layoutX="601.0" layoutY="420.0" prefHeight="43.0" prefWidth="106.0" style="-fx-border-color: white;">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
@@ -48,7 +48,7 @@
                </font>
             </TextField>
             <Line endX="246.49996948242188" layoutX="113.0" layoutY="207.0" startX="-100.0" stroke="#c4c4c4" strokeWidth="0.5" style="-fx-fill: gray;" />
-            <TextField fx:id="addressarea" layoutX="9.0" layoutY="258.0" prefHeight="27.0" prefWidth="354.0" style="-fx-background-color: #e7fdff;">
+            <TextField fx:id="addressarea" layoutX="10.0" layoutY="245.0" prefHeight="27.0" prefWidth="354.0" style="-fx-background-color: #e7fdff;">
                <font>
                   <Font size="13.0" />
                </font>
