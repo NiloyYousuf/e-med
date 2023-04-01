@@ -1,6 +1,7 @@
 package com.example.alarm;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.attribute.AttributeView;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -113,5 +114,15 @@ public class User_previous_orders_controller implements Initializable {
         ordersTable.setItems(orders);
     }
 
+
+    public  void  backButtonPressed(ActionEvent event) throws IOException {
+        String s1="userloggedIn.fxml";
+        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource(s1));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(fxmlLoader.load(), 720, 480);
+        stage.setTitle("e-MED");
+        stage.setScene(scene);
+        stage.show();
+    }
 
 }

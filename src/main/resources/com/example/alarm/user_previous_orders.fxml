@@ -5,17 +5,17 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="537.0" prefWidth="725.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.alarm.User_previous_orders_controller">
+<AnchorPane prefHeight="480.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.alarm.User_previous_orders_controller">
     <children>
-        <TableView fx:id="ordersTable" layoutX="14.0" layoutY="73.0" prefHeight="480.0" prefWidth="802.0" stylesheets="@c8gpt.css">
+        <TableView fx:id="ordersTable" layoutY="54.0" prefHeight="480.0" prefWidth="738.0" stylesheets="@c8gpt.css">
             <columns>
-                <TableColumn fx:id="orderDateColumn" prefWidth="100.0" text="Order Date" />
-                <TableColumn fx:id="deliveryAddressColumn" prefWidth="174.39998626708984" text="Delivery Address" />
+                <TableColumn fx:id="orderDateColumn" prefWidth="152.0000343322754" text="Order Date" />
+                <TableColumn fx:id="deliveryAddressColumn" minWidth="0.0" prefWidth="122.39994812011719" text="Delivery Address" />
                 <TableColumn fx:id="orderMemoColumn" prefWidth="116.800048828125" text="Ordered Items" />
-                <TableColumn fx:id="orderStatusColumn" minWidth="0.0" prefWidth="203.20004272460938" text="Order Status" />
-                <TableColumn fx:id="totalAmountColumn" prefWidth="231.99993896484375" text="Total Amount" />
+                <TableColumn fx:id="orderStatusColumn" minWidth="0.0" prefWidth="155.20001220703125" text="Order Status" />
+                <TableColumn fx:id="totalAmountColumn" prefWidth="179.19998779296873" text="Total Amount" />
             </columns>
         </TableView>
-      <Button layoutX="14.0" layoutY="28.0" mnemonicParsing="false" text="Back" />
+      <Button layoutX="14.0" layoutY="28.0" mnemonicParsing="false" onAction="#backButtonPressed" text="Back" />
     </children>
 </AnchorPane>
