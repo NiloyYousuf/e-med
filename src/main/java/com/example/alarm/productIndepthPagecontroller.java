@@ -12,7 +12,7 @@ import java.io.IOException;
 
 public class productIndepthPagecontroller {
     @FXML
-    public  static   ImageView product_depth_image=new ImageView();
+    public  static   ImageView product_depth_image;
     @FXML
     public static Button plusbutton=new Button("lol");
 

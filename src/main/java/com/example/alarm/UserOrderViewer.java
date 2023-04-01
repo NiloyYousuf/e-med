@@ -17,7 +17,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class OrderViewer extends Application {
+public class UserOrderViewer extends Application {
 
     // Define database connection details
     private static final String DB_URL = "jdbc:mysql://localhost:3306/project";

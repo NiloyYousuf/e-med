@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.alarm.MonthlySubscriptionAdminController">
+    <children>
+        <ComboBox fx:id="monthComboBox" layoutX="14.0" layoutY="14.0" prefWidth="150.0" promptText="Select Month">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="January" />
+                    <String fx:value="February" />
+                    <String fx:value="March" />
+                    <String fx:value="April" />
+                    <String fx:value="May" />
+                    <String fx:value="June" />
+                    <String fx:value="July" />
+                    <String fx:value="August" />
+                    <String fx:value="September" />
+                    <String fx:value="October" />
+                    <String fx:value="November" />
+                    <String fx:value="December" />
+                </FXCollections>
+            </items>
+        </ComboBox>
+        <TableView fx:id="monthlySubscriptionTable" layoutX="14.0" layoutY="50.0" prefHeight="336.0" prefWidth="572.0">
+            <columns>
+                <TableColumn fx:id="userID" prefWidth="75.0" text="ID" />
+                <TableColumn fx:id="userNameColumn" prefWidth="75.0" text="User" />
+                <TableColumn fx:id="orderMemoColumn" prefWidth="75.0" text="Memo" />
+                <TableColumn fx:id="deliveryAddressColumn" prefWidth="150.0" text="Address" />
+                <TableColumn fx:id="phoneNoColumn" prefWidth="75.0" text="Phone" />
+                <TableColumn fx:id="Subscription_fees" prefWidth="75.0" text="Cost" />
+                <TableColumn fx:id="deliveredTillColumn" prefWidth="75.0" text="Delivered Till" />
+            </columns>
+        </TableView>
+      <Button fx:id="deliveredtill" layoutX="239.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleDeliveredTillButtonAction" text="Set Deliverredt till" />
+    </children>
+</AnchorPane>

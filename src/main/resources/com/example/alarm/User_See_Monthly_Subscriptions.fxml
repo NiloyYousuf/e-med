@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.alarm.MonthlySubscriptionController">
+   <children>
+      <VBox layoutX="20.0" layoutY="109.0" prefHeight="234.0" prefWidth="511.0">
+         <children>
+            <Label text="User Name: " />
+            <Label fx:id="userNameLabel" />
+            <Label text="Order Memo: " />
+            <Label fx:id="orderMemoLabel" />
+            <Label text="Delivery Address: " />
+            <Label fx:id="deliveryAddressLabel" />
+            <Label text="Phone Number: " />
+            <Label fx:id="phoneNoLabel" />
+            <Label text="Total Cost: " />
+            <Label fx:id="totalCostLabel" />
+            <Label text="Delivered Till: " />
+            <Label fx:id="deliveredTillLabel" />
+         </children>
+      </VBox>
+      <Button layoutX="479.0" layoutY="84.0" mnemonicParsing="false" onAction="#handleDeleteButtonAction" text="Delete" />
+   </children>
+</AnchorPane>
