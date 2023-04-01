@@ -5,41 +5,64 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="480.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.alarm.Admin_Login_Page_Controller">
+<AnchorPane prefHeight="475.0" prefWidth="763.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.alarm.Admin_Login_Page_Controller">
    <children>
-      <ImageView fitHeight="37.0" fitWidth="113.0" layoutX="315.0" layoutY="305.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="548.0" fitWidth="763.0" layoutY="-12.0" opacity="0.45" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@Screenshot_20230125_120507-removebg-preview.png" />
+            <Image url="@adminbg.jpg" />
          </image>
       </ImageView>
-      <PasswordField fx:id="passwordField" blendMode="DARKEN" layoutX="254.0" layoutY="241.0" prefHeight="30.0" prefWidth="240.0" />
-      <Text layoutX="257.0" layoutY="234.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password">
-         <font>
-            <Font name="Segoe UI Light" size="15.0" />
-         </font>
-      </Text>
-      <Button layoutX="330.0" layoutY="305.0" mnemonicParsing="false" onAction="#loginbuttonclicked" opacity="0.0" prefHeight="36.0" prefWidth="83.0" text="Button">
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </Button>
-      <Text layoutX="254.0" layoutY="177.0" strokeType="OUTSIDE" strokeWidth="0.0" text="AdminID" wrappingWidth="76.1953125">
-         <font>
-            <Font name="Segoe UI Light" size="15.0" />
-         </font>
-      </Text>
-      <Label fx:id="unmatchedMessage" contentDisplay="CENTER" layoutX="259.0" layoutY="286.0" prefHeight="18.0" prefWidth="224.0" textAlignment="CENTER" textFill="#ff0909">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Label>
-      <TextField fx:id="name" blendMode="DARKEN" layoutX="251.0" layoutY="184.0" prefHeight="30.0" prefWidth="240.0" />
-      <Label fx:id="failed" layoutX="330.0" layoutY="162.0" prefHeight="18.0" prefWidth="170.0" textFill="RED" />
+      <AnchorPane layoutX="187.0" layoutY="121.0" prefHeight="254.0" prefWidth="352.0" style="-fx-background-color: white;">
+         <children>
+            <ImageView fitHeight="37.0" fitWidth="113.0" layoutX="117.0" layoutY="187.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Screenshot_20230125_120507-removebg-preview.png" />
+               </image>
+            </ImageView>
+            <PasswordField fx:id="passwordField" blendMode="DARKEN" layoutX="56.0" layoutY="123.0" prefHeight="30.0" prefWidth="240.0" promptText="Passowrd" style="-fx-border-color: white;" />
+            <Text layoutX="59.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password">
+               <font>
+                  <Font name="Segoe UI Light" size="15.0" />
+               </font>
+            </Text>
+            <Button layoutX="132.0" layoutY="187.0" mnemonicParsing="false" onAction="#loginbuttonclicked" opacity="0.0" prefHeight="36.0" prefWidth="83.0" text="Button">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Text layoutX="56.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="AdminID" wrappingWidth="76.1953125">
+               <font>
+                  <Font name="Segoe UI Light" size="15.0" />
+               </font>
+            </Text>
+            <Label fx:id="unmatchedMessage" contentDisplay="CENTER" layoutX="61.0" layoutY="168.0" prefHeight="18.0" prefWidth="224.0" textAlignment="CENTER" textFill="#ff0909">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <TextField fx:id="name" blendMode="DARKEN" layoutX="53.0" layoutY="69.0" prefHeight="30.0" prefWidth="240.0" promptText="Name" style="-fx-border-color: white;" />
+            <Label fx:id="failed" layoutX="132.0" layoutY="44.0" prefHeight="18.0" prefWidth="170.0" textFill="RED" />
+         </children>
+         <effect>
+            <DropShadow height="29.19" radius="19.65" width="51.41">
+               <color>
+                  <Color red="0.6526315808296204" green="0.650214433670044" blue="0.650214433670044" />
+               </color>
+            </DropShadow>
+         </effect>
+      </AnchorPane>
+      <ImageView fitHeight="181.0" fitWidth="184.0" layoutX="414.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@adminloginill.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

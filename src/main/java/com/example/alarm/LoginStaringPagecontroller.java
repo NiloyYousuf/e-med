@@ -209,6 +209,18 @@ public class LoginStaringPagecontroller {
 
     }
 
+    @FXML
+    protected void onPreviousOrdersClicked(ActionEvent event) throws IOException
+    {
+        String s1="user_previous_orders.fxml";
+        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource(s1));
+        stage =(Stage)((Node)event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(fxmlLoader.load(), 720, 480);
+        stage.setTitle("e-MED");
+        stage.setScene(scene);
+        stage.show();
+    }
+
 
 
 

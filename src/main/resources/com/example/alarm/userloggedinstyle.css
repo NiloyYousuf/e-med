@@ -6,9 +6,11 @@
 }
 .button:hover{
     -fx-background-color : rgba(250, 108, 29, 0.78);
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+    -fx-scale-z: 1.1;
 }
 .button:pressed
 {
     -fx-background-color : rgba(140, 57, 10, 0.87);
 }
-
