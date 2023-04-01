@@ -62,6 +62,8 @@ public class User_previous_orders_controller implements Initializable {
     @FXML
     private TableColumn<Order, String> orderStatusColumn;
 
+
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         // Populate the status dropdown
@@ -74,6 +76,7 @@ public class User_previous_orders_controller implements Initializable {
         orderMemoColumn.setCellValueFactory(new PropertyValueFactory<>("orderMemo"));
         orderStatusColumn.setCellValueFactory(new PropertyValueFactory<>("orderStatus"));
         orderDateColumn.setCellValueFactory(new PropertyValueFactory<>("orderDate"));
+
         // Populate the orders ObservableList from the database
         try {
             Database_connection dbcon = new Database_connection();

@@ -40,6 +40,8 @@ public class MonthlySubscriptionAdminController implements Initializable {
     private TableColumn<MonthlySubscription, String> deliveredTillColumn;
 
     @FXML
+    private  TableColumn<MonthlySubscription,String> SubscriptionFeesColumn;
+    @FXML
     private ComboBox<String> monthComboBox;
 
     @FXML
@@ -61,11 +63,12 @@ public class MonthlySubscriptionAdminController implements Initializable {
 
         // Initialize the table columns
         deliveredtill.setOnAction(event -> handleDeliveredTillButtonAction());
-        userID.setCellValueFactory(new PropertyValueFactory<>("userID"));
+        userID.setCellValueFactory(new PropertyValueFactory<>("id"));
         userNameColumn.setCellValueFactory(new PropertyValueFactory<>("userName"));
         orderMemoColumn.setCellValueFactory(new PropertyValueFactory<>("orderMemo"));
         deliveryAddressColumn.setCellValueFactory(new PropertyValueFactory<>("deliveryAddress"));
         phoneNoColumn.setCellValueFactory(new PropertyValueFactory<>("phoneNo"));
+        SubscriptionFeesColumn.setCellValueFactory(new PropertyValueFactory<>("totalCostMonthly"));
         deliveredTillColumn.setCellValueFactory(cellData -> {
             String value = cellData.getValue().getDeliveredTill();
             return new SimpleStringProperty(value.substring(0, 3)); // show only the date part
@@ -95,7 +98,7 @@ public class MonthlySubscriptionAdminController implements Initializable {
     @FXML
     private void handleDeliveredTillButtonAction() {
         MonthlySubscription selectedSubscription = monthlySubscriptionTable.getSelectionModel().getSelectedItem();
-        System.out.println(selectedSubscription.getUserName()+selectedSubscription.getOrderMemo());
+        System.out.println(selectedSubscription.getUserName()+selectedSubscription.getId());
         if (selectedSubscription != null) {
             String month = monthComboBox.getSelectionModel().getSelectedItem().toLowerCase();
             String deliveredTill = month + " 01, 2023"; // set the delivered till date to the first day of the selected month

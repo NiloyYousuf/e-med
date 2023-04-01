@@ -20,15 +20,18 @@ public class MonthlySubscriptionDAO {
             statement.setString(1, month + "%");
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
+                System.out.println(resultSet.getString(1)+  "  " +resultSet.getString(6));
                 MonthlySubscription subscription = new MonthlySubscription(
-                        resultSet.getString("idMonthly_subscription"),
+                        resultSet.getString("idmonthly_subscription"),
                         resultSet.getString("User_name"),
                         resultSet.getString("Order_memo"),
                         resultSet.getString("Delivery_address"),
                         resultSet.getString("Phone_no"),
                         resultSet.getString("Total_Cost_Monthly"),
                         resultSet.getString("Delivered_till")
+
                 );
+
                 subscriptions.add(subscription);
             }
         } catch (SQLException e) {
@@ -38,10 +41,10 @@ public class MonthlySubscriptionDAO {
     }
 
     public boolean updateMonthlySubscription(MonthlySubscription subscription) {
-        String query = "UPDATE monthly_subscription SET Delivered_till = ? WHERE idMonthly_subscription = ?";
+        String query = "UPDATE monthly_subscription SET Delivered_till = ? WHERE User_name = ?";
         try (PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setString(1, subscription.getDeliveredTill());
-            statement.setString(2, subscription.getId());
+            statement.setString(2, subscription.getUserName());
             int rowsAffected = statement.executeUpdate();
             return rowsAffected == 1;
         } catch (SQLException e) {
@@ -61,8 +64,9 @@ public class MonthlySubscriptionDAO {
                 String orderMemo = resultSet.getString("Order_memo");
                 String deliveryAddress = resultSet.getString("Delivery_address");
                 String phoneNo = resultSet.getString("Phone_no");
-                String totalCostMonthly = resultSet.getString(6);
+                String totalCostMonthly = resultSet.getString("Total_Cost_Monthly");
                 String deliveredTill = resultSet.getString("Delivered_till");
+                //System.out.println(id+ userName+totalCostMonthly+deliveredTill);
                 MonthlySubscription subscription = new MonthlySubscription(id, userName, orderMemo, deliveryAddress, phoneNo, totalCostMonthly, deliveredTill);
                 subscriptions.add(subscription);
             }
