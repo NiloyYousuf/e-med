@@ -1,11 +1,13 @@
 package com.example.alarm;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -32,6 +34,7 @@ public class Memocard implements Initializable {
     @Override
     public void initialize(URL Loc, ResourceBundle rbr)
     {
+
         int i=0;
 
         Node[] nodes = new Node[cart.Products.size()];
@@ -66,6 +69,14 @@ public class Memocard implements Initializable {
             grndtotal.setText(String.valueOf(cart.Total_Amount));
 
         }
+    }
+
+    @FXML
+    protected void onChckout(ActionEvent e) throws IOException
+    {
+        Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        stage.close();
+
     }
 
 

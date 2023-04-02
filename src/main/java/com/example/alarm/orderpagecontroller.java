@@ -63,7 +63,7 @@ public class orderpagecontroller implements Initializable {
 
         FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("memocard.fxml"));
         Stage stage = new Stage(StageStyle.TRANSPARENT);
-        Scene scene = new Scene(fxmlLoader.load(), 252, 400);
+        Scene scene = new Scene(fxmlLoader.load(), 252, 436);
         stage.setTitle("e-MED");
         stage.setScene(scene);
         stage.show();
