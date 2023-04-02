@@ -99,12 +99,19 @@ public class orderpagecontroller implements Initializable {
             ButtonNotificationExample b = new ButtonNotificationExample();
             b.showNotificationorderPlaced(new Stage());
 
+
+            switchtomenu(place_order);
+
             FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("memocard.fxml"));
             Stage stage = new Stage(StageStyle.TRANSPARENT);
             Scene scene = new Scene(fxmlLoader.load(), 252, 436);
             stage.setTitle("e-MED");
             stage.setScene(scene);
             stage.show();
+            cart.Products.clear();
+            cart.total_items_selected=0;
+
+
 
         }
     }
@@ -285,16 +292,16 @@ public void backbuttonpressed(ActionEvent e ) throws IOException {
 
 }
 
-//    public void switchtomenu(ActionEvent e ) throws IOException {
-//        String s1="userloggerin.fxml";
-//        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource(s1));
-//        Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
-//        Scene scene = new Scene(fxmlLoader.load(), 720, 480);
-//        stage.setTitle("e-MED");
-//        stage.setScene(scene);
-//        stage.show();
-//
-//    }
+    public void switchtomenu(Button button ) throws IOException {
+       String s1="userloggedin.fxml";
+        Stage stage = (Stage) button.getScene().getWindow();
+       // stage.close();
+       FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource(s1));
+       Scene scene = new Scene(fxmlLoader.load());
+       stage.setTitle("e-MED");
+        stage.setScene(scene);
+       stage.show();
+}
 
 
 }

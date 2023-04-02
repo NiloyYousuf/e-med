@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -88,9 +89,11 @@ public class AdminShowAllProducts implements Initializable {
           deleetebutton.setOnMouseExited(e -> deleetebutton.setStyle("-fx-background-color: #F74C3C; -fx-text-fill: white;"));
           deleetebutton.setOnAction(event -> deleteProduct(item.getProduct_ID()));
 
+          descriptionLabel.setAlignment(Pos.TOP_LEFT);
 
-          Button editbutton=new Button("Edit");
-          editbutton.minWidth(40);
+          Button editbutton=new Button(" Edit ");
+         deleetebutton.setMinSize(50,20);
+          editbutton.setMinSize(50,20);
           editbutton.setOnAction(event -> editproduct(item.product_ID));
 
             editbutton.setStyle("-fx-background-color: #918987; -fx-text-fill: white;");

@@ -77,7 +77,6 @@ public class Memocard implements Initializable {
     {
         Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         stage.close();
-
     }
 
 

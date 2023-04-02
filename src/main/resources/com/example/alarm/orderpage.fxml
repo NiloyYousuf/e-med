@@ -26,7 +26,7 @@
                <VBox fx:id="itemContainer" prefHeight="290.0" prefWidth="323.0" spacing="5" />
            </content>
        </ScrollPane>
-      <Button layoutX="376.0" layoutY="478.0" mnemonicParsing="false" onAction="#placeorderButtonPressed" opacity="0.63" prefHeight="42.0" prefWidth="340.0" style="-fx-background-color: green;" text="Place Order" textFill="WHITE">
+      <Button fx:id="place_order" layoutX="376.0" layoutY="478.0" mnemonicParsing="false" onAction="#placeorderButtonPressed" opacity="0.63" prefHeight="42.0" prefWidth="340.0" style="-fx-background-color: green;" text="Place Order" textFill="WHITE">
          <font>
             <Font size="19.0" />
          </font></Button>
