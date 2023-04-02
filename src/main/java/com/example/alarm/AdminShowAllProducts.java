@@ -89,7 +89,7 @@ public class AdminShowAllProducts implements Initializable {
           deleetebutton.setOnAction(event -> deleteProduct(item.getProduct_ID()));
 
 
-          Button editbutton=new Button("Edit");
+          Button editbutton=new Button(" Edit ");
           editbutton.minWidth(40);
           editbutton.setOnAction(event -> editproduct(item.product_ID));
 
