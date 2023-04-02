@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane opacity="0.95" prefHeight="536.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.alarm.AdminMainPage">
+   <children>
+      <AnchorPane layoutY="-2.0" opacity="0.65" prefHeight="536.0" prefWidth="206.0" style="-fx-background-color: #cc7b79;">
+         <children>
+            <Button layoutY="176.0" mnemonicParsing="false" onAction="#switch_to_show_products" prefHeight="35.0" prefWidth="208.0" style="-fx-background-color: #c78c8b;" text="Show All Product" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Button layoutY="222.0" mnemonicParsing="false" onAction="#switch_to_add_product_page" prefHeight="35.0" prefWidth="208.0" style="-fx-background-color: #c78c8b;" text="Add New Product" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Button layoutY="268.0" mnemonicParsing="false" onAction="#switch_to_show_orders_page" prefHeight="35.0" prefWidth="208.0" style="-fx-background-color: #c78c8b;" text="Show Orders" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Button layoutY="315.0" mnemonicParsing="false" onAction="#switch_to_show_monthly_subscriptions" prefHeight="35.0" prefWidth="208.0" style="-fx-background-color: #c78c8b;" text="Monthly Subscriptions" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+      <Pane fx:id="showPane" layoutX="208.0" layoutY="-1.0" prefHeight="536.0" prefWidth="513.0" />
+   </children>
+</AnchorPane>
