@@ -61,6 +61,8 @@ public class orderpagecontroller implements Initializable {
         b.showNotificationorderPlaced(new Stage());
     }
 
+    public static orderedItem ot = new orderedItem();
+
 
 
     @Override
@@ -73,7 +75,38 @@ public class orderpagecontroller implements Initializable {
             ordereditemList.get(i).product_selected=String.valueOf(cart.Products.get(i).Addedtocart);
         }
 
-        for (orderedItem ordereditem : ordereditemList) {
+        int i=0;
+        Node[] nodes = new Node[ordereditemList.size()];
+
+        for(orderedItem orderedItem : ordereditemList)
+        {
+            try {
+                ot = orderedItem;
+
+                final int j = i;
+
+                nodes[i] = FXMLLoader.load(getClass().getResource("ordersummary.fxml"));
+
+                //give the items some effect
+
+                nodes[i].setOnMouseEntered(event -> {
+                    nodes[j].setStyle("-fx-background-color : rgba(162,132,162,0.76)");
+                });
+                nodes[i].setOnMouseExited(event -> {
+                    nodes[j].setStyle("-fx-background-color : #fdfdff");
+                });
+                itemContainer.getChildren().add(nodes[i]);
+                i++;
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            total_order_value.setText(String.valueOf(cart.Total_Amount));
+
+        }
+
+        /*for (orderedItem ordereditem : ordereditemList) {
             HBox itemBox = new HBox();
 
             ImageView imageView = new ImageView(ordereditem.getProduct_image_url());
@@ -88,7 +121,7 @@ public class orderpagecontroller implements Initializable {
             itemBox.getChildren().addAll(new HBox(imageView, NameAndDesc,selectedlabel));
             itemContainer.getChildren().add(itemBox);
             total_order_value.setText(String.valueOf(cart.Total_Amount));
-        }
+        }*/
 
     }
 
@@ -98,7 +131,7 @@ public class orderpagecontroller implements Initializable {
 
 
 
-    public void decrease(Button button1, Label Quantity,orderedItem item)
+    /*public void decrease(Button button1, Label Quantity,orderedItem item)
     {
         if(!Quantity.getText().equals("0")) {
             Quantity.setText(Integer.toString(Integer.parseInt(Quantity.getText()) - 1));
@@ -107,7 +140,7 @@ public class orderpagecontroller implements Initializable {
         }
 
 
-    }
+    }*/
 
 
 
@@ -124,7 +157,7 @@ public class orderpagecontroller implements Initializable {
 
 
 
-    private  class orderedItem {
+    /*private  class orderedItem {
         private final String product_name ;
         private final String product_description ;
         private  final String product_ID;
@@ -170,7 +203,7 @@ public class orderpagecontroller implements Initializable {
             return product_selected;
         }
 
-    }
+    }*/
 
 
 
