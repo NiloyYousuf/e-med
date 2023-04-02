@@ -2,17 +2,26 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.alarm.Admin_Order_page_Controller">
+<AnchorPane prefHeight="720.0" prefWidth="998.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.alarm.Admin_Order_page_Controller">
     <children>
-        <Label layoutX="242.0" layoutY="14.0" text="Order Status:" />
-        <ComboBox fx:id="statusDropdown" layoutX="242.0" layoutY="38.0" prefWidth="150.0" />
-        <Button fx:id="updateButton" layoutX="402.0" layoutY="38.0" mnemonicParsing="false" onAction="#handleUpdateButton" text="Update Status" />
-        <TableView fx:id="ordersTable" layoutX="14.0" layoutY="73.0" prefHeight="638.0" prefWidth="1042.0">
+      <ImageView fitHeight="296.0" fitWidth="150.0" layoutX="906.0" layoutY="-87.0" opacity="0.77" pickOnBounds="true" preserveRatio="true" style="-fx-rotate: 0;">
+         <image>
+            <Image url="@Screenshot_20230125_125512-removebg-preview.png" />
+         </image>
+      </ImageView>
+        <ComboBox fx:id="statusDropdown" layoutX="460.0" layoutY="30.0" opacity="0.75" prefWidth="150.0" promptText="Order Status" style="-fx-border-color: #cc7b79; -fx-background-color: #cc7b79;" />
+        <Button fx:id="updateButton" layoutX="622.0" layoutY="23.0" mnemonicParsing="false" onAction="#handleUpdateButton" prefHeight="42.0" prefWidth="115.0" style="-fx-border-color: #cc7b79; -fx-background-color: #cc7b79; -fx-background-radius: 20; -fx-border-radius: 20;" text="Update Status" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
+        <TableView fx:id="ordersTable" layoutX="14.0" layoutY="73.0" prefHeight="638.0" prefWidth="1042.0" stylesheets="@tableStyle.css">
             <columns>
                 <TableColumn fx:id="orderIdColumn" prefWidth="150.39999103546143" text="Order ID" />
                 <TableColumn fx:id="userNameColumn" prefWidth="101.59999084472656" text="User Name" />
@@ -20,10 +29,17 @@
                 <TableColumn fx:id="phoneNoColumn" prefWidth="90.39996337890625" text="Phone No." />
                 <TableColumn fx:id="totalAmountColumn" prefWidth="120.0" text="Total Amount" />
                 <TableColumn fx:id="deliveryAddressColumn" prefWidth="112.79998779296875" text="Delivery Address" />
-                <TableColumn fx:id="orderMemoColumn" prefWidth="227.9998779296875" text="Order Memo" />
                 <TableColumn fx:id="orderStatusColumn" prefWidth="139.2000732421875" text="Order Status" />
+                <TableColumn fx:id="orderMemoColumn" prefWidth="227.9998779296875" text="Order Memo" />
             </columns>
         </TableView>
-      <Button layoutX="14.0" layoutY="25.0" mnemonicParsing="false" onAction="#Switch_To_admin_Menu" text="Back" />
+      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#Switch_To_admin_Menu" opacity="0.65" style="-fx-border-color: #cc7b79; -fx-background-color: #cc7b79; -fx-border-radius: 30; -fx-background-radius: 30;">
+         <graphic>
+            <ImageView fitHeight="32.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@backfromrem.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
     </children>
 </AnchorPane>
