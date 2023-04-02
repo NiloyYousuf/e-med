@@ -8,45 +8,45 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="436.0" prefWidth="262.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.alarm.Memocard">
+<AnchorPane prefHeight="378.0" prefWidth="227.0" style="-fx-background-color: #9FEE90;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.alarm.Memocard">
    <children>
-      <Label layoutX="14.0" layoutY="21.0" prefHeight="18.0" prefWidth="246.0" text="Order Summary">
+      <Label layoutX="47.0" layoutY="14.0" prefHeight="34.0" prefWidth="186.0" text="Order Summary" textFill="WHITE">
          <font>
             <Font name="Bodoni MT Bold" size="26.0" />
          </font>
       </Label>
-      <Label fx:id="dttime" layoutX="14.0" layoutY="55.0" prefHeight="18.0" prefWidth="246.0" text="DateTime">
+      <Label fx:id="dttime" layoutX="14.0" layoutY="55.0" prefHeight="18.0" prefWidth="246.0" text="DateTime" textFill="WHITE">
          <font>
             <Font name="Bodoni MT" size="13.0" />
          </font>
       </Label>
       <Line endX="159.39999389648438" endY="0.40000152587890625" layoutX="101.0" layoutY="73.0" opacity="0.26" startX="-101.00001525878906" startY="0.40000152587890625" />
       <Line endX="153.10000610351562" endY="0.399993896484375" layoutX="108.0" layoutY="325.0" opacity="0.26" startX="-114.10001373291016" startY="0.399993896484375" />
-      <ScrollPane layoutY="95.0" prefHeight="230.0" prefWidth="262.0" stylesheets="@style.css">
+      <ScrollPane layoutX="9.0" layoutY="94.0" prefHeight="230.0" prefWidth="262.0" stylesheets="@style.css">
          <content>
             <VBox fx:id="sumContainer" prefHeight="250.0" prefWidth="262.0" />
          </content>
       </ScrollPane>
-      <Label layoutX="14.0" layoutY="338.0" prefHeight="16.0" prefWidth="55.0" text="Sub_Total">
+      <Label layoutX="14.0" layoutY="338.0" prefHeight="16.0" prefWidth="55.0" text="Sub_Total" textFill="WHITE">
          <font>
             <Font name="Bodoni MT" size="12.0" />
          </font>
       </Label>
-      <Label fx:id="grndtotal" layoutX="192.0" layoutY="338.0" prefHeight="16.0" prefWidth="55.0" text="Total">
+      <Label fx:id="grndtotal" layoutX="192.0" layoutY="338.0" prefHeight="16.0" prefWidth="55.0" text="Total" textFill="WHITE">
          <font>
             <Font name="Bodoni MT" size="12.0" />
          </font>
       </Label>
-      <Label fx:id="dlvrdto" layoutX="14.0" layoutY="362.0" text="Delivered to: ">
+      <Label fx:id="dlvrdto" layoutX="14.0" layoutY="362.0" text="Delivered to: " textFill="WHITE">
          <font>
             <Font name="Bodoni MT Italic" size="12.0" />
          </font>
       </Label>
-      <Button fx:id="chckout" graphicTextGap="10.0" layoutY="396.0" mnemonicParsing="false" onAction="#onChckout" prefHeight="41.0" prefWidth="262.0" style="-fx-background-color: GREEN;" text="C  H  E  C  K  O  U  T" textFill="WHITE">
+      <Button fx:id="chckout" graphicTextGap="10.0" layoutX="9.0" layoutY="394.0" mnemonicParsing="false" onAction="#onChckout" prefHeight="41.0" prefWidth="262.0" style="-fx-background-color: GREEN;" text="C  H  E  C  K  O  U  T" textFill="WHITE">
          <font>
             <Font size="15.0" />
          </font>
       </Button>
+      <AnchorPane layoutX="-330.0" layoutY="48.0" prefHeight="200.0" prefWidth="290.0" style="-fx-background-color: Black;" />
    </children>
 </AnchorPane>
