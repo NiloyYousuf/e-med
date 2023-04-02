@@ -24,7 +24,7 @@ public class Admin_Login_Page_Controller {
     private Label failed;
 
     public void switchToScene3(ActionEvent event) throws IOException {
-        String s1="adminmenu.fxml";
+        String s1="Admin_MainPage.fxml";
         FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource(s1));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(fxmlLoader.load(), 720, 480);
