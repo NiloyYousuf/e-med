@@ -55,7 +55,7 @@ public class User_ADD_TO_CART implements Initializable {
 
 
         for (int i=0;i<products.products.size();i++)
-            itemList.add(new User_ADD_TO_CART.Item(products.products.get(i).Product_ID,products.products.get(i).Product_Name,products.products.get(i).Product_Price,products.products.get(i).Product_Total_Available,products.products.get(i).Product_Description,products.products.get(i).Product_Image_URL));
+            itemList.add(new User_ADD_TO_CART.Item(products.products.get(i).Product_ID,products.products.get(i).Product_Name,products.products.get(i).Product_Price,products.products.get(i).Product_Total_Available,products.products.get(i).Product_Description,products.products.get(i).Product_Image_URL,products.products.get(i).Addedtocart));
 
 
         //   itemList.add(new Item("Item 5", "This is item 5", "C://Users//yousu//IdeaProjects//scrollingfxml//src//main//resources//com//example//img.png"));
@@ -113,7 +113,7 @@ public class User_ADD_TO_CART implements Initializable {
             hbox.setAlignment(Pos.CENTER);
             hbox.setPadding(new Insets(2));
             Label Quantity=new Label();
-            Quantity.setText("0");;
+            Quantity.setText(Product.getAddedToCartValue(item.product_ID).toString());;
             hbox.getChildren().addAll(plusBtn,Quantity ,minusBtn);
 
 
@@ -212,8 +212,8 @@ public class User_ADD_TO_CART implements Initializable {
         private final String product_total_available;
         private final String product_price;
         private final String product_image_url;
-        private  Integer selected;
-        private Item(  String Product_ID,String Product_Name ,String Product_Price,String Product_Total_Available,String Product_Description,String Product_Image_URL) {
+        private  Integer selected=0;
+        private Item(  String Product_ID,String Product_Name ,String Product_Price,String Product_Total_Available,String Product_Description,String Product_Image_URL,Integer selected) {
 
             this.product_ID=Product_ID;
             this.product_name = Product_Name;
@@ -221,7 +221,7 @@ public class User_ADD_TO_CART implements Initializable {
             this.product_total_available =Product_Total_Available;
             this.product_price =Product_Price;
             this.product_image_url =Product_Image_URL;
-            this.selected=0;
+            this.selected=selected;
         }
 
 

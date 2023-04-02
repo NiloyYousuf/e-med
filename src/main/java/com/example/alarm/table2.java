@@ -58,7 +58,6 @@ public class table2 {
                 newproduct.Product_Total_Available=rset.getString(4);
                 newproduct.Product_Description=rset.getString(5);
                 newproduct.Product_Image_URL=rset.getString(6);
-
                 productlist.add(i,newproduct);
 
             }

@@ -18,8 +18,8 @@ public class DBConn {
 
             // 1) Register the driver class
             Class.forName("com.mysql.cj.jdbc.Driver");
-            conn = (Connection) DriverManager.getConnection("jdbc:mysql:///firsttime", "root", "admin");
-
+            Database_connection db=new Database_connection();
+             conn=db.conn;
 
         } catch (SQLException e) {
             System.out.println(" Error while connecting to database. Exception code : " + e);

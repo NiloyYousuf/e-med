@@ -1,5 +1,7 @@
 package com.example.alarm;
 
+import java.util.ArrayList;
+
 public class Product {
     public String getProduct_ID() {
         return Product_ID;
@@ -23,7 +25,7 @@ public class Product {
     String Product_Total_Available;
     String Product_Price;
     String Product_Image_URL;
-    Integer Addedtocart;
+    Integer Addedtocart=0;
 
     public Product(String Product_ID,    String Product_Name,   String Product_Price ,    String Product_Total_Available,    String Product_Description,    String Product_Image_URL ,Integer Addedtocart)
     {
@@ -38,5 +40,14 @@ public class Product {
     public  Product()
     {
 
+    }
+
+    public static Integer getAddedToCartValue(String productID) {
+        for (Product product : cart.Products) {
+            if (product.getProduct_ID().equals(productID)) {
+                return product.getAddedtocart();
+            }
+        }
+        return 0; // or you can return a default value if the productID doesn't exist in the productList
     }
 }

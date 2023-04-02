@@ -25,6 +25,6 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <Button fx:id="button" layoutX="280.0" layoutY="15.0" mnemonicParsing="false" text="Button" />
+      <Button fx:id="button" layoutX="280.0" layoutY="15.0" mnemonicParsing="false" text="Delete" />
    </children>
 </AnchorPane>

@@ -19,6 +19,9 @@ public  class cart {
         }
     }
 
+
+
+
     public void removeduplicatearraylist() {
 // loop through the original ArrayList and remove duplicates while updating Addedtocart
         for (int i = 0; i < Products.size(); i++) {
@@ -42,6 +45,11 @@ public  class cart {
 // update the original ArrayList to hold the non-duplicate products
         Products.clear();
         Products.addAll(nonDuplicateProducts);
+
+        total_items_selected=0;
+        for (Product product : Products) {
+            total_items_selected += product.getAddedtocart();
+        }
     }
 
 
