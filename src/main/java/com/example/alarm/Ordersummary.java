@@ -54,9 +54,9 @@ public class Ordersummary implements Initializable {
         cart.removeProductByName(oitem.product_name);
         cart.generateSummary(cart.Products);
         String s1="orderpage.fxml";
+        Stage stage = (Stage) button.getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource(s1));
-        Stage stage =new Stage();
-        Scene scene = new Scene(fxmlLoader.load(), 720, 528);
+        Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("e-MED");
         stage.setScene(scene);
         stage.show();
