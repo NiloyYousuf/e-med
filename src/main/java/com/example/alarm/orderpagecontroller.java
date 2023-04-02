@@ -1,5 +1,7 @@
 package com.example.alarm;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,6 +15,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.util.Duration;
 import org.w3c.dom.Text;
 
 import java.io.IOException;
@@ -147,9 +150,6 @@ public class orderpagecontroller implements Initializable {
                 e.printStackTrace();
             }
 
-            total_order_value.setText(String.valueOf(total));
-
-
         }
 
         /*for (orderedItem ordereditem : ordereditemList) {
@@ -169,10 +169,27 @@ public class orderpagecontroller implements Initializable {
             total_order_value.setText(String.valueOf(cart.Total_Amount));
         }*/
 
+        final Double temp;
+
+        if(Ordersummary.delPressed == Boolean.TRUE) temp = cart.Total_Amount;
+        else temp = total;
+
+        //total_order_value.setText(String.valueOf(total));
+        //if(Ordersummary.delPressed == Boolean.TRUE) total_order_value.setText(cart.Total_Amount.toString());
+        //else total_order_value.setText(String.valueOf(total));
+        Timeline timeline = new Timeline(
+                new KeyFrame(Duration.seconds(1),
+                        e -> {
+                            if(Ordersummary.delPressed == Boolean.TRUE) total_order_value.setText(cart.Total_Amount.toString());
+                            else total_order_value.setText(String.valueOf(temp));
+                            //Ordersummary.delPressed = Boolean.FALSE;
+                        }
+                ));
+
+        timeline.setCycleCount(Timeline.INDEFINITE);
+        timeline.play();
+
     }
-
-
-
 
 
     @FXML
@@ -257,6 +274,7 @@ public class orderpagecontroller implements Initializable {
 
 
 public void backbuttonpressed(ActionEvent e ) throws IOException {
+    cart.generateSummary(cart.Products);
     String s1="searchpage.fxml";
     FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource(s1));
     Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();

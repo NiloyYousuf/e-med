@@ -76,12 +76,13 @@ public  class cart {
                 // Add the price of the items to the total price
                 totalPrice += Double.parseDouble(product.getProduct_Price()) * product.getAddedtocart();
                 Total_Amount += Double.parseDouble(product.getProduct_Price()) * product.getAddedtocart();
-                //total_items_selected+=Integer.parseInt(product.getAddedtocart());
+                //total_items_selected+=product.getAddedtocart();
             }
         }
 
             // Add the total price to the memo
             memo.append("Total Order price: " + totalPrice);
+            Total_Amount = totalPrice;
             // Return the memo as a string
             System.out.println(memo.toString());
             return memo.toString();

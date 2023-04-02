@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="100.0" prefWidth="340.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.alarm.Ordersummary">
+<AnchorPane fx:id="apane" prefHeight="100.0" prefWidth="340.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.alarm.Ordersummary">
    <children>
       <ImageView fx:id="img" fitHeight="89.0" fitWidth="86.0" layoutX="7.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -25,6 +25,6 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <Button fx:id="button" layoutX="280.0" layoutY="15.0" mnemonicParsing="false" text="Delete" />
+      <Button fx:id="button" layoutX="280.0" layoutY="15.0" mnemonicParsing="false" opacity="0.55" style="-fx-background-color: red; -fx-background-radius: 10;" text="Delete" textFill="#f7f1f1" />
    </children>
 </AnchorPane>
