@@ -78,12 +78,12 @@ public class User_ADD_TO_CART implements Initializable {
             imageView.setFitHeight(120);
             Label descriptionLabel = new Label(item.getProduct_description());
             Label pricelabel=new Label("Price: "+item.getProduct_price());
-            descriptionLabel.setMinSize(100,50);
+            descriptionLabel.setMinSize(150,50);
 
             descriptionLabel.setWrapText(true);
             Label nameLabel = new Label(item.getProduct_name());
             VBox NameAndDesc=new VBox(nameLabel,pricelabel,descriptionLabel);
-            NameAndDesc.setStyle("-fx-background-color:#CBC3E3;");
+            NameAndDesc.setStyle("-fx-background-color:#F6E3BA;");
             Button plusBtn =new Button("+");
 
             // button.setStyle("-fx-background-image: url('file:///C:/Users/yousu/IdeaProjects/PRACTICE/src/main/resources/com/example/practice/plus.png');");
@@ -122,7 +122,7 @@ public class User_ADD_TO_CART implements Initializable {
             // button1.setOnAction(event -> Quantity.setText(Integer.toString(Integer.parseInt(Quantity.getText())-1)));
             minusBtn.setOnAction(event ->decrease(minusBtn,Quantity,item));
             plusBtn.setOnAction(event ->increase(plusBtn,Quantity,item));
-            NameAndDesc.setMinWidth(350);
+            NameAndDesc.setMinWidth(420);
             plusBtn.setMinSize(50,30);
             minusBtn.setMinSize(50,30);
             plusBtn.onMouseClickedProperty();
@@ -266,7 +266,7 @@ public class User_ADD_TO_CART implements Initializable {
         String s1="orderpage.fxml";
         FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource(s1));
         Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
-        Scene scene = new Scene(fxmlLoader.load(), 720, 480);
+        Scene scene = new Scene(fxmlLoader.load(), 720, 528);
         stage.setTitle("e-MED");
         stage.setScene(scene);
         stage.show();
@@ -319,7 +319,7 @@ public class User_ADD_TO_CART implements Initializable {
             stmt.setString(1, "%" + searchStr + "%");
             ResultSet rs = stmt.executeQuery();
 
-            /*while (rs.next()) {
+            while (rs.next()) {
                 Product product = new Product(
                         rs.getString("Product_ID"),
                         rs.getString("Product_Name"),
@@ -330,7 +330,7 @@ public class User_ADD_TO_CART implements Initializable {
                         0
                 );
                 results.add(product);
-            }*/
+            }
 
             // Find products with similar names using Levenshtein distance algorithm
             for (Product product : getAllProducts()) {
@@ -350,6 +350,8 @@ public class User_ADD_TO_CART implements Initializable {
     }
 
     private boolean isSimilar(String searchStr, String productName) {
+        if(searchStr.equals(productName))
+            return false;
         int n = searchStr.length();
         int m = productName.length();
 

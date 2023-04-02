@@ -11,17 +11,17 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="480.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.alarm.User_ADD_TO_CART_backup">
+<AnchorPane prefHeight="480.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.alarm.User_ADD_TO_CART">
    <children>
       <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="51.0" prefWidth="721.0">
          <children>
-            <TextField fx:id="searchtextfield" layoutX="211.0" layoutY="21.0" prefHeight="34.0" prefWidth="341.0" promptText="Search" />
-            <ImageView fitHeight="42.0" fitWidth="42.0" layoutX="553.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+            <TextField fx:id="searchtextfield" layoutX="165.0" layoutY="17.0" prefHeight="34.0" prefWidth="341.0" promptText="Search" />
+            <ImageView fitHeight="42.0" fitWidth="42.0" layoutX="520.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@pngtree-search-icon-image_1257308.jpg" />
                </image>
             </ImageView>
-            <Button layoutX="552.0" layoutY="16.0" mnemonicParsing="false" onAction="#searchbuttonclicked" opacity="0.0" prefHeight="43.0" prefWidth="44.0" text="search">
+            <Button layoutX="519.0" layoutY="11.0" mnemonicParsing="false" onAction="#searchbuttonclicked" opacity="0.0" prefHeight="43.0" prefWidth="44.0" text="search">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>

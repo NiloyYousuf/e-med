@@ -18,7 +18,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="480.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.alarm.orderpagecontroller">
+<AnchorPane prefHeight="528.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.alarm.orderpagecontroller">
    <children>
       <VBox />
        <ScrollPane fitToHeight="true" fitToWidth="true" layoutX="370.0" layoutY="121.0" prefHeight="291.0" prefWidth="347.0" stylesheets="@style.css">
@@ -30,7 +30,7 @@
          <font>
             <Font size="19.0" />
          </font></Button>
-      <TextArea fx:id="total_order_value" layoutX="601.0" layoutY="420.0" prefHeight="43.0" prefWidth="106.0" style="-fx-border-color: white;">
+      <TextArea fx:id="total_order_value" editable="false" layoutX="601.0" layoutY="420.0" prefHeight="43.0" prefWidth="106.0" style="-fx-border-color: white;">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
@@ -94,6 +94,17 @@
                   <Font name="System Italic" size="13.0" />
                </font>
             </Label>
+            <Label fx:id="contact_no_missing" layoutX="81.0" layoutY="163.0" prefHeight="18.0" prefWidth="192.0" textFill="RED">
+               <font>
+                  <Font name="Segoe UI Semibold Italic" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="Deliveryaddressmissing" layoutX="104.0" layoutY="224.0" prefHeight="18.0" prefWidth="192.0" textFill="RED">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Button layoutX="17.0" layoutY="22.0" mnemonicParsing="false" onAction="#backbuttonpressed" opacity="0.0" prefHeight="35.0" prefWidth="44.0" text="Button" />
          </children>
       </AnchorPane>
       <Text fill="#919090" layoutX="378.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Items" wrappingWidth="275.99999999999994">
@@ -106,6 +117,11 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Text>
+      <Label fx:id="noitemsaddedtocart" layoutX="466.0" layoutY="79.0" prefHeight="26.0" prefWidth="236.0" textFill="RED">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
    </children>
    <opaqueInsets>
       <Insets />

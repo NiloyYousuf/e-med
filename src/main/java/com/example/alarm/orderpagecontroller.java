@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.LightBase;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -50,23 +51,58 @@ public class orderpagecontroller implements Initializable {
     private TextField phonenoarea;
     @FXML
     private ChoiceBox<String> myChoiceBox;
+
+
+    @FXML
+    private  Label contact_no_missing;
+    @FXML
+    private  Label Deliveryaddressmissing;
+    @FXML
+    private  Label noitemsaddedtocart;
     @FXML
     private  void placeorderButtonPressed() throws SQLException, IOException {
-       cart.generateSummary(cart.Products);
-        String selectedValue = myChoiceBox.getValue();
-        orderdao Insertorder=new orderdao();
-        Insertorder.addOrder(currentUser.user_name, phonenoarea.getText() ,String.valueOf(cart.Total_Amount),addressarea.getText(),cart.generateSummary(cart.Products),"Order Received");
-        System.out.println(selectedValue);
+        boolean canmakedelivery=true;
 
-       ButtonNotificationExample b=new ButtonNotificationExample();
-        b.showNotificationorderPlaced(new Stage());
+        if(addressarea.getText().equals(""))
+        {
+            Deliveryaddressmissing.setText("Please put your Delivery Address");
+            canmakedelivery=false;
+        }
+        else {
+            Deliveryaddressmissing.setText("");
+        }
+         if(phonenoarea.getText().equals(""))
+        {
+            contact_no_missing.setText("Please put your contact number");
+            canmakedelivery=false;
+        }
+         else {
+             contact_no_missing.setText("");
+         }
+         if (total_order_value.getText().equals("")) {
+            noitemsaddedtocart.setText("Please Add items to cart First");
+            canmakedelivery=false;
+        }
+         else {
+             noitemsaddedtocart.setText("");
+         }
+        if(canmakedelivery==true){
+            cart.generateSummary(cart.Products);
+            String selectedValue = myChoiceBox.getValue();
+            orderdao Insertorder = new orderdao();
+            Insertorder.addOrder(currentUser.user_name, phonenoarea.getText(), String.valueOf(cart.Total_Amount), addressarea.getText(), cart.generateSummary(cart.Products), "Order Received");
+            System.out.println(selectedValue);
 
-        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("memocard.fxml"));
-        Stage stage = new Stage(StageStyle.TRANSPARENT);
-        Scene scene = new Scene(fxmlLoader.load(), 252, 436);
-        stage.setTitle("e-MED");
-        stage.setScene(scene);
-        stage.show();
+            ButtonNotificationExample b = new ButtonNotificationExample();
+            b.showNotificationorderPlaced(new Stage());
+
+            FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("memocard.fxml"));
+            Stage stage = new Stage(StageStyle.TRANSPARENT);
+            Scene scene = new Scene(fxmlLoader.load(), 252, 436);
+            stage.setTitle("e-MED");
+            stage.setScene(scene);
+            stage.show();
+        }
     }
 
     public static orderedItem ot = new orderedItem();
@@ -132,6 +168,9 @@ public class orderpagecontroller implements Initializable {
         }*/
 
     }
+
+
+
 
 
     @FXML
