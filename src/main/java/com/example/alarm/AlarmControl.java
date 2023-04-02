@@ -53,9 +53,9 @@ public class AlarmControl implements Initializable {
         dosnum.setText(String.valueOf(db.doss()));
         llst = db.forDisplay();
         Node[] nodes = new Node[list.size()];
-        if(list.size() == 0) noDatatext.setText("No reminders");
-        else
-        {
+        //if(list.size() == 0) noDatatext.setText("No reminders");
+        //else
+        //{
             System.out.println("ekhane?");
             for (int i = 0; i < list.size(); i++) {
 
@@ -79,7 +79,7 @@ public class AlarmControl implements Initializable {
                     e.printStackTrace();
                 }
             }
-        }
+        //}
 
         handleButtons();
 

@@ -28,29 +28,6 @@ public class DBConn {
         }
     }
 
-    public void insertval(String mname, String remtim, int doses)
-    {
-
-        try {
-
-            Statement stmt = ((java.sql.Connection) conn).createStatement();
-
-            String query = "Insert into demo values('"+mname+"','"+doses+"','"+remtim+"')";
-            int a = stmt.executeUpdate(query);
-            if (a > 0) {
-                System.out.println("Data is inserted");
-            } else {
-                System.out.println("Insertion failed");
-            }
-            stmt.close();
-            //((java.sql.Connection) conn).close();
-
-
-        } catch (SQLException e) {
-            System.out.println(" Error while connecting to database. Exception code : " + e);
-        }
-    }
-
     public void close()
     {
         try
@@ -70,7 +47,7 @@ public class DBConn {
 
             Statement stmt = ((java.sql.Connection) conn).createStatement();
             int taken = 0;
-            String query = "Insert into demo values('"+mname+"','"+doses+"','"+uneet+"', '"+type+"', '"+reps+"','"+rmtime+"', '"+instance[3]+"', '"+stardet+"', '"+endet+"', '"+weekde+"', '"+repeet+"','"+taken+"')";
+            String query = "Insert into demo values('"+currentUser.user_name+"','"+mname+"','"+doses+"','"+uneet+"', '"+type+"', '"+reps+"','"+rmtime+"', '"+instance[3]+"', '"+stardet+"', '"+endet+"', '"+weekde+"', '"+repeet+"','"+taken+"')";
             int a = stmt.executeUpdate(query);
             if (a > 0) {
                 System.out.println("Data is inserted");
@@ -92,7 +69,8 @@ public class DBConn {
         //ObservableList<demoinfo> list = FXCollections.observableArrayList();
         try
         {
-            PreparedStatement ps = conn.prepareStatement("select * from demo");
+            PreparedStatement ps = conn.prepareStatement("select * from demo where username = ?");
+            ps.setString(1, currentUser.user_name);
             ResultSet rs = ps.executeQuery();
 
             while(rs.next())
@@ -116,7 +94,8 @@ public class DBConn {
         //ObservableList<demoinfo> list = FXCollections.observableArrayList();
         try
         {
-            PreparedStatement ps = conn.prepareStatement("select distinct med_name, remtime, doses from demo");
+            PreparedStatement ps = conn.prepareStatement("select distinct med_name, remtime, doses from demo where username = ?");
+            ps.setString(1, currentUser.user_name);
             ResultSet rs = ps.executeQuery();
 
             while(rs.next())
@@ -140,7 +119,8 @@ public class DBConn {
         demoinfo[] llst = new demoinfo[list.size()];
         try
         {
-            PreparedStatement ps = conn.prepareStatement("select distinct med_name, remtime, doses from demo");
+            PreparedStatement ps = conn.prepareStatement("select distinct med_name, remtime, doses from demo where username = ?");
+            ps.setString(1, currentUser.user_name);
             ResultSet rs = ps.executeQuery();
             int i = 0;
 
@@ -167,7 +147,8 @@ public class DBConn {
 
         try
         {
-            PreparedStatement ps = conn.prepareStatement("select remtime from demo");
+            PreparedStatement ps = conn.prepareStatement("select remtime from demo where username = ?");
+            ps.setString(1, currentUser.user_name);
             ResultSet rs = ps.executeQuery();
 
             while(rs.next())
@@ -189,7 +170,8 @@ public class DBConn {
         HashMap<Pair<String, String>, Boolean> timeandweek = new HashMap<>();
         try
         {
-            PreparedStatement ps = conn.prepareStatement("select remtime, weekday from demo order by remtime");
+            PreparedStatement ps = conn.prepareStatement("select remtime, weekday from demo where username = ?");
+            ps.setString(1, currentUser.user_name);
             ResultSet rs = ps.executeQuery();
 
             while(rs.next())
@@ -219,7 +201,8 @@ public class DBConn {
         int cnt = 0;
         try
         {
-            PreparedStatement ps = conn.prepareStatement("select doses from demo");
+            PreparedStatement ps = conn.prepareStatement("select doses from demo where username = ?");
+            ps.setString(1, currentUser.user_name);
             ResultSet rs = ps.executeQuery();
 
             while(rs.next())
@@ -240,10 +223,11 @@ public class DBConn {
 
         try
         {
-            PreparedStatement ps = conn.prepareStatement("select repeatation, nextTime  from demo where med_name = ? AND remtime = ? AND weekday = ?");
+            PreparedStatement ps = conn.prepareStatement("select repeatation, nextTime  from demo where med_name = ? AND remtime = ? AND weekday = ? AND username = ?");
             ps.setString(1, mname);
             ps.setString(2, almtime);
             ps.setString(3, weekde);
+            ps.setString(4, currentUser.user_name);
             ResultSet rs = ps.executeQuery();
 
             CurrentTime tm = new CurrentTime();
@@ -256,11 +240,12 @@ public class DBConn {
                 System.out.println("My answer is" + ans[3]);
             }
 
-            ps = conn.prepareStatement("update demo set remtime = ?, nextTime = ? where med_name = ? AND weekday = ?");
+            ps = conn.prepareStatement("update demo set remtime = ?, nextTime = ? where med_name = ? AND weekday = ? AND username = ?");
             ps.setString(1, temp);
             ps.setString(2, ans[3]);
             ps.setString(3, mname);
             ps.setString(4, weekde);
+            ps.setString(5, currentUser.user_name);
 
             ps.executeUpdate();
 
@@ -278,7 +263,7 @@ public class DBConn {
         try
         {
             Statement stmt = conn.createStatement();
-            String quer = "delete from demo where endDate = '"+str+"'";
+            String quer = "delete from demo where endDate = '"+str+"' AND username = '"+currentUser.user_name+"'";
 
             int a = stmt.executeUpdate(quer);
             if (a > 0) {
@@ -298,11 +283,12 @@ public class DBConn {
     {
         String[] arr = new String[7];
         try {
-            PreparedStatement ps = conn.prepareStatement("select weekday from demo where med_name = ? AND remtime = ? AND doses = ?");
+            PreparedStatement ps = conn.prepareStatement("select weekday from demo where med_name = ? AND remtime = ? AND doses = ? AND username = ?");
 
             ps.setString(1, mname);
             ps.setString(2, almtime);
             ps.setString(3, String.valueOf(ds));
+            ps.setString(4, currentUser.user_name);
             ResultSet rs = ps.executeQuery();
 
             int i = 0;
@@ -325,7 +311,7 @@ public class DBConn {
         {
             Statement stmt = ((java.sql.Connection) conn).createStatement();
             int i = Integer.parseInt(dos);
-            String quer = "delete from demo where med_name = '"+mname+"' AND doses = "+dos+" AND remtime = '"+rmtime+"'";
+            String quer = "delete from demo where med_name = '"+mname+"' AND doses = "+dos+" AND remtime = '"+rmtime+"' AND username = '"+currentUser.user_name+"'";
 
             int a = stmt.executeUpdate(quer);
             if (a > 0) {
@@ -344,7 +330,7 @@ public class DBConn {
     public void setTaken(String mname, String rmtime, String dos, String weekde)
     {
         try {
-            PreparedStatement ps = conn.prepareStatement("update demo set taken = ? where med_name = ? AND remtime = ? AND doses = ? AND weekday = ?");
+            PreparedStatement ps = conn.prepareStatement("update demo set taken = ? where med_name = ? AND remtime = ? AND doses = ? AND weekday = ? AND username = ?");
 
             int tkn = 1;
             ps.setInt(1, tkn);
@@ -352,6 +338,7 @@ public class DBConn {
             ps.setString(3, rmtime);
             ps.setString(4, dos);
             ps.setString(5, weekde);
+            ps.setString(6, currentUser.user_name);
 
             ps.executeUpdate();
         } catch (SQLException e) {
