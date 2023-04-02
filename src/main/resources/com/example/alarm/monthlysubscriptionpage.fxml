@@ -3,27 +3,56 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.effect.SepiaTone?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="480.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.alarm.MonthlySubscriptionPage">
    <children>
-      <DatePicker layoutX="417.0" layoutY="80.0" />
-      <Label layoutX="100.0" layoutY="58.0" text="Order Medicine from Month:" />
-      <Label layoutX="417.0" layoutY="58.0" text="Order Medicine for upto:" />
-      <Label layoutX="253.0" layoutY="58.0" text="Starting Month name" />
-      <Label layoutX="81.0" layoutY="137.0" prefHeight="102.0" prefWidth="290.0" text="Cart Memo">
-         <effect>
-            <SepiaTone />
-         </effect>
-      </Label>
-      <Button layoutX="278.0" layoutY="375.0" mnemonicParsing="false" text="Apply Monthly Subscription" />
-      <Label layoutX="492.0" layoutY="188.0" text="Price" />
-      <Label layoutX="492.0" layoutY="222.0" text="Discounted price" />
-      <Label layoutX="590.0" layoutY="188.0" text="Label" />
-      <Label layoutX="590.0" layoutY="222.0" text="Label" />
-      <Label layoutX="556.0" layoutY="58.0" text="Final Month name" />
-      <DatePicker layoutX="102.0" layoutY="80.0" />
+      <AnchorPane layoutX="-3.0" prefHeight="480.0" prefWidth="473.0" style="-fx-background-color: #e7fdff;">
+         <children>
+            <Label layoutX="124.0" layoutY="-12.0" prefHeight="102.0" prefWidth="290.0" text="Cart Memo">
+               <effect>
+                  <SepiaTone />
+               </effect>
+            </Label>
+            <Label layoutX="270.0" layoutY="200.0" text="Order Medicine for upto:" textFill="#a1a1a1" />
+            <DatePicker layoutX="26.0" layoutY="227.0" style="-fx-border-color: white;" />
+            <Label layoutX="26.0" layoutY="259.0" text="Starting Month name" />
+            <Label layoutX="270.0" layoutY="259.0" text="Final Month name" />
+            <DatePicker layoutX="270.0" layoutY="227.0" style="-fx-border-color: white;" />
+            <Label layoutX="26.0" layoutY="200.0" text="Order Medicine from Month:" textFill="#a1a1a1" />
+            <Text fill="#919090" layoutX="29.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please enter the following information." wrappingWidth="347.499969482422">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Text>
+            <ImageView fitHeight="212.0" fitWidth="290.0" layoutX="92.0" layoutY="284.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@monthlysub-removebg-preview.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <Button layoutX="551.0" layoutY="440.0" mnemonicParsing="false" text="Apply Monthly Subscription" />
+      <Label layoutX="481.0" layoutY="377.0" text="Price" />
+      <Label layoutX="481.0" layoutY="404.0" text="Discounted price" />
+      <Label fx:id="total_order_value" layoutX="754.0" layoutY="377.0" text="Label" />
+      <Label layoutX="754.0" layoutY="404.0" text="Label" />
+      <ScrollPane layoutX="471.0" layoutY="76.0" prefHeight="290.0" prefWidth="323.0" stylesheets="@style.css">
+         <content>
+            <VBox fx:id="monthlyItmContainer" prefHeight="292.0" prefWidth="306.0" />
+         </content>
+      </ScrollPane>
+      <Text fill="#919090" layoutX="481.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Items" wrappingWidth="113.60000000000002">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

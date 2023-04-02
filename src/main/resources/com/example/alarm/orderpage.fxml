@@ -18,7 +18,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="528.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.alarm.orderpagecontroller">
+<AnchorPane prefHeight="480.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.alarm.orderpagecontroller">
    <children>
       <VBox />
        <ScrollPane fitToHeight="true" fitToWidth="true" layoutX="370.0" layoutY="121.0" prefHeight="291.0" prefWidth="347.0" stylesheets="@style.css">

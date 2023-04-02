@@ -22,6 +22,9 @@ public class LoginStaringPagecontroller {
     private Label welcomeText;
 
     @FXML
+    public static Boolean monthlypressed;
+
+    @FXML
     private TextField name;
 
 
@@ -71,6 +74,7 @@ public class LoginStaringPagecontroller {
 
     public void switchToScene4(ActionEvent event) throws IOException {
         String s1="searchpage.fxml";
+        monthlypressed = false;
         FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource(s1));
         stage =(Stage)((Node)event.getSource()).getScene().getWindow();
         Scene scene = new Scene(fxmlLoader.load(), 720, 480);
@@ -101,6 +105,19 @@ public class LoginStaringPagecontroller {
     @FXML
     public void switchtoalaram(ActionEvent event) throws IOException {
         String s1="remview2.fxml";
+        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource(s1));
+        stage =(Stage)((Node)event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(fxmlLoader.load(), 720, 480);
+        stage.setTitle("e-MED");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    public void switchtoMonthly(ActionEvent event) throws IOException
+    {
+        monthlypressed = true;
+        String s1="searchpage.fxml";
         FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource(s1));
         stage =(Stage)((Node)event.getSource()).getScene().getWindow();
         Scene scene = new Scene(fxmlLoader.load(), 720, 480);

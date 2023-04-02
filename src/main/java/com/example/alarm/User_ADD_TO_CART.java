@@ -183,7 +183,12 @@ public class User_ADD_TO_CART implements Initializable {
             System.out.println(products_added_to_cart.Products.get(i).Product_ID + products_added_to_cart.Products.get(i).Addedtocart);
         }
 
-        switchtoOrderPage(e);
+        if(LoginStaringPagecontroller.monthlypressed == Boolean.TRUE)
+        {
+            cart_monthly.Products = products_added_to_cart.Products;
+            switchtoMonthlyrPage(e);
+        }
+        else switchtoOrderPage(e);
 
 
     }
@@ -264,6 +269,16 @@ public class User_ADD_TO_CART implements Initializable {
 
     public void switchtoOrderPage(ActionEvent e) throws IOException {
         String s1="orderpage.fxml";
+        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource(s1));
+        Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        Scene scene = new Scene(fxmlLoader.load(), 720, 528);
+        stage.setTitle("e-MED");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void switchtoMonthlyrPage(ActionEvent e) throws IOException {
+        String s1="monthlysubscriptionpage.fxml";
         FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource(s1));
         Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         Scene scene = new Scene(fxmlLoader.load(), 720, 528);
@@ -428,6 +443,7 @@ public class User_ADD_TO_CART implements Initializable {
         stage.setScene(scene);
         stage.show();
         products.products= products.connecttotable.getProductlist();
+
 
     }
 
