@@ -4,21 +4,19 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class Ordersummary implements Initializable {
+public class OrdersummaryMonthly implements Initializable {
 
     @FXML
     public static Boolean delPressed = Boolean.FALSE;
@@ -60,9 +58,9 @@ public class Ordersummary implements Initializable {
 
     }
     void deletebuttonpressed(ActionEvent event) throws IOException {
-        cart.removeProductByName(oitem.product_name);
-        cart.generateSummary(cart.Products);
-        String s1="orderpage.fxml";
+        cart_monthly.removeProductByName(oitem.product_name);
+        cart_monthly.generateSummary(cart.Products);
+        String s1="monthlysubscriptionpage.fxml";
         Stage stage = (Stage) button.getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource(s1));
         Scene scene = new Scene(fxmlLoader.load());

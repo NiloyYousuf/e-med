@@ -31,7 +31,7 @@
                   <Image url="@monthlysub-removebg-preview.png" />
                </image>
             </ImageView>
-            <Button layoutX="26.0" layoutY="25.0" mnemonicParsing="false" style="-fx-background-color: #e7fdff;">
+            <Button layoutX="26.0" layoutY="25.0" mnemonicParsing="false" onAction="#backbuttonpressed" style="-fx-background-color: #e7fdff;">
                <graphic>
                   <ImageView fitHeight="38.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -42,7 +42,7 @@
             </Button>
          </children>
       </AnchorPane>
-      <Button layoutX="551.0" layoutY="440.0" mnemonicParsing="false" onAction="#onApplypressed" text="Apply Monthly Subscription" />
+      <Button fx:id="apply" layoutX="551.0" layoutY="440.0" mnemonicParsing="false" onAction="#onApplypressed" text="Apply Monthly Subscription" />
       <Label layoutX="481.0" layoutY="377.0" text="Price" />
       <Label layoutX="481.0" layoutY="404.0" text="Discounted price" />
       <Label fx:id="total_order_value" layoutX="754.0" layoutY="377.0" text="Label" />

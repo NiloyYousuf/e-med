@@ -1,10 +1,12 @@
 package com.example.alarm;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -47,6 +49,9 @@ public class MonthlySubscriptionPage implements Initializable {
     @FXML
     private Label total_order_value;
 
+    @FXML
+    private Button apply;
+
     private List<orderedItem> ordereditemList = new ArrayList<>();
     public static orderedItem ot;
     @Override
@@ -69,7 +74,7 @@ public class MonthlySubscriptionPage implements Initializable {
 
                 final int j = i;
 
-                nodes[i] = FXMLLoader.load(getClass().getResource("ordersummary.fxml"));
+                nodes[i] = FXMLLoader.load(getClass().getResource("ordersummarymonthly.fxml"));
 
                 //give the items some effect
 
@@ -86,7 +91,7 @@ public class MonthlySubscriptionPage implements Initializable {
                 e.printStackTrace();
             }
 
-            total_order_value.setText(String.valueOf(cart.Total_Amount));
+            total_order_value.setText(String.valueOf(cart_monthly.Total_Amount));
 
         }
     }
@@ -95,7 +100,7 @@ public class MonthlySubscriptionPage implements Initializable {
     private  Label noitemsaddedtocart;
 
     @FXML
-    protected void onApplypressed() throws SQLException {
+    protected void onApplypressed() throws SQLException, IOException {
         boolean canmakedelivery = true;
 
         if (addressarea.getText().equals("")) {
@@ -123,6 +128,40 @@ public class MonthlySubscriptionPage implements Initializable {
             ButtonNotificationExample b = new ButtonNotificationExample();
             b.showNotificationorderPlaced(new Stage());
 
+            switchtomenu(apply);
+
+            FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("memocard.fxml"));
+            Stage stage = new Stage(StageStyle.TRANSPARENT);
+            Scene scene = new Scene(fxmlLoader.load(), 252, 436);
+            stage.setTitle("e-MED");
+            stage.setScene(scene);
+            stage.show();
+            cart_monthly.Products.clear();
+            cart_monthly.total_items_selected=0;
+
         }
+    }
+
+    public void backbuttonpressed(ActionEvent e ) throws IOException {
+        cart_monthly.generateSummary(cart_monthly.Products);
+        String s1="searchpage.fxml";
+        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource(s1));
+        Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        Scene scene = new Scene(fxmlLoader.load(), 720, 480);
+        stage.setTitle("e-MED");
+        stage.setScene(scene);
+        stage.show();
+
+    }
+
+    public void switchtomenu(Button button ) throws IOException {
+        String s1="userloggedin.fxml";
+        Stage stage = (Stage) button.getScene().getWindow();
+        // stage.close();
+        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource(s1));
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setTitle("e-MED");
+        stage.setScene(scene);
+        stage.show();
     }
 }

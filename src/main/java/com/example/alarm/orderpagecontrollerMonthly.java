@@ -1,22 +1,15 @@
 package com.example.alarm;
 
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.LightBase;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import javafx.util.Duration;
-import org.w3c.dom.Text;
 
 import java.io.IOException;
 import java.net.URL;
@@ -26,7 +19,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 
-public class orderpagecontroller implements Initializable {
+public class orderpagecontrollerMonthly implements Initializable {
 
     @FXML
     private VBox itemContainer;
@@ -90,7 +83,6 @@ public class orderpagecontroller implements Initializable {
              noitemsaddedtocart.setText("");
          }
         if(canmakedelivery==true){
-
             cart.generateSummary(cart.Products);
             String selectedValue = myChoiceBox.getValue();
             orderdao Insertorder = new orderdao();

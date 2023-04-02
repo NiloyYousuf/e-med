@@ -6,17 +6,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.LightBase;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
-import org.w3c.dom.Text;
 
 import java.io.IOException;
 import java.net.URL;
@@ -26,7 +22,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 
-public class orderpagecontroller implements Initializable {
+public class orderpagecontroller_v2 implements Initializable {
 
     @FXML
     private VBox itemContainer;
@@ -90,7 +86,6 @@ public class orderpagecontroller implements Initializable {
              noitemsaddedtocart.setText("");
          }
         if(canmakedelivery==true){
-
             cart.generateSummary(cart.Products);
             String selectedValue = myChoiceBox.getValue();
             orderdao Insertorder = new orderdao();
@@ -158,8 +153,6 @@ public class orderpagecontroller implements Initializable {
                 e.printStackTrace();
             }
 
-            total_order_value.setText(String.valueOf(total));
-
         }
 
         /*for (orderedItem ordereditem : ordereditemList) {
@@ -178,6 +171,26 @@ public class orderpagecontroller implements Initializable {
             itemContainer.getChildren().add(itemBox);
             total_order_value.setText(String.valueOf(cart.Total_Amount));
         }*/
+
+        final Double temp;
+
+        if(Ordersummary.delPressed == Boolean.TRUE) temp = cart.Total_Amount;
+        else temp = total;
+
+        //total_order_value.setText(String.valueOf(total));
+        //if(Ordersummary.delPressed == Boolean.TRUE) total_order_value.setText(cart.Total_Amount.toString());
+        //else total_order_value.setText(String.valueOf(total));
+        Timeline timeline = new Timeline(
+                new KeyFrame(Duration.seconds(1),
+                        e -> {
+                            if(Ordersummary.delPressed == Boolean.TRUE) total_order_value.setText(cart.Total_Amount.toString());
+                            else total_order_value.setText(String.valueOf(temp));
+                            //Ordersummary.delPressed = Boolean.FALSE;
+                        }
+                ));
+
+        timeline.setCycleCount(Timeline.INDEFINITE);
+        timeline.play();
 
     }
 
