@@ -67,7 +67,6 @@ public  class cart {
         // Initialize the total price to zero
         double totalPrice = 0;
         Total_Amount = (double) 0;
-        total_items_selected = 0;
         // Loop through the products in the array and add their IDs and Addedtocart values to the memo
         for (Product product : Products) {
             if (product.getAddedtocart() > 0) {
@@ -86,6 +85,5 @@ public  class cart {
             // Return the memo as a string
             System.out.println(memo.toString());
             return memo.toString();
-
     }
 }

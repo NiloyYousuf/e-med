@@ -14,6 +14,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -71,11 +72,14 @@ public class AdminShowAllProducts implements Initializable {
             imageView.setImage(image);
             imageView.setFitHeight(90);
             imageView.setFitWidth(90);
-            Label descriptionLabel = new Label(item.getProduct_description());
+            Label descriptionLabel = new Label("Medicine Description : "+item.getProduct_description());
+            Label pricelabel=new Label("Medicine Price : "+item.getProduct_price());
+            Label product_ID=new Label("Product ID : "+item.getProduct_ID() );
+            descriptionLabel.setTextAlignment(TextAlignment.LEFT);
             descriptionLabel.setWrapText(true);
-            descriptionLabel.setMaxWidth(560);
-            Label nameLabel = new Label(item.getProduct_name());
-            VBox NameAndDesc=new VBox(nameLabel,descriptionLabel);
+            descriptionLabel.setMinSize(560,100);
+            Label nameLabel = new Label("Medicine name : "+item.getProduct_name());
+            VBox NameAndDesc=new VBox(product_ID,nameLabel,pricelabel,descriptionLabel);
             Button deleetebutton=new Button("Delete");
             deleetebutton.minWidth(10);
 
@@ -95,7 +99,7 @@ public class AdminShowAllProducts implements Initializable {
 
 VBox vbox=new VBox(deleetebutton,editbutton);
 
-            NameAndDesc.setStyle("-fx-background-color:#CBC3E3;");
+            NameAndDesc.setStyle("-fx-background-color:#F6E3BA;");
             itemBox.getChildren().addAll(new HBox(imageView,NameAndDesc,vbox));
             itemContainer.getChildren().add(itemBox);
 

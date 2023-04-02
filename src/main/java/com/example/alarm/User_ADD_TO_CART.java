@@ -64,13 +64,6 @@ public class User_ADD_TO_CART implements Initializable {
         for (Item item : itemList) {
             HBox itemBox = new HBox(30);
 
-            itemBox.setOnMouseClicked(event-> {
-                try {
-                    Hboxclicked(item.getProduct_image_url());
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-            });
 
 
             ImageView imageView = new ImageView(item.getProduct_image_url());
@@ -130,7 +123,9 @@ public class User_ADD_TO_CART implements Initializable {
             itemContainer.getChildren().add(itemBox);
         }
 
-        cartlabel.setText(String.valueOf(products_added_to_cart.total_items_selected));
+        cartlabel.setText(String.valueOf(cart.total_items_selected));
+
+        System.out.println(cart.total_items_selected);
 
 
     }
@@ -143,6 +138,7 @@ public class User_ADD_TO_CART implements Initializable {
         if(!Quantity.getText().equals("0")) {
             Quantity.setText(Integer.toString(Integer.parseInt(Quantity.getText()) - 1));
             cartlabel.setText(Integer.toString(Integer.parseInt(cartlabel.getText()) - 1));
+            cart.total_items_selected--;
             item.selected--;
         }
 
@@ -153,6 +149,7 @@ public class User_ADD_TO_CART implements Initializable {
 
         Quantity.setText(Integer.toString(Integer.parseInt(Quantity.getText())+1));
         cartlabel.setText(Integer.toString(Integer.parseInt(cartlabel.getText())+1));
+        cart.total_items_selected++;
         item.selected++;
     }
 
@@ -253,17 +250,6 @@ public class User_ADD_TO_CART implements Initializable {
     }
 
 
-    public void Hboxclicked(String product_image_url) throws IOException {
-     System.out.println("Hobox Clicked");
-        String s1="ProductdepthPage.fxml";
-        new productIndepthPagecontroller(product_image_url,"a ", " d", " d", " d"," 1");
-        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource(s1));
-        Stage stage = new Stage();
-        Scene scene = new Scene(fxmlLoader.load(), 720, 480);
-        stage.setTitle("e-MED");
-        stage.setScene(scene);
-        stage.show();
-    }
 
 
 
