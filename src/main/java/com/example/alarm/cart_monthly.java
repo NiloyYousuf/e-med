@@ -42,6 +42,16 @@ public  class cart_monthly {
 // update the original ArrayList to hold the non-duplicate products
         Products.clear();
         Products.addAll(nonDuplicateProducts);
+
+        total_items_selected=0;
+        Total_Amount= (double) 0;
+        for (Product product : Products) {
+            System.out.println(product.Product_Description);
+            System.out.println(product.getProduct_Price());
+            total_items_selected += product.getAddedtocart();
+            Total_Amount+=product.getAddedtocart()*Double.parseDouble(product.Product_Price);
+        }
+        generateSummary(cart_monthly.Products);
     }
 
 
@@ -54,7 +64,7 @@ public  class cart_monthly {
         Total_Amount = (double) 0;
         total_items_selected = 0;
         // Loop through the products in the array and add their IDs and Addedtocart values to the memo
-        for (Product product : products) {
+        for (Product product : Products) {
             if (product.getAddedtocart() > 0) {
                 memo.append("Product ID: " + product.getProduct_ID() + "\n");
                 memo.append("Quantity: " + product.getAddedtocart() + "\n\n");
@@ -64,6 +74,7 @@ public  class cart_monthly {
                 Total_Amount += Double.parseDouble(product.getProduct_Price()) * product.getAddedtocart();
                 //total_items_selected+=Integer.parseInt(product.getAddedtocart());
             }
+        }
 
             // Add the total price to the memo
             memo.append("Total Order price: " + totalPrice);
@@ -75,7 +86,5 @@ public  class cart_monthly {
 
         }
 
-
-        return null;
     }
-};
+

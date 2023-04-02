@@ -28,6 +28,7 @@ public class MonthlySubscriptionDAO {
                         resultSet.getString("Delivery_address"),
                         resultSet.getString("Phone_no"),
                         resultSet.getString("Total_Cost_Monthly"),
+                        resultSet.getString("Delivered_from"),
                         resultSet.getString("Delivered_till")
 
                 );
@@ -59,15 +60,16 @@ public class MonthlySubscriptionDAO {
              Statement statement = connection.createStatement();
              ResultSet resultSet = statement.executeQuery("SELECT * FROM monthly_subscription")) {
             while (resultSet.next()) {
-                String id = resultSet.getString("idmonthly_subscription");
+                String id = resultSet.getString("idmonthly");
                 String userName = resultSet.getString("User_name");
                 String orderMemo = resultSet.getString("Order_memo");
                 String deliveryAddress = resultSet.getString("Delivery_address");
                 String phoneNo = resultSet.getString("Phone_no");
                 String totalCostMonthly = resultSet.getString("Total_Cost_Monthly");
+                String deliveredFrom = resultSet.getString("Delivered_from");
                 String deliveredTill = resultSet.getString("Delivered_till");
                 //System.out.println(id+ userName+totalCostMonthly+deliveredTill);
-                MonthlySubscription subscription = new MonthlySubscription(id, userName, orderMemo, deliveryAddress, phoneNo, totalCostMonthly, deliveredTill);
+                MonthlySubscription subscription = new MonthlySubscription(id, userName, orderMemo, deliveryAddress, phoneNo, totalCostMonthly, deliveredFrom, deliveredTill);
                 subscriptions.add(subscription);
             }
         } catch (SQLException e) {

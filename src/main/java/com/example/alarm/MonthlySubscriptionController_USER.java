@@ -45,7 +45,7 @@ private  Label useID;
 
             // If the result set has a row, populate the labels with the data
             if (rs.next()) {
-                useID.setText(rs.getString("idMonthly_subscription"));
+                useID.setText(rs.getString("idMonthly"));
                 userNameLabel.setText(rs.getString("User_name"));
                 orderMemoLabel.setText(rs.getString("Order_memo"));
                 deliveryAddressLabel.setText(rs.getString("Delivery_address"));

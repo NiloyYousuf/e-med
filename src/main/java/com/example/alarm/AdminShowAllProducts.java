@@ -123,7 +123,7 @@ VBox vbox=new VBox(deleetebutton,editbutton);
 
         if (alert.getResult() == ButtonType.YES) {
             System.out.println(productId);
-            try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/project", "root", "200041123");
+            try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/project", "root", "admin");
                  PreparedStatement stmt = conn.prepareStatement("DELETE FROM product_table WHERE Product_ID = ?")) {
                 stmt.setString(1, productId);
                 stmt.executeUpdate();

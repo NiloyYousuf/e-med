@@ -41,6 +41,8 @@ public class MonthlySubscriptionAdminController implements Initializable {
 
     @FXML
     private TableColumn<MonthlySubscription, String> phoneNoColumn;
+    @FXML
+    private TableColumn<MonthlySubscription, String> deliveredFromColumn;
 
     @FXML
     private TableColumn<MonthlySubscription, String> deliveredTillColumn;
@@ -75,9 +77,13 @@ public class MonthlySubscriptionAdminController implements Initializable {
         deliveryAddressColumn.setCellValueFactory(new PropertyValueFactory<>("deliveryAddress"));
         phoneNoColumn.setCellValueFactory(new PropertyValueFactory<>("phoneNo"));
         SubscriptionFeesColumn.setCellValueFactory(new PropertyValueFactory<>("totalCostMonthly"));
+        deliveredFromColumn.setCellValueFactory(cellData-> {
+            String value = cellData.getValue().getDeliveredFrom();
+            return new SimpleStringProperty(value);
+        });
         deliveredTillColumn.setCellValueFactory(cellData -> {
             String value = cellData.getValue().getDeliveredTill();
-            return new SimpleStringProperty(value.substring(0, 3)); // show only the date part
+            return new SimpleStringProperty(value); // show only the date part
         });
 
         // Initialize the month combo box

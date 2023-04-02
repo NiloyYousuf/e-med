@@ -7,15 +7,17 @@ public class MonthlySubscription {
     private String deliveryAddress;
     private String phoneNo;
     private String totalCostMonthly;
+    private String deliveredFrom;
     private String deliveredTill;
 
-    public MonthlySubscription(String id, String userName, String orderMemo, String deliveryAddress, String phoneNo, String totalCostMonthly, String deliveredTill) {
+    public MonthlySubscription(String id, String userName, String orderMemo, String deliveryAddress, String phoneNo, String totalCostMonthly, String deliveredFrom, String deliveredTill) {
         this.userID = id;
         this.userName = userName;
         this.orderMemo = orderMemo;
         this.deliveryAddress = deliveryAddress;
         this.phoneNo = phoneNo;
         this.totalCostMonthly = totalCostMonthly;
+        this.deliveredFrom = deliveredFrom;
         this.deliveredTill = deliveredTill;
     }
 
@@ -68,6 +70,9 @@ public class MonthlySubscription {
 
     public String getDeliveredTill() {
         return deliveredTill;
+    }
+    public String getDeliveredFrom() {
+        return deliveredFrom;
     }
 
     public String getId() {    return userID;   }

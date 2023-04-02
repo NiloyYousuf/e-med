@@ -28,7 +28,7 @@
                 </FXCollections>
             </items>
         </ComboBox>
-        <TableView fx:id="monthlySubscriptionTable" layoutX="14.0" layoutY="57.0" prefHeight="414.0" prefWidth="695.0">
+        <TableView fx:id="monthlySubscriptionTable" layoutX="14.0" layoutY="57.0" prefHeight="414.0" prefWidth="794.0">
             <columns>
                 <TableColumn fx:id="userID" prefWidth="75.0" text="ID" />
                 <TableColumn fx:id="userNameColumn" prefWidth="75.0" text="User" />
@@ -36,6 +36,7 @@
                 <TableColumn fx:id="deliveryAddressColumn" prefWidth="132.800048828125" text="Address" />
                 <TableColumn fx:id="phoneNoColumn" prefWidth="92.79998779296875" text="Phone" />
                 <TableColumn fx:id="SubscriptionFeesColumn" prefWidth="114.4000244140625" text="Subscription Fees" />
+                <TableColumn fx:id="deliveredFromColumn" prefWidth="127.199951171875" text="Delivered From" />
                 <TableColumn fx:id="deliveredTillColumn" prefWidth="127.199951171875" text="Delivered Till" />
             </columns>
         </TableView>

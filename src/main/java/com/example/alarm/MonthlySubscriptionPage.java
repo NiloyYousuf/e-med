@@ -4,11 +4,19 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Scene;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -19,7 +27,26 @@ public class MonthlySubscriptionPage implements Initializable {
     private VBox monthlyItmContainer;
 
     @FXML
+    private Label Deliveryaddressmissing;
+
+    @FXML
+    private TextField addressarea;
+
+    @FXML
+    private Label contact_no_missing;
+
+    @FXML
+    private DatePicker endMonth;
+
+    @FXML
+    private TextField phonenoarea;
+
+    @FXML
+    private DatePicker startMonth;
+
+    @FXML
     private Label total_order_value;
+
     private List<orderedItem> ordereditemList = new ArrayList<>();
     public static orderedItem ot;
     @Override
@@ -60,6 +87,41 @@ public class MonthlySubscriptionPage implements Initializable {
             }
 
             total_order_value.setText(String.valueOf(cart.Total_Amount));
+
+        }
+    }
+
+    @FXML
+    private  Label noitemsaddedtocart;
+
+    @FXML
+    protected void onApplypressed() throws SQLException {
+        boolean canmakedelivery = true;
+
+        if (addressarea.getText().equals("")) {
+            Deliveryaddressmissing.setText("Please put your Delivery Address");
+            canmakedelivery = false;
+        } else {
+            Deliveryaddressmissing.setText("");
+        }
+        if (phonenoarea.getText().equals("")) {
+            contact_no_missing.setText("Please put your contact number");
+            canmakedelivery = false;
+        } else {
+            contact_no_missing.setText("");
+        }
+        if (total_order_value.getText().equals("")) {
+            noitemsaddedtocart.setText("Please Add items to cart First");
+            canmakedelivery = false;
+        }
+
+        if (canmakedelivery == true) {
+            cart_monthly.generateSummary(cart_monthly.Products);
+            orderdao Insertorder = new orderdao();
+            Insertorder.addOrderMonthly(currentUser.user_name, phonenoarea.getText(), String.valueOf(cart.Total_Amount), addressarea.getText(), cart_monthly.generateSummary(cart_monthly.Products), startMonth.getValue().toString(), endMonth.getValue().toString());
+
+            ButtonNotificationExample b = new ButtonNotificationExample();
+            b.showNotificationorderPlaced(new Stage());
 
         }
     }
