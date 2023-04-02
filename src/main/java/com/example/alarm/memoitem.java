@@ -32,7 +32,6 @@ public class memoitem implements Initializable {
         quan.setText(" x" + Memocard.ot.Addedtocart.toString());
         uprice.setText(Memocard.ot.Product_Price);
         totla.setText(String.valueOf(Integer.parseInt(Memocard.ot.Product_Price) * Memocard.ot.Addedtocart));
-
     }
 
 

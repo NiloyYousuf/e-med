@@ -102,6 +102,7 @@ public class orderpagecontroller implements Initializable {
             stage.setTitle("e-MED");
             stage.setScene(scene);
             stage.show();
+
         }
     }
 
@@ -121,12 +122,12 @@ public class orderpagecontroller implements Initializable {
 
         int i=0;
         Node[] nodes = new Node[ordereditemList.size()];
-
+        Double total=0.0;
         for(orderedItem orderedItem : ordereditemList)
         {
             try {
                 ot = orderedItem;
-
+                total+=Double.parseDouble(ot.getProduct_price())*Double.parseDouble(ot.getProduct_selected());
                 final int j = i;
 
                 nodes[i] = FXMLLoader.load(getClass().getResource("ordersummary.fxml"));
@@ -146,7 +147,8 @@ public class orderpagecontroller implements Initializable {
                 e.printStackTrace();
             }
 
-            total_order_value.setText(String.valueOf(cart.Total_Amount));
+            total_order_value.setText(String.valueOf(total));
+
 
         }
 
@@ -265,7 +267,16 @@ public void backbuttonpressed(ActionEvent e ) throws IOException {
 
 }
 
-
+//    public void switchtomenu(ActionEvent e ) throws IOException {
+//        String s1="userloggerin.fxml";
+//        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource(s1));
+//        Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+//        Scene scene = new Scene(fxmlLoader.load(), 720, 480);
+//        stage.setTitle("e-MED");
+//        stage.setScene(scene);
+//        stage.show();
+//
+//    }
 
 
 }

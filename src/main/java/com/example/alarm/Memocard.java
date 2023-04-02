@@ -42,6 +42,7 @@ public class Memocard implements Initializable {
         dttime.setText(now.toString());
         dlvrdto.setText("Delivered to: " + currentUser.user_name);
 
+
         for(Product product : cart.Products)
         {
             try {
@@ -65,10 +66,10 @@ public class Memocard implements Initializable {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
-            grndtotal.setText(String.valueOf(cart.Total_Amount));
-
         }
+        cart.generateSummary(cart.Products);
+        grndtotal.setText(String.valueOf(cart.Total_Amount));
+
     }
 
     @FXML

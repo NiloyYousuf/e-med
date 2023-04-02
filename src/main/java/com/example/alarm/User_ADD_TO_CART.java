@@ -221,7 +221,7 @@ public class User_ADD_TO_CART implements Initializable {
             this.product_total_available =Product_Total_Available;
             this.product_price =Product_Price;
             this.product_image_url =Product_Image_URL;
-            this.selected=selected;
+            this.selected=0;
         }
 
 
