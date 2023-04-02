@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane fx:id="hbox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="46.0" prefWidth="260.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.alarm.memoitem">
+   <children>
+      <Label fx:id="mname" layoutX="14.0" layoutY="6.0" text="mname">
+         <font>
+            <Font name="Arial Narrow Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="uprice" layoutX="14.0" layoutY="24.0" text="unitprice">
+         <font>
+            <Font name="Arial Narrow" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="quan" layoutX="194.0" layoutY="16.0" text="Quan">
+         <font>
+            <Font name="Arial Narrow" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="totla" layoutX="226.0" layoutY="15.0" text="total">
+         <font>
+            <Font name="Arial Narrow" size="12.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

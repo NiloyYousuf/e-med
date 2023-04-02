@@ -54,6 +54,7 @@ public void removeduplicatearraylist() {
         // Add the total price to the memo
         memo.append("Total Order price: " + totalPrice);
 
+
         // Return the memo as a string
         System.out.println(memo.toString());
         return memo.toString();

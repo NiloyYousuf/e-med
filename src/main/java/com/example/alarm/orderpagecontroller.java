@@ -11,6 +11,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import org.w3c.dom.Text;
 
 import java.io.IOException;
@@ -50,7 +51,7 @@ public class orderpagecontroller implements Initializable {
     @FXML
     private ChoiceBox<String> myChoiceBox;
     @FXML
-    private  void placeorderButtonPressed() throws SQLException {
+    private  void placeorderButtonPressed() throws SQLException, IOException {
        cart.generateSummary(cart.Products);
         String selectedValue = myChoiceBox.getValue();
         orderdao Insertorder=new orderdao();
@@ -59,6 +60,13 @@ public class orderpagecontroller implements Initializable {
 
        ButtonNotificationExample b=new ButtonNotificationExample();
         b.showNotificationorderPlaced(new Stage());
+
+        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("memocard.fxml"));
+        Stage stage = new Stage(StageStyle.TRANSPARENT);
+        Scene scene = new Scene(fxmlLoader.load(), 252, 400);
+        stage.setTitle("e-MED");
+        stage.setScene(scene);
+        stage.show();
     }
 
     public static orderedItem ot = new orderedItem();
