@@ -38,8 +38,7 @@ public class LoginStaringPagecontroller {
    // protected void onHelloButtonClick() {
    //     welcomeText.setText("Welcome to JavaFX Application!");
    // }
-   @FXML
-   private  Label WelcomeLabel=new Label(currentUser.user_name);
+
 
 
     @FXML
@@ -117,7 +116,7 @@ public class LoginStaringPagecontroller {
     public void switchtoMonthly(ActionEvent event) throws IOException
     {
         monthlypressed = true;
-        String s1="searchpage.fxml";
+        String s1="usermonthly.fxml";
         FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource(s1));
         stage =(Stage)((Node)event.getSource()).getScene().getWindow();
         Scene scene = new Scene(fxmlLoader.load(), 720, 480);
@@ -185,7 +184,7 @@ public class LoginStaringPagecontroller {
         stage.setTitle("e-MED");
         stage.setScene(scene);
         stage.show();
-        WelcomeLabel.setText(currentUser.user_name);
+
     }
 
     public void register_button_click(ActionEvent event) throws IOException, SQLException, ClassNotFoundException{
@@ -213,7 +212,6 @@ public class LoginStaringPagecontroller {
                 System.out.println("Inserted");
                 currentUser.user_name=u_name;
                 switchToScene3(event,u_name);
-                WelcomeLabel.setText(u_name);
             }
 
             else if(allnotfilled==false)

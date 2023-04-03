@@ -43,7 +43,7 @@
                </children>
             </AnchorPane>
          </graphic></Button>
-      <Button layoutX="157.0" layoutY="256.0" mnemonicParsing="false" onAction="#switch_to_show_orders_page" prefHeight="150.0" prefWidth="157.0" stylesheets="@userloggedinstyleadd.css">
+      <Button layoutX="267.0" layoutY="259.0" mnemonicParsing="false" onAction="#switch_to_show_orders_page" prefHeight="150.0" prefWidth="157.0" stylesheets="@userloggedinstyleadd.css">
          <graphic>
             <AnchorPane prefHeight="165.0" prefWidth="170.0">
                <children>
@@ -72,23 +72,5 @@
             <Image url="@Screenshot_20230125_125512-removebg-preview.png" />
          </image>
       </ImageView>
-      <Button layoutX="377.0" layoutY="256.0" mnemonicParsing="false" onAction="#switch_to_show_monthly_subscriptions" prefHeight="150.0" prefWidth="178.0" stylesheets="@userloggedinstyleadd.css">
-         <graphic>
-            <AnchorPane prefHeight="165.0" prefWidth="170.0">
-               <children>
-                  <ImageView fitHeight="124.0" fitWidth="129.0" layoutX="25.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@showmonthlysub.png" />
-                     </image>
-                  </ImageView>
-                  <Text layoutY="147.0" opacity="0.53" strokeType="OUTSIDE" strokeWidth="0.0" text="Monthly Subscriptions" textAlignment="CENTER" wrappingWidth="170.39999999999986">
-                     <font>
-                        <Font name="Candara Light" size="18.0" />
-                     </font>
-                  </Text>
-               </children>
-            </AnchorPane>
-         </graphic>
-      </Button>
    </children>
 </AnchorPane>
