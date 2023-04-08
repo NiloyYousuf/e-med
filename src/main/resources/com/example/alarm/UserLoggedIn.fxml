@@ -70,7 +70,7 @@
          <graphic>
             <AnchorPane prefHeight="345.0" prefWidth="206.0" style="-fx-background-color: #ececec;">
                <children>
-                  <Button layoutX="22.0" layoutY="282.0" mnemonicParsing="false" onAction="#switchtoMonthly" prefHeight="49.0" prefWidth="162.0" text="Monthly Subscription">
+                  <Button layoutX="22.0" layoutY="282.0" mnemonicParsing="false" onAction="#onPreviousOrdersClicked" prefHeight="49.0" prefWidth="162.0" text="Previous Orders">
                      <stylesheets>
                         <URL value="@userloggedinstyle.css" />
                         <URL value="@userloggedinstyle.css" />
@@ -82,7 +82,7 @@
                      </image>
                   </ImageView>
                   <Line endX="87.0" endY="-1.52587890625E-5" layoutX="103.0" layoutY="130.0" startX="-86.5999755859375" startY="-1.52587890625E-5" stroke="#d7d6d6" strokeLineCap="ROUND" strokeWidth="2.0" />
-                  <Text fill="#7e7e7e" layoutX="14.0" layoutY="171.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Have to take loads of medicines every month? Could use a medicine renewal system? Delivers renewed medicines monthly at your doorstep that you need on a daily basis." textAlignment="CENTER" wrappingWidth="178.79998779296875">
+                  <Text fill="#7e7e7e" layoutX="22.0" layoutY="177.0" strokeType="OUTSIDE" strokeWidth="0.0" text="View All your Previous Orders" textAlignment="CENTER" wrappingWidth="178.79998779296875">
                      <font>
                         <Font name="System Italic" size="13.0" />
                      </font>
@@ -96,14 +96,5 @@
             <Font name="AIGDT" size="18.0" />
          </font>
       </Text>
-      <Button fx:id="Logout1" layoutX="550.0" layoutY="26.0" mnemonicParsing="false" onAction="#onPreviousOrdersClicked" opacity="0.51" prefHeight="39.0" prefWidth="189.0" style="-fx-background-radius: 30; -fx-background-color: white;" stylesheets="@userloggedinstyleadd.css" text="Previous Orders">
-         <graphic>
-            <ImageView fitHeight="31.0" fitWidth="34.0" opacity="0.89" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@prevorders.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
    </children>
 </Pane>

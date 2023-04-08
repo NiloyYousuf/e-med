@@ -109,6 +109,7 @@ private Button button;
 
                 if(result.get() == ButtonType.OK)
                 {
+                    Insertorder.updateStock();
                     Insertorder.addOrderMonthly(currentUser.user_name, phonenoarea.getText(), String.valueOf(cart.Total_Amount), addressarea.getText(), cart.generateSummary(cart.Products), delivStart.getValue().toString());
                     ButtonNotificationExample b = new ButtonNotificationExample();
                     b.showNotificationorderPlaced(new Stage());
@@ -132,7 +133,7 @@ private Button button;
             }
             else {
                 //orderdao Insertorder = new orderdao();
-
+                Insertorder.updateStock();
                 Insertorder.addOrder(currentUser.user_name, phonenoarea.getText(), String.valueOf(cart.Total_Amount), addressarea.getText(), cart.generateSummary(cart.Products), "Order Received");
                 System.out.println(selectedValue);
 
@@ -335,7 +336,7 @@ public void backbuttonpressed(ActionEvent e ) throws IOException {
 }
 
     public void switchtomenu(Button button ) throws IOException {
-       String s1="userloggedin.fxml";
+       String s1="UserLoggedInprevious.fxml";
         Stage stage = (Stage) button.getScene().getWindow();
        // stage.close();
        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource(s1));

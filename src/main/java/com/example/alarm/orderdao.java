@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.HashMap;
 
 public class orderdao {
 
@@ -137,5 +138,23 @@ public class orderdao {
                 conn.close();
             }
         }
+    }
+
+    public void updateStock() throws SQLException, ClassNotFoundException {
+        Database_connection dbconn = new Database_connection();
+        Connection conn = dbconn.conn;
+        for(Product products : cart.Products)
+        {
+            try {
+                PreparedStatement ps = conn.prepareStatement("update product_table set Total_Avaiable = ? where Product_ID = ?");
+                ps.setInt(1, Integer.parseInt(products.Product_Total_Available) - products.Addedtocart);
+                ps.setString(2, products.Product_ID);
+                User_ADD_TO_CART.availables.put(products.Product_ID, Integer.parseInt(products.Product_Total_Available) - products.Addedtocart);
+                ps.executeUpdate();
+            } catch (SQLException e) {
+                System.out.println(" Error while connecting to database. Exception code : " + e);
+            }
+        }
+
     }
 }

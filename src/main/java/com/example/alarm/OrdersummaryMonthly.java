@@ -60,7 +60,7 @@ public class OrdersummaryMonthly implements Initializable {
     void deletebuttonpressed(ActionEvent event) throws IOException {
         cart_monthly.removeProductByName(oitem.product_name);
         cart_monthly.generateSummary(cart.Products);
-        String s1="monthlysubscriptionpage.fxml";
+        String s1="nomonthlysubscriptionpage.fxml";
         Stage stage = (Stage) button.getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource(s1));
         Scene scene = new Scene(fxmlLoader.load());

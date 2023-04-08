@@ -13,7 +13,7 @@ import  javafx.stage.Stage;
 import  javafx.scene.control.TextField;
 import  javafx.scene.control.PasswordField;
 import java.io.IOException;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 
 import javafx.util.Pair;
@@ -59,7 +59,7 @@ public class LoginStaringPagecontroller {
     private  Label unmatchedMessage;
 
     public void switchToScene3(ActionEvent event,String username) throws IOException {
-        String s1="UserLoggedIn.fxml";
+        String s1="UserLoggedInprevious.fxml";
         FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource(s1));
         stage =(Stage)((Node)event.getSource()).getScene().getWindow();
         Scene scene = new Scene(fxmlLoader.load(), 720, 480);
@@ -113,10 +113,32 @@ public class LoginStaringPagecontroller {
     }
 
     @FXML
-    public void switchtoMonthly(ActionEvent event) throws IOException
-    {
+    public void switchtoMonthly(ActionEvent event) throws IOException, SQLException, ClassNotFoundException {
         monthlypressed = true;
-        String s1="showMontlySubpage.fxml";
+        Database_connection dbconn = new Database_connection();
+        Connection conn = dbconn.conn;
+        String s1 = new String();
+        try {
+
+            Statement stmt = ((java.sql.Connection) conn).createStatement();
+            PreparedStatement ps = conn.prepareStatement("select * from monthly_subscription where User_name = ?");
+            ps.setString(1, currentUser.user_name);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next() == Boolean.TRUE) {
+                s1="showMontlySubpage.fxml";
+            } else {
+
+                s1="nomonthlysub.fxml";
+            }
+            stmt.close();
+            ((java.sql.Connection) conn).close();
+
+
+        } catch (SQLException e) {
+            System.out.println(" Error while connecting to database. Exception code : " + e);
+        }
+
         FXMLLoader fxmlLoader = new FXMLLoader(MonthlySubscriptionPage.class.getResource(s1));
         stage =(Stage)((Node)event.getSource()).getScene().getWindow();
         Scene scene = new Scene(fxmlLoader.load(), 720, 480);
@@ -238,6 +260,16 @@ public class LoginStaringPagecontroller {
         stage.show();
     }
 
+    @FXML
+    public void baccpressed(ActionEvent event) throws IOException {
+        String s1="UserLoggedInprevious.fxml";
+        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource(s1));
+        stage =(Stage)((Node)event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(fxmlLoader.load(), 720, 480);
+        stage.setTitle("e-MED");
+        stage.setScene(scene);
+        stage.show();
+    }
 
 
 

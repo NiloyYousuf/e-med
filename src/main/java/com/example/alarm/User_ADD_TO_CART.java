@@ -1,5 +1,6 @@
 package com.example.alarm;
-import java.util.Arrays;
+import java.util.*;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,6 +9,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -22,9 +24,6 @@ import javafx.stage.Stage;
 import  java.sql.*;
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ResourceBundle;
 
 
 public class User_ADD_TO_CART implements Initializable {
@@ -40,7 +39,7 @@ public class User_ADD_TO_CART implements Initializable {
 
     private List<Item> itemList = new ArrayList<>();
 
-
+    public static HashMap<String, Integer> availables = new HashMap<>();
 
 
     cart products_added_to_cart;
@@ -53,9 +52,12 @@ public class User_ADD_TO_CART implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         // Initialize the item list
 
-
+        availables.clear();
         for (int i=0;i<products.products.size();i++)
+        {
             itemList.add(new User_ADD_TO_CART.Item(products.products.get(i).Product_ID,products.products.get(i).Product_Name,products.products.get(i).Product_Price,products.products.get(i).Product_Total_Available,products.products.get(i).Product_Description,products.products.get(i).Product_Image_URL,products.products.get(i).Addedtocart));
+            availables.put(products.products.get(i).Product_ID, Integer.parseInt(products.products.get(i).Product_Total_Available));
+        }
 
 
         //   itemList.add(new Item("Item 5", "This is item 5", "C://Users//yousu//IdeaProjects//scrollingfxml//src//main//resources//com//example//img.png"));
@@ -145,15 +147,21 @@ public class User_ADD_TO_CART implements Initializable {
 
     public  void increase(Button button1, Label Quantity,Item item)
     {
+        if(availables.get(item.product_ID) >= Integer.parseInt(Quantity.getText())+1)
+        {
+            Quantity.setText(Integer.toString(Integer.parseInt(Quantity.getText())+1));
+            cartlabel.setText(Integer.toString(Integer.parseInt(cartlabel.getText())+1));
+            cart.total_items_selected++;
+            item.selected++;
+        }
+        else
+        {
+            Alert alert = new Alert(Alert.AlertType.WARNING, "");
+            alert.setHeaderText("Stock Limit Reached!");
+            alert.showAndWait();
+        }
 
-        Quantity.setText(Integer.toString(Integer.parseInt(Quantity.getText())+1));
-        cartlabel.setText(Integer.toString(Integer.parseInt(cartlabel.getText())+1));
-        cart.total_items_selected++;
-        item.selected++;
     }
-
-
-
 
 
 
@@ -191,7 +199,7 @@ public class User_ADD_TO_CART implements Initializable {
 
 
     public  void backbuttonpressed(ActionEvent event) throws IOException {
-        String s1="UserLoggedIn.fxml";
+        String s1="UserLoggedInprevious.fxml";
         FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource(s1));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(fxmlLoader.load(), 720, 480);
@@ -263,7 +271,7 @@ public class User_ADD_TO_CART implements Initializable {
     }
 
     public void switchtoMonthlyrPage(ActionEvent e) throws IOException {
-        String s1="monthlysubscriptionpage.fxml";
+        String s1="nomonthlysubscriptionpage.fxml";
         FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource(s1));
         Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         Scene scene = new Scene(fxmlLoader.load(), 720, 528);
