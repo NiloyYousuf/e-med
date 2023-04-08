@@ -87,7 +87,13 @@ public class AdminShowAllProducts implements Initializable {
           deleetebutton.setStyle("-fx-background-color: #E74C3C; -fx-text-fill: white;");
           deleetebutton.setOnMouseEntered(e -> deleetebutton.setStyle("-fx-background-color: #E74C3C; -fx-text-fill: white;"));
           deleetebutton.setOnMouseExited(e -> deleetebutton.setStyle("-fx-background-color: #F74C3C; -fx-text-fill: white;"));
-          deleetebutton.setOnAction(event -> deleteProduct(item.getProduct_ID()));
+          deleetebutton.setOnAction(event -> {
+              try {
+                  deleteProduct(item.getProduct_ID());
+              } catch (IOException e) {
+                  throw new RuntimeException(e);
+              }
+          });
 
           descriptionLabel.setAlignment(Pos.TOP_LEFT);
 
@@ -119,14 +125,14 @@ VBox vbox=new VBox(deleetebutton,editbutton);
     }
 
 
-    public void deleteProduct(String productId) {
+    public void deleteProduct(String productId) throws IOException {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to delete this product?", ButtonType.YES, ButtonType.NO);
         alert.setHeaderText(null);
         alert.showAndWait();
 
         if (alert.getResult() == ButtonType.YES) {
             System.out.println(productId);
-            try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/project", "root", "200041123");
+            try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/project", "root", "admin");
                  PreparedStatement stmt = conn.prepareStatement("DELETE FROM product_table WHERE Product_ID = ?")) {
                 stmt.setString(1, productId);
                 stmt.executeUpdate();
@@ -134,7 +140,9 @@ VBox vbox=new VBox(deleetebutton,editbutton);
                 System.out.println("COnnection failed");
                 e.printStackTrace();
             }
+
         }
+        switchtomenu(Cart);
     }
 
 
@@ -181,7 +189,15 @@ VBox vbox=new VBox(deleetebutton,editbutton);
         }
 
     }
-
+    public void switchtomenu(Button button ) throws IOException {
+        String s1="Admin_view_all_products.fxml";
+        Stage stage = (Stage) button.getScene().getWindow();
+        // stage.close();
+        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource(s1));
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setTitle("e-MED");
+        stage.setScene(scene);
+        stage.show();}
 
 
 }

@@ -30,7 +30,7 @@
                 <Font name="Baskerville Old Face" size="38.0" />
             </font>
         </Text>
-        <TextField fx:id="alarmTime" alignment="CENTER" disable="true" editable="false" layoutX="35.0" layoutY="62.0" />
+        <TextField fx:id="alarmTime" alignment="CENTER" disable="true" editable="false" layoutX="35.0" layoutY="62.0" visible="false" />
       <TextField fx:id="hourfield" alignment="CENTER" disable="true" layoutX="48.0" layoutY="245.0" prefHeight="38.0" prefWidth="126.0" text="01" />
       <Button fx:id="hourup" blendMode="DARKEN" layoutX="180.0" layoutY="237.0" mnemonicParsing="false" onAction="#setHourup" opacity="0.01" prefHeight="15.0" prefWidth="9.0" />
       <Button fx:id="hourdown" layoutX="179.0" layoutY="268.0" mnemonicParsing="false" onAction="#setHourdown" opacity="0.01" prefHeight="9.0" prefWidth="16.0" />
@@ -120,7 +120,6 @@
       </Button>
       <Button layoutX="233.0" layoutY="285.0" mnemonicParsing="false" onAction="#onSyringeClicked" opacity="0.43" prefHeight="27.0" prefWidth="63.0" style="-fx-border-color: white;" text="Syringe" />
       <VBox fx:id="days" disable="true" layoutX="571.0" layoutY="197.0" prefHeight="170.0" prefWidth="100.0" />
-      <TextField fx:id="mednum" alignment="CENTER" layoutX="520.0" layoutY="48.0" promptText="Number" style="-fx-border-color: white;" />
       <ComboBox fx:id="nums" layoutX="77.0" layoutY="178.0" opacity="0.58" prefHeight="26.0" prefWidth="68.0" promptText="1" style="-fx-background-color: rgba(71, 22, 91, 0.32);" />
       <Line endX="63.5999755859375" endY="361.3999938964844" layoutX="157.0" layoutY="90.0" opacity="0.15" startX="63.5999755859375" startY="107.79998779296875" strokeWidth="0.5" />
       <Button layoutX="296.0" layoutY="284.0" mnemonicParsing="false" onAction="#onPillsClicked" opacity="0.43" prefHeight="27.0" prefWidth="63.0" style="-fx-border-color: white;" text="Pills" />

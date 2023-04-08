@@ -9,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.LightBase;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
@@ -23,6 +24,7 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 
@@ -40,6 +42,8 @@ public class orderpagecontroller implements Initializable {
 
     @FXML
     private TextArea total_order_value;
+    @FXML
+    private DatePicker delivStart;
 
     @FXML
     private  Button place_order;
@@ -55,7 +59,9 @@ public class orderpagecontroller implements Initializable {
     @FXML
     private ChoiceBox<String> myChoiceBox;
 
-
+@FXML
+private Button button;
+    private Boolean monthlyPressed = false;
     @FXML
     private  Label contact_no_missing;
     @FXML
@@ -63,7 +69,7 @@ public class orderpagecontroller implements Initializable {
     @FXML
     private  Label noitemsaddedtocart;
     @FXML
-    private  void placeorderButtonPressed() throws SQLException, IOException {
+    private  void placeorderButtonPressed() throws SQLException, IOException, ClassNotFoundException {
         boolean canmakedelivery=true;
 
         if(addressarea.getText().equals(""))
@@ -94,14 +100,58 @@ public class orderpagecontroller implements Initializable {
             cart.generateSummary(cart.Products);
             String selectedValue = myChoiceBox.getValue();
             orderdao Insertorder = new orderdao();
-            Insertorder.addOrder(currentUser.user_name, phonenoarea.getText(), String.valueOf(cart.Total_Amount), addressarea.getText(), cart.generateSummary(cart.Products), "Order Received");
-            System.out.println(selectedValue);
 
-            ButtonNotificationExample b = new ButtonNotificationExample();
-            b.showNotificationorderPlaced(new Stage());
+            if(monthlyPressed == true)
+            {
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "");
+                alert.setHeaderText("Are you sure you want to add this as monthly subscription?");
+                Optional<ButtonType> result = alert.showAndWait();
+
+                if(result.get() == ButtonType.OK)
+                {
+                    Insertorder.addOrderMonthly(currentUser.user_name, phonenoarea.getText(), String.valueOf(cart.Total_Amount), addressarea.getText(), cart.generateSummary(cart.Products), delivStart.getValue().toString());
+                    ButtonNotificationExample b = new ButtonNotificationExample();
+                    b.showNotificationorderPlaced(new Stage());
+                    switchtomenu(button);
+
+                    FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("memocard.fxml"));
+                    Stage stage = new Stage(StageStyle.TRANSPARENT);
+                    Scene scene = new Scene(fxmlLoader.load());
+                    stage.setTitle("e-MED");
+                    stage.setScene(scene);
+                    stage.show();
+                    cart.Products.clear();
+                    cart.total_items_selected=0;
+                }
+                else if(result.get() == ButtonType.CANCEL)
+                {
+                    monthlyPressed = false;
+                    delivStart.setVisible(false);
+                }
+
+            }
+            else {
+                //orderdao Insertorder = new orderdao();
+
+                Insertorder.addOrder(currentUser.user_name, phonenoarea.getText(), String.valueOf(cart.Total_Amount), addressarea.getText(), cart.generateSummary(cart.Products), "Order Received");
+                System.out.println(selectedValue);
+
+                ButtonNotificationExample b = new ButtonNotificationExample();
+                b.showNotificationorderPlaced(new Stage());
+                switchtomenu(button);
+
+                FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("memocard.fxml"));
+                Stage stage = new Stage(StageStyle.TRANSPARENT);
+                Scene scene = new Scene(fxmlLoader.load(), 252, 436);
+                stage.setTitle("e-MED");
+                stage.setScene(scene);
+                stage.show();
+                cart.Products.clear();
+                cart.total_items_selected=0;
+            }
 
 
-            switchtomenu(place_order);
+            /*switchtomenu(button);
 
             FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("memocard.fxml"));
             Stage stage = new Stage(StageStyle.TRANSPARENT);
@@ -110,11 +160,19 @@ public class orderpagecontroller implements Initializable {
             stage.setScene(scene);
             stage.show();
             cart.Products.clear();
-            cart.total_items_selected=0;
+            cart.total_items_selected=0;*/
 
 
 
         }
+    }
+
+    @FXML
+    protected void onAddMonthlyPressed()
+    {
+        delivStart.setVisible(true);
+        monthlyPressed = true;
+
     }
 
     public static orderedItem ot = new orderedItem();
@@ -123,6 +181,7 @@ public class orderpagecontroller implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        delivStart.setVisible(false);
         // Initialize the item list
         cart Cart=new cart();
         Cart.removeduplicatearraylist();

@@ -152,8 +152,8 @@ public class MedicinePageController implements Initializable {
 
     @FXML
     private Label minflderr;
-    @FXML
-    private TextField mednum;
+//    @FXML
+//    private TextField mednum;
     @FXML
     private VBox days = null;
     @FXML
@@ -216,7 +216,7 @@ public class MedicinePageController implements Initializable {
                 "7"
         );
 
-        mednum.setVisible(true);
+        //mednum.setVisible(true);
 
         System.out.println(setWeekly.isSelected());
 
@@ -252,22 +252,7 @@ public class MedicinePageController implements Initializable {
 
 
 
-    @FXML
-    private void onSchedulePressed()
-    {
-        mednum.setVisible(true);
-        days.setVisible(true);
 
-        //final int num;
-
-
-        nums.setOnAction((Event ev) -> {
-            mednum.setText(nums.getSelectionModel().getSelectedItem().toString());
-        });
-
-        System.out.println(mednum.getText());
-
-    }
 
     @FXML
     protected void onWeeklyPressed()

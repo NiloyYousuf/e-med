@@ -1,15 +1,19 @@
 package com.example.alarm;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.stage.Stage;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -47,8 +51,8 @@ public class Notifcontrol implements Initializable {
         //else if(nob.getType() == "Pills") img.setImage(new Image("pills.png"));
         //else if(nob.getType() == "Syringe") img.setImage(new Image("syringe.png"));
 
-        Media ple = new Media(new File("who-let-the-dogs-out-4720.mp3").toURI().toString());
-        //Media ple = new Media(new File("twirling-intime-lenovo-k8-note-alarm-tone-41440.mp3").toURI().toString());
+        //Media ple = new Media(new File("who-let-the-dogs-out-4720.mp3").toURI().toString());
+        Media ple = new Media(new File("twirling-intime-lenovo-k8-note-alarm-tone-41440.mp3").toURI().toString());
         MediaPlayer mp = new MediaPlayer(ple);
         mp.play();
 
@@ -57,10 +61,13 @@ public class Notifcontrol implements Initializable {
     }
 
     @FXML
-    protected void onTakenPressed()
+    protected void onTakenPressed(ActionEvent e) throws IOException
     {
         DBConn db = new DBConn();
         db.setTaken(medname.getText(), timez.getText(), doseg.getText().toString().split(" ")[0], weekde);
+        Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        stage.close();
+
 
     }
 

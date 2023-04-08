@@ -42,7 +42,7 @@ public class OrdersummaryMonthly implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle)
     {
-        if(LoginStaringPagecontroller.monthlypressed == Boolean.TRUE) oitem = MonthlySubscriptionPage.ot;
+        //if(LoginStaringPagecontroller.monthlypressed == Boolean.TRUE) oitem = MonthlySubscriptionPage.ot;
         mednem.setText(oitem.product_name);
         prcxquan.setText(oitem.product_price + " x " + oitem.product_selected);
         total.setText(String.valueOf((Integer.parseInt(oitem.product_price) * Integer.parseInt(oitem.product_selected))));

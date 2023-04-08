@@ -71,7 +71,7 @@ public class User_ADD_TO_CART implements Initializable {
             imageView.setFitHeight(120);
             Label descriptionLabel = new Label(item.getProduct_description());
             Label pricelabel=new Label("Price: "+item.getProduct_price());
-            descriptionLabel.setMinSize(150,50);
+            descriptionLabel.setMinSize(140,50);
 
             descriptionLabel.setWrapText(true);
             Label nameLabel = new Label(item.getProduct_name());

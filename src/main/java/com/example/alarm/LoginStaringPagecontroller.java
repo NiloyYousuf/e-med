@@ -116,8 +116,8 @@ public class LoginStaringPagecontroller {
     public void switchtoMonthly(ActionEvent event) throws IOException
     {
         monthlypressed = true;
-        String s1="usermonthly.fxml";
-        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource(s1));
+        String s1="showMontlySubpage.fxml";
+        FXMLLoader fxmlLoader = new FXMLLoader(MonthlySubscriptionPage.class.getResource(s1));
         stage =(Stage)((Node)event.getSource()).getScene().getWindow();
         Scene scene = new Scene(fxmlLoader.load(), 720, 480);
         stage.setTitle("e-MED");
@@ -126,6 +126,7 @@ public class LoginStaringPagecontroller {
     }
 
     public void login_button_click(ActionEvent event) throws IOException, SQLException, ClassNotFoundException {
+        System.out.println(name.getText());
 
         if(name.getText().isBlank()==false && passwordField.getText().isBlank()==false )
         {

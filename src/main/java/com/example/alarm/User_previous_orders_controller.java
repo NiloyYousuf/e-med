@@ -26,7 +26,6 @@ import javafx.stage.Stage;
 
 public class User_previous_orders_controller implements Initializable {
 
-    public  static  String username = currentUser.user_name;
     // ObservableList of orders for TableView
     private ObservableList<Order> orders = FXCollections.observableArrayList();
 
@@ -82,8 +81,9 @@ public class User_previous_orders_controller implements Initializable {
         try {
             Database_connection dbcon = new Database_connection();
             Connection conn = dbcon.conn;
+            System.out.println(currentUser.user_name);
             PreparedStatement ps = conn.prepareStatement("select * from orders where User_Name = ?");
-            ps.setString(1, username);
+            ps.setString(1, currentUser.user_name);
 
             // Execute the query and retrieve the results
             ResultSet rs = ps.executeQuery();
@@ -99,6 +99,7 @@ public class User_previous_orders_controller implements Initializable {
                         rs.getString("Order_Memo"),
                         rs.getString("Order_Status")
                 );
+
                 System.out.println(rs.getString(1));
                 orders.add(order);
             }

@@ -75,7 +75,7 @@ public class orderdao {
         }
     }
 
-    public void addOrderMonthly(String userName, String userPhoneNo, String totalAmount, String deliveryAddress, String orderMemo, String start, String end) throws SQLException {
+    public void addOrderMonthly(String userName, String userPhoneNo, String totalAmount, String deliveryAddress, String orderMemo, String start) throws SQLException {
 
         Connection conn=null;
         PreparedStatement stmt = null;
@@ -93,7 +93,7 @@ public class orderdao {
 
             // Create a PreparedStatement with a parameterized SQL query
             String sql = "INSERT INTO monthly_subscription " +
-                    "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+                    "VALUES (?, ?, ?, ?, ?, ?, ?)";
             stmt = conn.prepareStatement(sql);
 
             // Get the current date/time
@@ -112,7 +112,6 @@ public class orderdao {
             stmt.setString(5, userPhoneNo);
             stmt.setString(6, totalAmount);
             stmt.setString(7, start);
-            stmt.setString(8, end);
 
             // Execute the PreparedStatement
             stmt.executeUpdate();

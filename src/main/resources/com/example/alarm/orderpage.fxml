@@ -6,6 +6,7 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextArea?>
@@ -18,24 +19,24 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="528.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.alarm.orderpagecontroller">
+<AnchorPane prefHeight="502.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.alarm.orderpagecontroller">
    <children>
       <VBox />
-       <ScrollPane fitToHeight="true" fitToWidth="true" layoutX="370.0" layoutY="121.0" prefHeight="291.0" prefWidth="347.0" stylesheets="@style.css">
+       <ScrollPane fitToHeight="true" fitToWidth="true" layoutX="372.0" layoutY="75.0" prefHeight="291.0" prefWidth="347.0" stylesheets="@style.css">
            <content>
                <VBox fx:id="itemContainer" prefHeight="290.0" prefWidth="323.0" spacing="5" />
            </content>
        </ScrollPane>
-      <Button fx:id="place_order" layoutX="376.0" layoutY="478.0" mnemonicParsing="false" onAction="#placeorderButtonPressed" opacity="0.63" prefHeight="42.0" prefWidth="340.0" style="-fx-background-color: green;" text="Place Order" textFill="WHITE">
+      <Button fx:id="button" layoutX="376.0" layoutY="425.0" mnemonicParsing="false" onAction="#placeorderButtonPressed" opacity="0.63" prefHeight="15.0" prefWidth="340.0" style="-fx-background-color: green;" text="Place Order" textFill="WHITE">
          <font>
-            <Font size="19.0" />
+            <Font size="15.0" />
          </font></Button>
-      <TextArea fx:id="total_order_value" editable="false" layoutX="601.0" layoutY="420.0" prefHeight="43.0" prefWidth="106.0" style="-fx-border-color: white;">
+      <TextArea fx:id="total_order_value" editable="false" layoutX="598.0" layoutY="375.0" prefHeight="43.0" prefWidth="106.0" style="-fx-border-color: white;">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </TextArea>
-      <AnchorPane layoutX="-4.0" prefHeight="414.0" prefWidth="374.0" style="-fx-background-color: #e7fdff;">
+      <AnchorPane layoutY="6.0" prefHeight="480.0" prefWidth="374.0" style="-fx-background-color: #e7fdff;">
          <children>
                    <Button layoutX="21.0" layoutY="14.0" mnemonicParsing="false" onAction="#backbuttonpressed" opacity="0.0" prefHeight="36.0" prefWidth="35.0">
                        <cursor>
@@ -79,7 +80,7 @@
                   <Font name="System Bold" size="20.0" />
                </font>
             </Text>
-            <ImageView fitHeight="232.0" fitWidth="256.0" layoutY="285.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="242.0" fitWidth="309.0" layoutY="256.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@placeorder.png" />
                </image>
@@ -96,7 +97,7 @@
             </Label>
             <Label fx:id="contact_no_missing" layoutX="81.0" layoutY="163.0" prefHeight="18.0" prefWidth="192.0" textFill="RED">
                <font>
-                  <Font name="System Bold" size="12.0" />
+                  <Font name="Segoe UI Semibold Italic" size="12.0" />
                </font>
             </Label>
             <Label fx:id="Deliveryaddressmissing" layoutX="104.0" layoutY="224.0" prefHeight="18.0" prefWidth="192.0" textFill="RED">
@@ -105,23 +106,29 @@
                </font>
             </Label>
             <Button layoutX="17.0" layoutY="22.0" mnemonicParsing="false" onAction="#backbuttonpressed" opacity="0.0" prefHeight="35.0" prefWidth="44.0" text="Button" />
+            <DatePicker fx:id="delivStart" layoutX="254.0" layoutY="364.0" opacity="0.82" prefHeight="27.0" prefWidth="114.0" promptText="Start From" style="-fx-background-color: #e7fdff; -fx-border-color: white;" />
          </children>
       </AnchorPane>
-      <Text fill="#919090" layoutX="378.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Items" wrappingWidth="275.99999999999994">
+      <Text fill="#919090" layoutX="385.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Items" wrappingWidth="275.99999999999994">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </Text>
-      <Text fill="#919090" layoutX="378.0" layoutY="448.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sub-Total" wrappingWidth="176.2998962402345">
+      <Text fill="#919090" layoutX="377.0" layoutY="403.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sub-Total" wrappingWidth="176.2998962402345">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Text>
-      <Label fx:id="noitemsaddedtocart" layoutX="466.0" layoutY="79.0" prefHeight="26.0" prefWidth="236.0" textFill="RED">
+      <Label fx:id="noitemsaddedtocart" layoutX="465.0" layoutY="37.0" prefHeight="26.0" prefWidth="236.0" textFill="RED">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
+      <Button fx:id="button1" layoutX="376.0" layoutY="465.0" mnemonicParsing="false" onAction="#onAddMonthlyPressed" opacity="0.63" prefHeight="15.0" prefWidth="340.0" style="-fx-background-color: orange;" text="Add as Monthly Subscription" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
    </children>
    <opaqueInsets>
       <Insets />
