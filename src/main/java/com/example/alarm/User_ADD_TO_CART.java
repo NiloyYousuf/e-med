@@ -271,7 +271,7 @@ public class User_ADD_TO_CART implements Initializable {
     }
 
     public void switchtoMonthlyrPage(ActionEvent e) throws IOException {
-        String s1="nomonthlysubscriptionpage.fxml";
+        String s1="nomonthlysub.fxml";
         FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource(s1));
         Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         Scene scene = new Scene(fxmlLoader.load(), 720, 528);

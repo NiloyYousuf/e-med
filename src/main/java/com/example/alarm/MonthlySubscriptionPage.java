@@ -92,7 +92,7 @@ public class MonthlySubscriptionPage implements Initializable {
 
     public void backbuttonpressed(ActionEvent e ) throws IOException {
         cart_monthly.generateSummary(cart_monthly.Products);
-        String s1="searchpage.fxml";
+        String s1="UserLoggedInprevious.fxml";
         FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource(s1));
         Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         Scene scene = new Scene(fxmlLoader.load(), 720, 480);

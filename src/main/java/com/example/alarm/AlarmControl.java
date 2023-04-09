@@ -148,6 +148,17 @@ public class AlarmControl implements Initializable {
 
     }
 
+    @FXML
+    protected void onTodayPressed(ActionEvent event) throws IOException
+    {
+        Node root = (Node) event . getSource () ;
+        Stage myStage = ( Stage ) root . getScene () . getWindow () ;
+        FXMLLoader fxmlLoader = new FXMLLoader ( AlarmControl.class.getResource ("today'smeds.fxml") ) ;
+        Scene as = new Scene ( fxmlLoader.load() ) ;
+        myStage . setScene ( as ) ;
+        myStage . show () ;
+    }
+
 
 
 

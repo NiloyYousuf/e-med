@@ -56,17 +56,6 @@ public class itemcontroller implements Initializable
     }
 
     @FXML
-    private void onItemPressed() throws IOException
-    {
-        System.out.println(mednem.getText() + " " + dos.getText() + " " + alarmtime.getText());
-        Stage myStage = new Stage();
-        FXMLLoader fxmlLoader = new FXMLLoader ( Random.class.getResource ("random.fxml") ) ;
-        Scene as = new Scene ( fxmlLoader.load() ) ;
-        myStage . setScene ( as ) ;
-        myStage . show () ;
-    }
-
-    @FXML
     protected void onDeletePressed()
     {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);

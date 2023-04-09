@@ -72,6 +72,7 @@
                         <Image url="@prt-removebg-preview.png" />
                     </image>
                 </ImageView>
+            <Button mnemonicParsing="false" onAction="#onTodayPressed" text="Today" />
             </children>
         </VBox>
         <StackPane layoutX="176.0" layoutY="-1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="488.0" prefWidth="541.0" style="-fx-background-color: white;" stylesheets="@style.css">

@@ -149,12 +149,15 @@ public class orderdao {
                 PreparedStatement ps = conn.prepareStatement("update product_table set Total_Avaiable = ? where Product_ID = ?");
                 ps.setInt(1, Integer.parseInt(products.Product_Total_Available) - products.Addedtocart);
                 ps.setString(2, products.Product_ID);
-                User_ADD_TO_CART.availables.put(products.Product_ID, Integer.parseInt(products.Product_Total_Available) - products.Addedtocart);
+                //User_ADD_TO_CART.availables.put(products.Product_ID, Integer.parseInt(products.Product_Total_Available) - products.Addedtocart);
                 ps.executeUpdate();
             } catch (SQLException e) {
                 System.out.println(" Error while connecting to database. Exception code : " + e);
             }
         }
+
+        table2 connecttotable = new table2();
+        products.products = connecttotable.getProductlist();
 
     }
 }

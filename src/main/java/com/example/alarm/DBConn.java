@@ -5,6 +5,7 @@ import javafx.util.Pair;
 
 import java.sql.*;
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -344,6 +345,35 @@ public class DBConn {
         } catch (SQLException e) {
             System.out.println(" Error while connecting to database. Exception code : " + e);
         }
+    }
+
+    public ArrayList<demoinfo> getTakenTable(int val)
+    {
+        ArrayList<demoinfo> list = new ArrayList<>();
+        try
+        {
+            PreparedStatement ps = conn.prepareStatement("select med_name, remtime, doses from demo where username = ? AND weekday = ? AND taken = ?");
+            CurrentTime ctime = new CurrentTime();
+            ps.setString(1, currentUser.user_name);
+            ps.setString(2, ctime.currentweekday());
+            if(val == 1) ps.setInt(3, 1);
+            else ps.setInt(3, 0);
+            ResultSet rs = ps.executeQuery();
+
+            while(rs.next())
+            {
+                System.out.println(rs.getString("med_name") + rs.getString("remtime") + rs.getInt("doses"));
+                list.add(new demoinfo(rs.getString("med_name"), rs.getString("remtime"), rs.getInt("doses")));
+            }
+
+
+        }
+        catch (SQLException e) {
+            System.out.println(" Error while connecting to database. Exception code : " + e);
+        }
+
+        return list;
+
     }
 
 

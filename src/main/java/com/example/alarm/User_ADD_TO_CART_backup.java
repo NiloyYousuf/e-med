@@ -92,7 +92,7 @@ public class User_ADD_TO_CART_backup implements Initializable {
                 obj.setSelected(item.getSelected());
 
 
-                nodes[i] = FXMLLoader.load(getClass().getResource("productview.fxml"));
+                nodes[i] = FXMLLoader.load(getClass().getResource("takenview.fxml"));
 
                 //give the items some effect
 

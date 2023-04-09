@@ -23,6 +23,13 @@ public class CurrentTime {
 
     public CurrentTime() {
         System.out.println("imgointocry");
+        week.put(1, "Sunday");
+        week.put(2, "Monday");
+        week.put(3, "Tuesday");
+        week.put(4, "Wednesday");
+        week.put(5, "Thursday");
+        week.put(6, "Friday");
+        week.put(7, "Saturday");
 
     }
 

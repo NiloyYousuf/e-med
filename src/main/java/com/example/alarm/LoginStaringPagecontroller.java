@@ -74,6 +74,7 @@ public class LoginStaringPagecontroller {
     public void switchToScene4(ActionEvent event) throws IOException {
         String s1="searchpage.fxml";
         monthlypressed = false;
+        System.out.println("Here is shopping");
         FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource(s1));
         stage =(Stage)((Node)event.getSource()).getScene().getWindow();
         Scene scene = new Scene(fxmlLoader.load(), 720, 480);
