@@ -141,7 +141,7 @@ public class AlarmControl implements Initializable {
     {
         Node root = (Node) event . getSource () ;
         Stage myStage = ( Stage ) root . getScene () . getWindow () ;
-        FXMLLoader fxmlLoader = new FXMLLoader ( AlarmControl.class.getResource ("UserLoggedIn.fxml") ) ;
+        FXMLLoader fxmlLoader = new FXMLLoader ( AlarmControl.class.getResource ("UserLoggedInprevious.fxml") ) ;
         Scene as = new Scene ( fxmlLoader.load() ) ;
         myStage . setScene ( as ) ;
         myStage . show () ;

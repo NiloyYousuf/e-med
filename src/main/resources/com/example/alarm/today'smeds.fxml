@@ -15,12 +15,12 @@
    <children>
       <ScrollPane layoutX="110.0" layoutY="118.0" prefHeight="330.0" prefWidth="218.0" stylesheets="@style.css">
          <content>
-            <VBox fx:id="taken" prefHeight="329.0" prefWidth="201.0" />
+            <VBox fx:id="taken" prefHeight="329.0" prefWidth="201.0" spacing="20.0" style="-fx-background-color: rgb(201, 201, 213);" />
          </content>
       </ScrollPane>
       <ScrollPane layoutX="420.0" layoutY="118.0" prefHeight="330.0" prefWidth="218.0" stylesheets="@style.css">
          <content>
-            <VBox fx:id="nottaken" prefHeight="331.0" prefWidth="201.0" />
+            <VBox fx:id="nottaken" prefHeight="331.0" prefWidth="201.0" spacing="20.0" style="-fx-background-color: rgb(201, 201, 213);" />
          </content>
       </ScrollPane>
       <Text fill="#2a7344" layoutX="153.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Taken" textAlignment="CENTER" wrappingWidth="131.42901611328125">

@@ -17,6 +17,8 @@ import java.util.ResourceBundle;
 
 public class nottakenController implements Initializable
 {
+    public static boolean takenPressed = false;
+    public static demoinfo sendObj = new demoinfo();
     @FXML
     private Label ID;
 
@@ -46,12 +48,15 @@ public class nottakenController implements Initializable
     @FXML
     protected void TakenPressed(ActionEvent event) throws IOException
     {
+        takenPressed = true;
+        sendObj.remtimee = medicinetime.getText();
+        sendObj.m_name = medicinename.getText();
+        sendObj.doses = Integer.parseInt(medicinedescription.getText());
         DBConn db = new DBConn();
         CurrentTime ctime = new CurrentTime();
         db.setTaken(medicinename.getText(), medicinetime.getText(), medicinedescription.getText(), ctime.currentweekday());
         VBox vb = (VBox) this.ancpane.getParent();
         vb.getChildren().remove(this.ancpane);
-
 
     }
 }
